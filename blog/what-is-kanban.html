@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>What is Kanban? — Prasanna Venkatesh | QA Automation Engineer</title>
+  <meta name="description" content="Learn about the Kanban method—a lean approach to workflow management that visualizes work, limits work-in-progress, and improves flow for continuous delivery.">
+  <meta name="keywords" content="Kanban, Agile, Workflow, Lean, Project Management">
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/css/main.css" rel="stylesheet">
+</head>
+<body class="blog-page">
+  <header id="header" class="header d-flex align-items-center light-background sticky-top">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+      <a href="../index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <h1 class="sitename">PV</h1>
+      </a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../resume.html">Resume</a></li>
+          <li><a href="../services.html">Services</a></li>
+          <li><a href="../portfolio.html">Portfolio</a></li>
+          <li><a href="../blog.html" class="active">Blog</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <div class="header-social-links">
+        <a href="https://www.instagram.com/Chinna.Prasanna" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/" class="github"><i class="bi bi-github"></i></a>
+      </div>
+    </div>
+  </header>
+  <main class="main">
+    <section id="blog-post" class="blog-post section">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center mb-4">
+          <div class="col-lg-8">
+            <a href="../blog.html" class="btn btn-link p-0"><i class="bi bi-chevron-left"></i> Back to Blog</a>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <article>
+              <div class="mb-4"><span class="text-muted small">April 12, 2026 &middot; 5 min read</span></div>
+              <h1 class="mb-3">What is Kanban?</h1>
+              <p class="lead fst-italic mb-4">Discover the Kanban method—a lean workflow management approach born in Toyota factories that helps teams visualize work, manage flow, and continuously deliver value without the rigid structure of fixed iterations.</p>
+
+              <h2 class="mt-5 mb-3">Understanding Kanban</h2>
+              <p>Kanban is a workflow management method that originated from lean manufacturing principles at Toyota. The term "Kanban" comes from Japanese and literally means "visual card" or "billboard." The method focuses on visualizing work, limiting work-in-progress (WIP), and optimizing the flow of work through a system. Unlike Scrum, which organizes work into fixed time-boxed sprints, Kanban operates on a continuous flow model where work moves through stages as capacity becomes available. This makes Kanban particularly well-suited for environments where work arrives unpredictably or where maintaining a steady flow is more important than completing a fixed set of work in a specific timeframe.</p>
+
+              <p>The modern Kanban method for knowledge work was developed and formalized by David J. Anderson in the 2000s, adapting the manufacturing principles from Toyota to software development and other service-oriented work. Today, Kanban has evolved into a complete approach to workflow management that many teams use either standalone or combined with other agile practices. What makes Kanban particularly appealing is its gentleness—it doesn't require major organizational upheaval or strict adherence to ceremonies. Teams can adopt Kanban gradually, starting with simple visualization and building from there.</p>
+
+              <div class="alert alert-light border-start border-5 border-success my-4 fst-italic"><p class="mb-0">Kanban is about making the work visible and managing the flow of that work systematically, enabling teams to be more responsive and efficient without the overhead of sprint planning and time-boxing.</p></div>
+
+              <h2 class="mt-5 mb-3">The Historical Origins of Kanban</h2>
+              <p>The roots of Kanban trace back to the Toyota Production System (TPS) in post-World War II Japan. Taiichi Ohno, a visionary engineer at Toyota, observed American supermarkets and noticed how they managed inventory—products were stocked based on actual customer demand, and shelves were replenished only when items were sold. This sparked the idea of applying similar principles to manufacturing. In the 1940s and 1950s, Ohno developed the concept of Kanban cards as a way to signal when parts were needed in a production line, creating a "pull" system rather than a "push" system.</p>
+
+              <p>In a pull system, work is only started when there's capacity to handle it and downstream processes need the output. This was revolutionary because it reduced overproduction, decreased inventory holding costs, minimized waste, and improved overall efficiency. Toyota's remarkable success using these principles inspired companies worldwide to adopt lean manufacturing. When software development teams began exploring agile methods in the early 2000s, they recognized that Kanban's principles could apply to knowledge work just as effectively as to manufacturing. David J. Anderson's formalization of the Kanban Method for IT and knowledge work has since become a cornerstone of modern agile practice.</p>
+
+              <hr class="my-5">
+
+              <h2 class="mt-5 mb-3">Core Principles of Kanban</h2>
+              <p>The Kanban method is built on several core principles that guide how teams should organize their work and thinking about continuous improvement.</p>
+
+              <div class="d-flex gap-3 mb-4">
+                <div class="flex-shrink-0">
+                  <div class="badge bg-dark rounded-circle" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 18px;">1</div>
+                </div>
+                <div class="flex-grow-1">
+                  <h3 class="h5 mb-2">Visualize the Workflow</h3>
+                  <p class="mb-0">The first principle is to make the work visible. A Kanban board typically displays columns representing stages in the workflow—such as "To Do," "In Progress," "In Review," and "Done." Each piece of work is represented as a card that moves across the board from left to right as it progresses. This visualization makes it immediately obvious what's being worked on, who's working on what, where bottlenecks exist, and what's stuck. Teams gain clarity about the state of work at any moment, which is impossible when work is tracked only in spreadsheets or meetings.</p>
+                </div>
+              </div>
+
+              <div class="d-flex gap-3 mb-4">
+                <div class="flex-shrink-0">
+                  <div class="badge bg-dark rounded-circle" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 18px;">2</div>
+                </div>
+                <div class="flex-grow-1">
+                  <h3 class="h5 mb-2">Limit Work-in-Progress (WIP)</h3>
+                  <p class="mb-0">Each column on the Kanban board has a maximum WIP limit. This limit represents the maximum number of items that can be in that stage at any given time. For example, a team might limit "In Progress" to 5 items and "In Review" to 3 items. By restricting WIP, teams avoid overloading team members, reduce context switching, and create pull signals—when an item is completed and moves out of a stage, new work can pull in. WIP limits are fundamental to preventing chaos and ensuring that the system doesn't become overwhelmed with half-finished work.</p>
+                </div>
+              </div>
+
+              <div class="d-flex gap-3 mb-4">
+                <div class="flex-shrink-0">
+                  <div class="badge bg-dark rounded-circle" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 18px;">3</div>
+                </div>
+                <div class="flex-grow-1">
+                  <h3 class="h5 mb-2">Manage Flow</h3>
+                  <p class="mb-0">Kanban focuses on optimizing the flow of work through the system. Flow refers to how quickly work moves from request to completion. By monitoring flow metrics—such as cycle time (time from start to finish), lead time (time from request to start), and throughput (items completed per week)—teams can identify where work gets stuck and make targeted improvements. Rather than focusing on resource utilization, Kanban emphasizes flow efficiency. A team member might appear idle between tasks, but this actually enables faster overall flow because work isn't queued waiting for attention.</p>
+                </div>
+              </div>
+
+              <div class="d-flex gap-3 mb-4">
+                <div class="flex-shrink-0">
+                  <div class="badge bg-dark rounded-circle" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 18px;">4</div>
+                </div>
+                <div class="flex-grow-1">
+                  <h3 class="h5 mb-2">Make Policies Explicit</h3>
+                  <p class="mb-0">Kanban teams should clearly define and display the rules and policies that govern how work flows. This includes criteria for what items can enter the system, when work should be pulled from one stage to the next, when items are considered "done," and how priorities are determined. Explicit policies reduce ambiguity, enable consistent decision-making, and make it easier to onboard new team members. These policies are often captured in writing and posted near the Kanban board so everyone understands the rules of engagement.</p>
+                </div>
+              </div>
+
+              <div class="d-flex gap-3 mb-4">
+                <div class="flex-shrink-0">
+                  <div class="badge bg-dark rounded-circle" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 18px;">5</div>
+                </div>
+                <div class="flex-grow-1">
+                  <h3 class="h5 mb-2">Implement Feedback Loops</h3>
+                  <p class="mb-0">Kanban teams gather data about their workflow and use that data to drive improvements. This might involve metrics dashboards showing cycle time trends, cumulative flow diagrams visualizing bottlenecks, or regular reviews of flow metrics. Feedback loops also include customer feedback and stakeholder input, which inform prioritization decisions. By continuously studying how work flows and what customers need, teams identify where to focus improvement efforts next.</p>
+                </div>
+              </div>
+
+              <div class="d-flex gap-3 mb-4">
+                <div class="flex-shrink-0">
+                  <div class="badge bg-dark rounded-circle" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 18px;">6</div>
+                </div>
+                <div class="flex-grow-1">
+                  <h3 class="h5 mb-2">Improve Collaboratively</h3>
+                  <p class="mb-0">Continuous improvement in Kanban is a shared responsibility of the entire team. Rather than having a separate management layer impose changes, teams collectively identify improvement opportunities through their own observation and data. Regular retrospectives or flow reviews allow the team to discuss bottlenecks and collaboratively develop solutions. This distributed approach to improvement fosters ownership and ensures that changes are grounded in the team's real experience.</p>
+                </div>
+              </div>
+
+              <hr class="my-5">
+
+              <h2 class="mt-5 mb-3">Understanding the Kanban Board</h2>
+              <p>The Kanban board is the most visible and iconic aspect of the method. A basic Kanban board has columns representing the stages of work and rows representing different work items or projects. Each item is represented as a card that contains key information—the title, assignee, priority, and any other relevant details. Cards flow from left to right as work progresses, and when they reach the rightmost "Done" column, that work is complete and delivered. The beauty of the Kanban board is its simplicity—it requires no sophisticated tools and can be implemented with a whiteboard and sticky notes, or with digital tools for distributed teams.</p>
+
+              <p>Different types of work might be distinguished by colors or symbols on cards. For example, a team might use red cards for bugs, blue for features, and yellow for technical improvements. This visual distinction helps the team at a glance understand the composition of their work. WIP limits are often written at the top of each column to serve as a visual reminder and enforcement mechanism. When a column reaches its limit, no new work can be pulled into that stage until something moves out, creating a natural throttle that prevents overloading any part of the system.</p>
+
+              <h2 class="mt-5 mb-3">Kanban vs. Traditional Project Management</h2>
+              <p>Kanban differs significantly from traditional project management approaches that rely on comprehensive upfront planning, fixed timelines, and sequential phases. Traditional approaches attempt to predict the entire project scope before beginning work, establish a fixed schedule, and often use a waterfall model where each phase must be completed before the next begins. This can lead to delayed delivery, resistance to change, and situations where stakeholder feedback comes too late to be incorporated.</p>
+
+              <p>Kanban, by contrast, assumes work will continuously arrive and evolve. Rather than planning a massive project with hundreds of tasks upfront, Kanban maintains a prioritized list of work and pulls items into the workflow as capacity allows. This approach is far more responsive to changing business needs, customer feedback, and emerging priorities. Teams can deliver value continuously rather than waiting for a final "big bang" release. Additionally, Kanban's focus on flow metrics provides better visibility into productivity and predictability than traditional project management, which often tracks percent complete rather than actual throughput.</p>
+
+              <hr class="my-5">
+
+              <h2 class="mt-5 mb-3">When to Use Kanban</h2>
+              <p>Kanban is ideal for several scenarios and team structures. It works exceptionally well for maintenance and support work where requests arrive unpredictably throughout the day—a support team can't schedule support tickets into two-week sprints when they don't know what will arrive. Kanban is also excellent for teams that have highly variable work—some days might bring complex tasks requiring deep focus, while other days bring quick wins. Teams working on continuous delivery or deployment pipelines often use Kanban because work is continuously flowing through stages of development, testing, and release. Kanban also suits distributed teams where asynchronous work is important because there's no dependency on synchronous sprint ceremonies.</p>
+
+              <p>Additionally, Kanban works well as teams transition to agile practices. Rather than requiring a wholesale shift to Scrum with all its ceremonies and roles, teams can start with Kanban's simple visualization and WIP limits, gradually building agility without overwhelming change. Many teams ultimately use a hybrid approach, combining Scrum's sprint structure with Kanban's continuous flow principles—this is often called Scrumban.</p>
+
+              <h2 class="mt-5 mb-3">The Power of Continuous Improvement</h2>
+              <p>What makes Kanban uniquely powerful is its commitment to continuous incremental improvement rather than periodic big changes. By constantly studying how work flows, identifying constraints, and testing small improvements, Kanban teams compound their productivity gains over time. A team might spend a week analyzing why the "In Review" column consistently has work piling up, then implement a new code review process or add a team member with specialized skills. These targeted improvements directly address real bottlenecks discovered through the team's own observations. Over months and years, this relentless focus on flow improvements transforms teams from chaotic to highly efficient, delivering more value with less stress and waste.</p>
+
+              <!-- Tags -->
+              <div class="mt-5">
+                <span class="badge bg-secondary me-2 mb-2">Kanban</span>
+                <span class="badge bg-secondary me-2 mb-2">Agile</span>
+                <span class="badge bg-secondary me-2 mb-2">Workflow</span>
+                <span class="badge bg-secondary me-2 mb-2">Lean</span>
+                <span class="badge bg-secondary me-2 mb-2">Project Management</span>
+              </div>
+              <div class="text-muted small mt-5 pt-3 border-top">
+                <p class="mb-1">Written by PV</p>
+                <p class="mb-0">&copy; 2026 All Rights Reserved</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer id="footer" class="footer light-background">
+    <div class="container">
+      <div class="copyright text-center"><p>© <span>Copyright</span> <strong class="px-1 sitename">PV</strong> <span>All Rights Reserved<br></span></p></div>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://www.instagram.com/Chinna.Prasanna"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/"><i class="bi bi-github"></i></a>
+      </div>
+      <div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Tweaked by <a href="#">PV</a></div>
+    </div>
+  </footer>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

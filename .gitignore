@@ -1,0 +1,33 @@
+# Environment and secrets
+.env
+.env.*
+openai
+*.key
+*.pem
+credentials.*
+
+# OS generated files
+.DS_Store
+.DS_Store?
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node modules (if applicable)
+node_modules/
+package-lock.json
+
+# Build output
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
