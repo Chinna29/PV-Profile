@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Page Object Model (POM) — Playwright Tutorial | PV</title>
+  <meta name="description" content="Organise your tests with the Page Object Model pattern — encapsulate locators and actions in reusable classes.">
+  <meta name="keywords" content="page object model, POM, design pattern, LoginPage, reusable, maintainability, fixture">
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/css/main.css" rel="stylesheet">
+</head>
+<body class="blog-page">
+  <header id="header" class="header d-flex align-items-center light-background sticky-top">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+      <a href="../index.html" class="logo d-flex align-items-center me-auto me-xl-0"><h1 class="sitename">PV</h1></a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../resume.html">Resume</a></li>
+          <li><a href="../services.html">Services</a></li>
+          <li><a href="../portfolio.html">Portfolio</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../learning-hub.html" class="active">Learning Hub</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <div class="header-social-links">
+        <a href="https://www.instagram.com/Chinna.Prasanna" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/" class="github"><i class="bi bi-github"></i></a>
+      </div>
+    </div>
+  </header>
+  <main class="main">
+    <section id="tutorial" class="blog-post section">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center mb-4">
+          <div class="col-lg-10"><a href="../learning-hub.html#playwright-course" class="btn btn-link p-0"><i class="bi bi-chevron-left"></i> Back to Course</a></div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 d-none d-lg-block"><div class="course-sidebar">
+  <div class="course-nav-title">Course Contents</div>
+  <ul class="course-nav">
+    <li class="nav-section-label">Beginner</li>
+    <li><a href="introduction-to-playwright.html" class=""><span class="nav-number">1</span> Introduction to Playwright</a></li>
+    <li><a href="installation-and-setup.html" class=""><span class="nav-number">2</span> Installation & Setup</a></li>
+    <li><a href="writing-your-first-test.html" class=""><span class="nav-number">3</span> Writing Your First Test</a></li>
+    <li><a href="locators-and-selectors.html" class=""><span class="nav-number">4</span> Locators & Selectors</a></li>
+    <li><a href="actions-and-interactions.html" class=""><span class="nav-number">5</span> Actions & Interactions</a></li>
+    <li><a href="assertions.html" class=""><span class="nav-number">6</span> Assertions</a></li>
+    <li class="nav-section-label">Intermediate</li>
+    <li><a href="page-object-model.html" class=" active"><span class="nav-number">7</span> Page Object Model (POM)</a></li>
+    <li><a href="waits-and-timeouts.html" class=""><span class="nav-number">8</span> Handling Waits & Timeouts</a></li>
+    <li><a href="frames-and-iframes.html" class=""><span class="nav-number">9</span> Working with Frames & Iframes</a></li>
+    <li><a href="alerts-dialogs-popups.html" class=""><span class="nav-number">10</span> Alerts, Dialogs & Popups</a></li>
+    <li><a href="file-upload-download.html" class=""><span class="nav-number">11</span> File Upload & Download</a></li>
+    <li><a href="api-testing.html" class=""><span class="nav-number">12</span> API Testing with Playwright</a></li>
+    <li><a href="test-configuration-fixtures.html" class=""><span class="nav-number">13</span> Test Configuration & Fixtures</a></li>
+    <li class="nav-section-label">Advanced</li>
+    <li><a href="visual-testing-screenshots.html" class=""><span class="nav-number">14</span> Visual Testing & Screenshots</a></li>
+    <li><a href="parallel-execution-sharding.html" class=""><span class="nav-number">15</span> Parallel Execution & Sharding</a></li>
+    <li><a href="ci-cd-integration.html" class=""><span class="nav-number">16</span> CI/CD Integration</a></li>
+    <li><a href="custom-reporters.html" class=""><span class="nav-number">17</span> Custom Reporters</a></li>
+    <li><a href="network-interception-mocking.html" class=""><span class="nav-number">18</span> Network Interception & Mocking</a></li>
+    <li><a href="browser-contexts-authentication.html" class=""><span class="nav-number">19</span> Browser Contexts & Authentication</a></li>
+    <li><a href="debugging-and-tracing.html" class=""><span class="nav-number">20</span> Debugging & Tracing</a></li>
+  </ul>
+</div></div>
+          <div class="col-lg-7">
+            <article class="tutorial-post">
+              <div class="mb-2">
+                <span class="badge bg-warning me-2">Intermediate</span>
+                <span class="text-muted small">Chapter 7 &middot; 15 min read</span>
+              </div>
+              <h1 class="mb-3">Page Object Model (POM)</h1>
+              <p class="lead fst-italic mb-4">Organise your tests with the Page Object Model pattern — encapsulate locators and actions in reusable classes.</p>
+              <h2>What Is the Page Object Model?</h2>
+<p>The Page Object Model (POM) is a design pattern that creates an abstraction layer between your tests and the raw Playwright API. Each page or component in the application is represented by a class that exposes high-level methods like <code>login(email, password)</code> instead of raw <code>fill</code> and <code>click</code> calls. When the UI changes you update only the page object — all tests that use it stay green without modification.</p>
+<p>POM classes should own <em>locators</em> and <em>actions</em> but not assertions. Keep assertions in the test files so that each test clearly expresses the intent and expected outcome. Page objects are about DRY (Don't Repeat Yourself) for interactions, not about hiding what the test is checking.</p>
+<div class="tip-box"><strong>Tip:</strong> In JavaScript, pass the <code>page</code> fixture into the page object constructor. For larger projects, wrap all page objects in a custom fixture so tests receive them automatically without any <code>new</code> calls.</div>
+<h2>Structuring Your Page Objects</h2>
+<p>A good page object has three sections: (1) the constructor that accepts the <code>page</code> and defines locators as private properties, (2) action methods that perform multi-step workflows, and (3) optionally a navigation method that calls <code>page.goto()</code>. Keep each class focused on a single page or modal — avoid "God" page objects that cover the entire application.</p>
+<h2>Using Page Objects in Tests</h2>
+<p>Tests that use page objects read almost like English: <code>await loginPage.login('user@example.com', 'pass')</code>. This makes them easy to review by non-engineers and straightforward to update when requirements change. Combine POM with fixtures to inject page objects automatically and avoid repetitive setup code in every test file.</p>
+              <div class="lang-switcher">
+                <button class="lang-tab active" onclick="switchLang('js', this)"><span class="lang-icon js">JS</span> JavaScript</button>
+                <button class="lang-tab" onclick="switchLang('java', this)"><span class="lang-icon java">JV</span> Java</button>
+                <button class="lang-tab" onclick="switchLang('python', this)"><span class="lang-icon python">PY</span> Python</button>
+              </div>
+              <div class="lang-panel" data-lang="js">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">pages/LoginPage.js</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code><span class="comment">// pages/LoginPage.js</span>
+<span class="keyword">export class</span> <span class="type">LoginPage</span> {
+  <span class="comment">/** @param {import('@playwright/test').Page} page */</span>
+  <span class="function">constructor</span>(<span class="variable">page</span>) {
+    <span class="variable">this</span>.<span class="variable">page</span> = <span class="variable">page</span>;
+    <span class="comment">// Define locators once — change here if UI changes</span>
+    <span class="variable">this</span>.<span class="variable">emailInput</span>  = <span class="variable">page</span>.<span class="function">getByLabel</span>(<span class="string">'Email'</span>);
+    <span class="variable">this</span>.<span class="variable">passwordInput</span> = <span class="variable">page</span>.<span class="function">getByLabel</span>(<span class="string">'Password'</span>);
+    <span class="variable">this</span>.<span class="variable">submitButton</span> = <span class="variable">page</span>.<span class="function">getByRole</span>(<span class="string">'button'</span>, { <span class="variable">name</span>: <span class="string">'Sign in'</span> });
+    <span class="variable">this</span>.<span class="variable">errorMessage</span> = <span class="variable">page</span>.<span class="function">getByTestId</span>(<span class="string">'auth-error'</span>);
+  }
+
+  <span class="keyword">async</span> <span class="function">goto</span>() {
+    <span class="keyword">await</span> <span class="variable">this</span>.<span class="variable">page</span>.<span class="function">goto</span>(<span class="string">'/login'</span>);
+  }
+
+  <span class="keyword">async</span> <span class="function">login</span>(<span class="variable">email</span>, <span class="variable">password</span>) {
+    <span class="keyword">await</span> <span class="variable">this</span>.<span class="variable">emailInput</span>.<span class="function">fill</span>(<span class="variable">email</span>);
+    <span class="keyword">await</span> <span class="variable">this</span>.<span class="variable">passwordInput</span>.<span class="function">fill</span>(<span class="variable">password</span>);
+    <span class="keyword">await</span> <span class="variable">this</span>.<span class="variable">submitButton</span>.<span class="function">click</span>();
+  }
+}</code></pre>
+  </div>
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">tests/login.spec.js</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code><span class="keyword">import</span> { <span class="variable">test</span>, <span class="variable">expect</span> } <span class="keyword">from</span> <span class="string">'@playwright/test'</span>;
+<span class="keyword">import</span> { <span class="type">LoginPage</span> } <span class="keyword">from</span> <span class="string">'../pages/LoginPage'</span>;
+
+<span class="function">test</span>(<span class="string">'valid credentials redirect to dashboard'</span>, <span class="keyword">async</span> ({ <span class="variable">page</span> }) => {
+  <span class="keyword">const</span> <span class="variable">loginPage</span> = <span class="keyword">new</span> <span class="type">LoginPage</span>(<span class="variable">page</span>);
+  <span class="keyword">await</span> <span class="variable">loginPage</span>.<span class="function">goto</span>();
+  <span class="keyword">await</span> <span class="variable">loginPage</span>.<span class="function">login</span>(<span class="string">'user@example.com'</span>, <span class="string">'secret123'</span>);
+  <span class="keyword">await</span> <span class="function">expect</span>(<span class="variable">page</span>).<span class="function">toHaveURL</span>(<span class="string">'/dashboard'</span>);
+});
+
+<span class="function">test</span>(<span class="string">'invalid password shows error'</span>, <span class="keyword">async</span> ({ <span class="variable">page</span> }) => {
+  <span class="keyword">const</span> <span class="variable">loginPage</span> = <span class="keyword">new</span> <span class="type">LoginPage</span>(<span class="variable">page</span>);
+  <span class="keyword">await</span> <span class="variable">loginPage</span>.<span class="function">goto</span>();
+  <span class="keyword">await</span> <span class="variable">loginPage</span>.<span class="function">login</span>(<span class="string">'user@example.com'</span>, <span class="string">'wrong'</span>);
+  <span class="keyword">await</span> <span class="function">expect</span>(<span class="variable">loginPage</span>.<span class="variable">errorMessage</span>).<span class="function">toBeVisible</span>();
+});</code></pre>
+  </div>
+</div>
+<div class="lang-panel" data-lang="java">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">pages/LoginPage.java</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code><span class="keyword">package</span> <span class="type">pages</span>;
+
+<span class="keyword">import</span> <span class="type">com.microsoft.playwright</span>.*;
+<span class="keyword">import</span> <span class="type">com.microsoft.playwright.options.AriaRole</span>;
+
+<span class="keyword">public class</span> <span class="type">LoginPage</span> {
+  <span class="keyword">private final</span> <span class="type">Page</span> <span class="variable">page</span>;
+  <span class="keyword">private final</span> <span class="type">Locator</span> <span class="variable">emailInput</span>;
+  <span class="keyword">private final</span> <span class="type">Locator</span> <span class="variable">passwordInput</span>;
+  <span class="keyword">private final</span> <span class="type">Locator</span> <span class="variable">submitButton</span>;
+  <span class="keyword">public  final</span> <span class="type">Locator</span> <span class="variable">errorMessage</span>;
+
+  <span class="keyword">public</span> <span class="function">LoginPage</span>(<span class="type">Page</span> <span class="variable">page</span>) {
+    <span class="variable">this</span>.<span class="variable">page</span>         = <span class="variable">page</span>;
+    <span class="variable">this</span>.<span class="variable">emailInput</span>   = <span class="variable">page</span>.<span class="function">getByLabel</span>(<span class="string">"Email"</span>);
+    <span class="variable">this</span>.<span class="variable">passwordInput</span> = <span class="variable">page</span>.<span class="function">getByLabel</span>(<span class="string">"Password"</span>);
+    <span class="variable">this</span>.<span class="variable">submitButton</span>  = <span class="variable">page</span>.<span class="function">getByRole</span>(<span class="type">AriaRole</span>.<span class="variable">BUTTON</span>,
+        <span class="keyword">new</span> <span class="type">Page.GetByRoleOptions</span>().<span class="function">setName</span>(<span class="string">"Sign in"</span>));
+    <span class="variable">this</span>.<span class="variable">errorMessage</span>  = <span class="variable">page</span>.<span class="function">getByTestId</span>(<span class="string">"auth-error"</span>);
+  }
+
+  <span class="keyword">public void</span> <span class="function">navigate</span>() { <span class="variable">page</span>.<span class="function">navigate</span>(<span class="string">"/login"</span>); }
+
+  <span class="keyword">public void</span> <span class="function">login</span>(<span class="type">String</span> <span class="variable">email</span>, <span class="type">String</span> <span class="variable">password</span>) {
+    <span class="variable">emailInput</span>.<span class="function">fill</span>(<span class="variable">email</span>);
+    <span class="variable">passwordInput</span>.<span class="function">fill</span>(<span class="variable">password</span>);
+    <span class="variable">submitButton</span>.<span class="function">click</span>();
+  }
+}</code></pre>
+  </div>
+</div>
+<div class="lang-panel" data-lang="python">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">pages/login_page.py</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code><span class="comment"># pages/login_page.py</span>
+<span class="keyword">from</span> <span class="type">playwright.sync_api</span> <span class="keyword">import</span> <span class="type">Page</span>, <span class="type">Locator</span>
+
+<span class="keyword">class</span> <span class="type">LoginPage</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="variable">self</span>, <span class="variable">page</span>: <span class="type">Page</span>):
+        <span class="variable">self</span>.<span class="variable">page</span>          = <span class="variable">page</span>
+        <span class="variable">self</span>.<span class="variable">email_input</span>    = <span class="variable">page</span>.<span class="function">get_by_label</span>(<span class="string">"Email"</span>)
+        <span class="variable">self</span>.<span class="variable">password_input</span> = <span class="variable">page</span>.<span class="function">get_by_label</span>(<span class="string">"Password"</span>)
+        <span class="variable">self</span>.<span class="variable">submit_button</span>  = <span class="variable">page</span>.<span class="function">get_by_role</span>(<span class="string">"button"</span>, <span class="variable">name</span>=<span class="string">"Sign in"</span>)
+        <span class="variable">self</span>.<span class="variable">error_message</span>  = <span class="variable">page</span>.<span class="function">get_by_test_id</span>(<span class="string">"auth-error"</span>)
+
+    <span class="keyword">def</span> <span class="function">navigate</span>(<span class="variable">self</span>):
+        <span class="variable">self</span>.<span class="variable">page</span>.<span class="function">goto</span>(<span class="string">"/login"</span>)
+
+    <span class="keyword">def</span> <span class="function">login</span>(<span class="variable">self</span>, <span class="variable">email</span>: <span class="type">str</span>, <span class="variable">password</span>: <span class="type">str</span>):
+        <span class="variable">self</span>.<span class="variable">email_input</span>.<span class="function">fill</span>(<span class="variable">email</span>)
+        <span class="variable">self</span>.<span class="variable">password_input</span>.<span class="function">fill</span>(<span class="variable">password</span>)
+        <span class="variable">self</span>.<span class="variable">submit_button</span>.<span class="function">click</span>()</code></pre>
+  </div>
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">tests/test_login.py</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code><span class="keyword">import</span> <span class="type">pytest</span>
+<span class="keyword">from</span> <span class="type">playwright.sync_api</span> <span class="keyword">import</span> <span class="type">Page</span>, <span class="function">expect</span>
+<span class="keyword">from</span> <span class="type">pages.login_page</span> <span class="keyword">import</span> <span class="type">LoginPage</span>
+
+<span class="decorator">@pytest.fixture</span>
+<span class="keyword">def</span> <span class="function">login_page</span>(<span class="variable">page</span>: <span class="type">Page</span>) -> <span class="type">LoginPage</span>:
+    <span class="variable">lp</span> = <span class="type">LoginPage</span>(<span class="variable">page</span>)
+    <span class="variable">lp</span>.<span class="function">navigate</span>()
+    <span class="keyword">return</span> <span class="variable">lp</span>
+
+<span class="keyword">def</span> <span class="function">test_valid_login</span>(<span class="variable">login_page</span>: <span class="type">LoginPage</span>, <span class="variable">page</span>: <span class="type">Page</span>):
+    <span class="variable">login_page</span>.<span class="function">login</span>(<span class="string">"user@example.com"</span>, <span class="string">"secret123"</span>)
+    <span class="function">expect</span>(<span class="variable">page</span>).<span class="function">to_have_url</span>(<span class="string">"/dashboard"</span>)
+
+<span class="keyword">def</span> <span class="function">test_invalid_password</span>(<span class="variable">login_page</span>: <span class="type">LoginPage</span>):
+    <span class="variable">login_page</span>.<span class="function">login</span>(<span class="string">"user@example.com"</span>, <span class="string">"wrong"</span>)
+    <span class="function">expect</span>(<span class="variable">login_page</span>.<span class="variable">error_message</span>).<span class="function">to_be_visible</span>()</code></pre>
+  </div>
+</div>
+
+              <hr class="my-5">
+              <div class="mt-4">
+                <span class="badge bg-secondary me-2 mb-2">Playwright</span>
+                <span class="badge bg-secondary me-2 mb-2">Intermediate</span>
+                <span class="badge bg-secondary me-2 mb-2">Page Object Model (POM)</span>
+              </div>
+              <div class="tutorial-nav">
+  <a href="assertions.html" class="prev"><span class="nav-label"><i class="bi bi-chevron-left"></i> Previous</span><span class="nav-title">Assertions</span></a>
+  <a href="waits-and-timeouts.html" class="next"><span class="nav-label">Next <i class="bi bi-chevron-right"></i></span><span class="nav-title">Handling Waits & Timeouts</span></a>
+</div>
+              <div class="text-muted small mt-5 pt-3 border-top">
+                <p class="mb-1">Written by PV</p>
+                <p class="mb-0">&copy; 2026 All Rights Reserved</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="global-lang-select">
+    <button class="active" onclick="switchAllLang('js', this)">JS</button>
+    <button onclick="switchAllLang('java', this)">Java</button>
+    <button onclick="switchAllLang('python', this)">Python</button>
+  </div>
+  <footer id="footer" class="footer light-background">
+    <div class="container">
+      <div class="copyright text-center"><p>&copy; <span>Copyright</span> <strong class="px-1 sitename">PV</strong> <span>All Rights Reserved<br></span></p></div>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://www.instagram.com/Chinna.Prasanna"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/"><i class="bi bi-github"></i></a>
+      </div>
+      <div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Tweaked by <a href="#">PV</a></div>
+    </div>
+  </footer>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script>
+    function switchLang(lang, btn) {
+      const article = btn.closest('article') || document;
+      article.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      article.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === lang); });
+      document.querySelectorAll('.global-lang-select button').forEach(b => {
+        const t = b.textContent.trim().toLowerCase();
+        b.classList.toggle('active', t === lang || (t === 'js' && lang === 'js'));
+      });
+      localStorage.setItem('pw-lang', lang);
+    }
+    function switchAllLang(lang, btn) {
+      document.querySelectorAll('.global-lang-select button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === lang); });
+      document.querySelectorAll('.lang-switcher .lang-tab').forEach(t => {
+        const icon = t.querySelector('.lang-icon');
+        t.classList.toggle('active', icon && icon.classList.contains(lang));
+      });
+      localStorage.setItem('pw-lang', lang);
+    }
+    function copyCode(btn) {
+      const code = btn.closest('.code-block-wrapper').querySelector('code');
+      navigator.clipboard.writeText(code.textContent);
+      btn.innerHTML = '<i class="bi bi-check2"></i> Copied!';
+      setTimeout(() => btn.innerHTML = '<i class="bi bi-clipboard"></i> Copy', 2000);
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('pw-lang') || 'js';
+      document.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === saved); });
+      document.querySelectorAll('.lang-switcher .lang-tab').forEach(t => {
+        const icon = t.querySelector('.lang-icon');
+        t.classList.toggle('active', icon && icon.classList.contains(saved));
+      });
+      document.querySelectorAll('.global-lang-select button').forEach(b => {
+        const t = b.textContent.trim().toLowerCase();
+        b.classList.toggle('active', t === saved);
+      });
+    });
+  </script>
+</body>
+</html>

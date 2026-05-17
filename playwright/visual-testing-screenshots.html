@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Visual Testing & Screenshots — Playwright Tutorial | PV</title>
+  <meta name="description" content="Detect visual regressions automatically with Playwright's screenshot comparison, and generate PDF reports from your tests.">
+  <meta name="keywords" content="visual testing, screenshot, toHaveScreenshot, snapshot, visual regression, full page, PDF, element screenshot">
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/css/main.css" rel="stylesheet">
+</head>
+<body class="blog-page">
+  <header id="header" class="header d-flex align-items-center light-background sticky-top">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+      <a href="../index.html" class="logo d-flex align-items-center me-auto me-xl-0"><h1 class="sitename">PV</h1></a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../resume.html">Resume</a></li>
+          <li><a href="../services.html">Services</a></li>
+          <li><a href="../portfolio.html">Portfolio</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../learning-hub.html" class="active">Learning Hub</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <div class="header-social-links">
+        <a href="https://www.instagram.com/Chinna.Prasanna" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/" class="github"><i class="bi bi-github"></i></a>
+      </div>
+    </div>
+  </header>
+  <main class="main">
+    <section id="tutorial" class="blog-post section">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center mb-4">
+          <div class="col-lg-10"><a href="../learning-hub.html#playwright-course" class="btn btn-link p-0"><i class="bi bi-chevron-left"></i> Back to Course</a></div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 d-none d-lg-block"><div class="course-sidebar">
+  <div class="course-nav-title">Course Contents</div>
+  <ul class="course-nav">
+    <li class="nav-section-label">Beginner</li>
+    <li><a href="introduction-to-playwright.html" class=""><span class="nav-number">1</span> Introduction to Playwright</a></li>
+    <li><a href="installation-and-setup.html" class=""><span class="nav-number">2</span> Installation & Setup</a></li>
+    <li><a href="writing-your-first-test.html" class=""><span class="nav-number">3</span> Writing Your First Test</a></li>
+    <li><a href="locators-and-selectors.html" class=""><span class="nav-number">4</span> Locators & Selectors</a></li>
+    <li><a href="actions-and-interactions.html" class=""><span class="nav-number">5</span> Actions & Interactions</a></li>
+    <li><a href="assertions.html" class=""><span class="nav-number">6</span> Assertions</a></li>
+    <li class="nav-section-label">Intermediate</li>
+    <li><a href="page-object-model.html" class=""><span class="nav-number">7</span> Page Object Model (POM)</a></li>
+    <li><a href="waits-and-timeouts.html" class=""><span class="nav-number">8</span> Handling Waits & Timeouts</a></li>
+    <li><a href="frames-and-iframes.html" class=""><span class="nav-number">9</span> Working with Frames & Iframes</a></li>
+    <li><a href="alerts-dialogs-popups.html" class=""><span class="nav-number">10</span> Alerts, Dialogs & Popups</a></li>
+    <li><a href="file-upload-download.html" class=""><span class="nav-number">11</span> File Upload & Download</a></li>
+    <li><a href="api-testing.html" class=""><span class="nav-number">12</span> API Testing with Playwright</a></li>
+    <li><a href="test-configuration-fixtures.html" class=""><span class="nav-number">13</span> Test Configuration & Fixtures</a></li>
+    <li class="nav-section-label">Advanced</li>
+    <li><a href="visual-testing-screenshots.html" class=" active"><span class="nav-number">14</span> Visual Testing & Screenshots</a></li>
+    <li><a href="parallel-execution-sharding.html" class=""><span class="nav-number">15</span> Parallel Execution & Sharding</a></li>
+    <li><a href="ci-cd-integration.html" class=""><span class="nav-number">16</span> CI/CD Integration</a></li>
+    <li><a href="custom-reporters.html" class=""><span class="nav-number">17</span> Custom Reporters</a></li>
+    <li><a href="network-interception-mocking.html" class=""><span class="nav-number">18</span> Network Interception & Mocking</a></li>
+    <li><a href="browser-contexts-authentication.html" class=""><span class="nav-number">19</span> Browser Contexts & Authentication</a></li>
+    <li><a href="debugging-and-tracing.html" class=""><span class="nav-number">20</span> Debugging & Tracing</a></li>
+  </ul>
+</div></div>
+          <div class="col-lg-7">
+            <article class="tutorial-post">
+              <div class="mb-2">
+                <span class="badge bg-danger me-2">Advanced</span>
+                <span class="text-muted small">Chapter 14 &middot; 13 min read</span>
+              </div>
+              <h1 class="mb-3">Visual Testing & Screenshots</h1>
+              <p class="lead fst-italic mb-4">Detect visual regressions automatically with Playwright's screenshot comparison, and generate PDF reports from your tests.</p>
+              <h2>Screenshot-Based Visual Testing</h2>
+<p>Playwright's <code>toHaveScreenshot()</code> assertion compares the current appearance of a page or element against a stored baseline image. On the first run it creates the baseline; on subsequent runs it diffs the live screenshot against the baseline pixel by pixel and fails if the difference exceeds a configurable threshold. This catches unintended visual regressions that functional assertions miss.</p>
+<div class="tip-box"><strong>Tip:</strong> Run <code>npx playwright test --update-snapshots</code> or <code>pytest --update-snapshots</code> to regenerate all baselines when you intentionally change the UI. Commit the updated snapshots alongside your code changes so reviewers can see the visual diff.</div>
+<h2>Controlling Screenshot Scope</h2>
+<p>You can screenshot the entire page (<code>fullPage: true</code>), a single element (<code>locator.screenshot()</code>), or a clipped region. Masking dynamic regions — such as timestamps, ads, or user avatars — prevents spurious failures by replacing those areas with solid rectangles before comparison. Set a <code>maxDiffPixelRatio</code> to tolerate minor anti-aliasing differences across operating systems.</p>
+<h2>PDF Generation</h2>
+<p>Playwright can also print a page to PDF using <code>page.pdf()</code>. This is useful for generating reproducible PDF reports during test runs or as a side-effect of UI tests that exercise a "Print" or "Export" feature. PDF generation requires a Chromium browser and works only in headless mode.</p>
+              <div class="lang-switcher">
+                <button class="lang-tab active" onclick="switchLang('js', this)"><span class="lang-icon js">JS</span> JavaScript</button>
+                <button class="lang-tab" onclick="switchLang('java', this)"><span class="lang-icon java">JV</span> Java</button>
+                <button class="lang-tab" onclick="switchLang('python', this)"><span class="lang-icon python">PY</span> Python</button>
+              </div>
+              <div class="lang-panel" data-lang="js">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">visual.spec.js</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code><span class="keyword">import</span> { <span class="variable">test</span>, <span class="variable">expect</span> } <span class="keyword">from</span> <span class="string">'@playwright/test'</span>;
+
+<span class="function">test</span>(<span class="string">'homepage matches visual baseline'</span>, <span class="keyword">async</span> ({ <span class="variable">page</span> }) => {
+  <span class="keyword">await</span> <span class="variable">page</span>.<span class="function">goto</span>(<span class="string">'/'</span>);
+
+  <span class="comment">// Full-page screenshot comparison</span>
+  <span class="keyword">await</span> <span class="function">expect</span>(<span class="variable">page</span>).<span class="function">toHaveScreenshot</span>(<span class="string">'homepage.png'</span>, {
+    <span class="variable">fullPage</span>: <span class="number">true</span>,
+    <span class="variable">maxDiffPixelRatio</span>: <span class="number">0.02</span>,
+  });
+});
+
+<span class="function">test</span>(<span class="string">'product card matches baseline'</span>, <span class="keyword">async</span> ({ <span class="variable">page</span> }) => {
+  <span class="keyword">await</span> <span class="variable">page</span>.<span class="function">goto</span>(<span class="string">'/products'</span>);
+
+  <span class="comment">// Mask dynamic price badge to avoid false failures</span>
+  <span class="keyword">const</span> <span class="variable">card</span> = <span class="variable">page</span>.<span class="function">getByTestId</span>(<span class="string">'product-card'</span>).<span class="function">first</span>();
+  <span class="keyword">await</span> <span class="function">expect</span>(<span class="variable">card</span>).<span class="function">toHaveScreenshot</span>(<span class="string">'product-card.png'</span>, {
+    <span class="variable">mask</span>: [<span class="variable">page</span>.<span class="function">getByTestId</span>(<span class="string">'price-badge'</span>)],
+  });
+});
+
+<span class="function">test</span>(<span class="string">'element screenshot saved to disk'</span>, <span class="keyword">async</span> ({ <span class="variable">page</span> }) => {
+  <span class="keyword">await</span> <span class="variable">page</span>.<span class="function">goto</span>(<span class="string">'/chart'</span>);
+  <span class="keyword">await</span> <span class="variable">page</span>.<span class="function">getByTestId</span>(<span class="string">'revenue-chart'</span>)
+    .<span class="function">screenshot</span>({ <span class="variable">path</span>: <span class="string">'test-results/revenue-chart.png'</span> });
+});
+
+<span class="function">test</span>(<span class="string">'export page to PDF'</span>, <span class="keyword">async</span> ({ <span class="variable">page</span> }) => {
+  <span class="keyword">await</span> <span class="variable">page</span>.<span class="function">goto</span>(<span class="string">'/invoice/42'</span>);
+  <span class="keyword">await</span> <span class="variable">page</span>.<span class="function">emulateMedia</span>({ <span class="variable">media</span>: <span class="string">'print'</span> });
+  <span class="keyword">await</span> <span class="variable">page</span>.<span class="function">pdf</span>({
+    <span class="variable">path</span>: <span class="string">'test-results/invoice-42.pdf'</span>,
+    <span class="variable">format</span>: <span class="string">'A4'</span>,
+    <span class="variable">printBackground</span>: <span class="number">true</span>,
+  });
+});</code></pre>
+  </div>
+</div>
+<div class="lang-panel" data-lang="java">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">VisualTest.java</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code><span class="keyword">import</span> <span class="type">com.microsoft.playwright</span>.*;
+<span class="keyword">import static</span> <span class="type">com.microsoft.playwright.assertions.PlaywrightAssertions</span>.<span class="variable">assertThat</span>;
+<span class="keyword">import</span> <span class="type">java.nio.file.Paths</span>;
+<span class="keyword">import</span> <span class="type">java.util.List</span>;
+
+<span class="keyword">class</span> <span class="type">VisualTest</span> {
+  <span class="keyword">void</span> <span class="function">screenshotTest</span>(<span class="type">Page</span> <span class="variable">page</span>) {
+    <span class="variable">page</span>.<span class="function">navigate</span>(<span class="string">"/"</span>);
+
+    <span class="comment">// Full-page screenshot</span>
+    <span class="variable">page</span>.<span class="function">screenshot</span>(<span class="keyword">new</span> <span class="type">Page.ScreenshotOptions</span>()
+        .<span class="function">setFullPage</span>(<span class="number">true</span>)
+        .<span class="function">setPath</span>(<span class="type">Paths</span>.<span class="function">get</span>(<span class="string">"test-results/homepage.png"</span>)));
+
+    <span class="comment">// Element screenshot</span>
+    <span class="variable">page</span>.<span class="function">navigate</span>(<span class="string">"/products"</span>);
+    <span class="type">Locator</span> <span class="variable">card</span> = <span class="variable">page</span>.<span class="function">getByTestId</span>(<span class="string">"product-card"</span>).<span class="function">first</span>();
+    <span class="variable">card</span>.<span class="function">screenshot</span>(<span class="keyword">new</span> <span class="type">Locator.ScreenshotOptions</span>()
+        .<span class="function">setPath</span>(<span class="type">Paths</span>.<span class="function">get</span>(<span class="string">"test-results/product-card.png"</span>)));
+
+    <span class="comment">// PDF generation</span>
+    <span class="variable">page</span>.<span class="function">navigate</span>(<span class="string">"/invoice/42"</span>);
+    <span class="variable">page</span>.<span class="function">emulateMedia</span>(<span class="keyword">new</span> <span class="type">Page.EmulateMediaOptions</span>()
+        .<span class="function">setMedia</span>(<span class="type">Media</span>.<span class="variable">PRINT</span>));
+    <span class="variable">page</span>.<span class="function">pdf</span>(<span class="keyword">new</span> <span class="type">Page.PdfOptions</span>()
+        .<span class="function">setPath</span>(<span class="type">Paths</span>.<span class="function">get</span>(<span class="string">"test-results/invoice-42.pdf"</span>))
+        .<span class="function">setFormat</span>(<span class="string">"A4"</span>)
+        .<span class="function">setPrintBackground</span>(<span class="number">true</span>));
+  }
+}</code></pre>
+  </div>
+</div>
+<div class="lang-panel" data-lang="python">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">test_visual.py</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code><span class="keyword">from</span> <span class="type">playwright.sync_api</span> <span class="keyword">import</span> <span class="type">Page</span>, <span class="function">expect</span>
+
+<span class="keyword">def</span> <span class="function">test_homepage_visual</span>(<span class="variable">page</span>: <span class="type">Page</span>, <span class="variable">assert_snapshot</span>):
+    <span class="variable">page</span>.<span class="function">goto</span>(<span class="string">"/"</span>)
+
+    <span class="comment"># assert_snapshot from pytest-playwright-snapshot plugin</span>
+    <span class="variable">assert_snapshot</span>(<span class="variable">page</span>.<span class="function">screenshot</span>(<span class="variable">full_page</span>=<span class="number">True</span>), <span class="variable">name</span>=<span class="string">"homepage.png"</span>)
+
+<span class="keyword">def</span> <span class="function">test_element_screenshot</span>(<span class="variable">page</span>: <span class="type">Page</span>):
+    <span class="variable">page</span>.<span class="function">goto</span>(<span class="string">"/products"</span>)
+    <span class="variable">card</span> = <span class="variable">page</span>.<span class="function">get_by_test_id</span>(<span class="string">"product-card"</span>).<span class="function">first</span>()
+
+    <span class="comment"># Save element screenshot</span>
+    <span class="variable">card</span>.<span class="function">screenshot</span>(<span class="variable">path</span>=<span class="string">"test-results/product-card.png"</span>)
+
+<span class="keyword">def</span> <span class="function">test_export_pdf</span>(<span class="variable">page</span>: <span class="type">Page</span>):
+    <span class="variable">page</span>.<span class="function">goto</span>(<span class="string">"/invoice/42"</span>)
+    <span class="variable">page</span>.<span class="function">emulate_media</span>(<span class="variable">media</span>=<span class="string">"print"</span>)
+    <span class="variable">page</span>.<span class="function">pdf</span>(
+        <span class="variable">path</span>=<span class="string">"test-results/invoice-42.pdf"</span>,
+        <span class="variable">format</span>=<span class="string">"A4"</span>,
+        <span class="variable">print_background</span>=<span class="number">True</span>,
+    )
+
+<span class="keyword">def</span> <span class="function">test_masked_screenshot</span>(<span class="variable">page</span>: <span class="type">Page</span>, <span class="variable">assert_snapshot</span>):
+    <span class="variable">page</span>.<span class="function">goto</span>(<span class="string">"/dashboard"</span>)
+    <span class="comment"># Mask dynamic areas before comparison</span>
+    <span class="variable">screenshot</span> = <span class="variable">page</span>.<span class="function">screenshot</span>(
+        <span class="variable">mask</span>=[<span class="variable">page</span>.<span class="function">get_by_test_id</span>(<span class="string">"live-clock"</span>)]
+    )
+    <span class="variable">assert_snapshot</span>(<span class="variable">screenshot</span>, <span class="variable">name</span>=<span class="string">"dashboard.png"</span>)</code></pre>
+  </div>
+</div>
+
+              <hr class="my-5">
+              <div class="mt-4">
+                <span class="badge bg-secondary me-2 mb-2">Playwright</span>
+                <span class="badge bg-secondary me-2 mb-2">Advanced</span>
+                <span class="badge bg-secondary me-2 mb-2">Visual Testing & Screenshots</span>
+              </div>
+              <div class="tutorial-nav">
+  <a href="test-configuration-fixtures.html" class="prev"><span class="nav-label"><i class="bi bi-chevron-left"></i> Previous</span><span class="nav-title">Test Configuration & Fixtures</span></a>
+  <a href="parallel-execution-sharding.html" class="next"><span class="nav-label">Next <i class="bi bi-chevron-right"></i></span><span class="nav-title">Parallel Execution & Sharding</span></a>
+</div>
+              <div class="text-muted small mt-5 pt-3 border-top">
+                <p class="mb-1">Written by PV</p>
+                <p class="mb-0">&copy; 2026 All Rights Reserved</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="global-lang-select">
+    <button class="active" onclick="switchAllLang('js', this)">JS</button>
+    <button onclick="switchAllLang('java', this)">Java</button>
+    <button onclick="switchAllLang('python', this)">Python</button>
+  </div>
+  <footer id="footer" class="footer light-background">
+    <div class="container">
+      <div class="copyright text-center"><p>&copy; <span>Copyright</span> <strong class="px-1 sitename">PV</strong> <span>All Rights Reserved<br></span></p></div>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://www.instagram.com/Chinna.Prasanna"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/"><i class="bi bi-github"></i></a>
+      </div>
+      <div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Tweaked by <a href="#">PV</a></div>
+    </div>
+  </footer>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script>
+    function switchLang(lang, btn) {
+      const article = btn.closest('article') || document;
+      article.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      article.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === lang); });
+      document.querySelectorAll('.global-lang-select button').forEach(b => {
+        const t = b.textContent.trim().toLowerCase();
+        b.classList.toggle('active', t === lang || (t === 'js' && lang === 'js'));
+      });
+      localStorage.setItem('pw-lang', lang);
+    }
+    function switchAllLang(lang, btn) {
+      document.querySelectorAll('.global-lang-select button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === lang); });
+      document.querySelectorAll('.lang-switcher .lang-tab').forEach(t => {
+        const icon = t.querySelector('.lang-icon');
+        t.classList.toggle('active', icon && icon.classList.contains(lang));
+      });
+      localStorage.setItem('pw-lang', lang);
+    }
+    function copyCode(btn) {
+      const code = btn.closest('.code-block-wrapper').querySelector('code');
+      navigator.clipboard.writeText(code.textContent);
+      btn.innerHTML = '<i class="bi bi-check2"></i> Copied!';
+      setTimeout(() => btn.innerHTML = '<i class="bi bi-clipboard"></i> Copy', 2000);
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('pw-lang') || 'js';
+      document.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === saved); });
+      document.querySelectorAll('.lang-switcher .lang-tab').forEach(t => {
+        const icon = t.querySelector('.lang-icon');
+        t.classList.toggle('active', icon && icon.classList.contains(saved));
+      });
+      document.querySelectorAll('.global-lang-select button').forEach(b => {
+        const t = b.textContent.trim().toLowerCase();
+        b.classList.toggle('active', t === saved);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Test Configuration & Fixtures — Playwright Tutorial | PV</title>
+  <meta name="description" content="Master playwright.config options, build custom fixtures for dependency injection, and organise multi-project setups.">
+  <meta name="keywords" content="playwright.config, fixtures, custom fixtures, conftest, projects, baseURL, retries, workers, dependency injection">
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/css/main.css" rel="stylesheet">
+</head>
+<body class="blog-page">
+  <header id="header" class="header d-flex align-items-center light-background sticky-top">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+      <a href="../index.html" class="logo d-flex align-items-center me-auto me-xl-0"><h1 class="sitename">PV</h1></a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../resume.html">Resume</a></li>
+          <li><a href="../services.html">Services</a></li>
+          <li><a href="../portfolio.html">Portfolio</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../learning-hub.html" class="active">Learning Hub</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <div class="header-social-links">
+        <a href="https://www.instagram.com/Chinna.Prasanna" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/" class="github"><i class="bi bi-github"></i></a>
+      </div>
+    </div>
+  </header>
+  <main class="main">
+    <section id="tutorial" class="blog-post section">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center mb-4">
+          <div class="col-lg-10"><a href="../learning-hub.html#playwright-course" class="btn btn-link p-0"><i class="bi bi-chevron-left"></i> Back to Course</a></div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 d-none d-lg-block"><div class="course-sidebar">
+  <div class="course-nav-title">Course Contents</div>
+  <ul class="course-nav">
+    <li class="nav-section-label">Beginner</li>
+    <li><a href="introduction-to-playwright.html" class=""><span class="nav-number">1</span> Introduction to Playwright</a></li>
+    <li><a href="installation-and-setup.html" class=""><span class="nav-number">2</span> Installation & Setup</a></li>
+    <li><a href="writing-your-first-test.html" class=""><span class="nav-number">3</span> Writing Your First Test</a></li>
+    <li><a href="locators-and-selectors.html" class=""><span class="nav-number">4</span> Locators & Selectors</a></li>
+    <li><a href="actions-and-interactions.html" class=""><span class="nav-number">5</span> Actions & Interactions</a></li>
+    <li><a href="assertions.html" class=""><span class="nav-number">6</span> Assertions</a></li>
+    <li class="nav-section-label">Intermediate</li>
+    <li><a href="page-object-model.html" class=""><span class="nav-number">7</span> Page Object Model (POM)</a></li>
+    <li><a href="waits-and-timeouts.html" class=""><span class="nav-number">8</span> Handling Waits & Timeouts</a></li>
+    <li><a href="frames-and-iframes.html" class=""><span class="nav-number">9</span> Working with Frames & Iframes</a></li>
+    <li><a href="alerts-dialogs-popups.html" class=""><span class="nav-number">10</span> Alerts, Dialogs & Popups</a></li>
+    <li><a href="file-upload-download.html" class=""><span class="nav-number">11</span> File Upload & Download</a></li>
+    <li><a href="api-testing.html" class=""><span class="nav-number">12</span> API Testing with Playwright</a></li>
+    <li><a href="test-configuration-fixtures.html" class=" active"><span class="nav-number">13</span> Test Configuration & Fixtures</a></li>
+    <li class="nav-section-label">Advanced</li>
+    <li><a href="visual-testing-screenshots.html" class=""><span class="nav-number">14</span> Visual Testing & Screenshots</a></li>
+    <li><a href="parallel-execution-sharding.html" class=""><span class="nav-number">15</span> Parallel Execution & Sharding</a></li>
+    <li><a href="ci-cd-integration.html" class=""><span class="nav-number">16</span> CI/CD Integration</a></li>
+    <li><a href="custom-reporters.html" class=""><span class="nav-number">17</span> Custom Reporters</a></li>
+    <li><a href="network-interception-mocking.html" class=""><span class="nav-number">18</span> Network Interception & Mocking</a></li>
+    <li><a href="browser-contexts-authentication.html" class=""><span class="nav-number">19</span> Browser Contexts & Authentication</a></li>
+    <li><a href="debugging-and-tracing.html" class=""><span class="nav-number">20</span> Debugging & Tracing</a></li>
+  </ul>
+</div></div>
+          <div class="col-lg-7">
+            <article class="tutorial-post">
+              <div class="mb-2">
+                <span class="badge bg-warning me-2">Intermediate</span>
+                <span class="text-muted small">Chapter 13 &middot; 15 min read</span>
+              </div>
+              <h1 class="mb-3">Test Configuration & Fixtures</h1>
+              <p class="lead fst-italic mb-4">Master playwright.config options, build custom fixtures for dependency injection, and organise multi-project setups.</p>
+              <h2>The Configuration File</h2>
+<p>All global settings live in <code>playwright.config.ts</code> (JavaScript) or are passed as command-line arguments / <code>conftest.py</code> fixtures (Python). The most important options are <code>baseURL</code> (allows relative <code>goto('/login')</code> calls), <code>retries</code> (automatic retry on failure in CI), <code>timeout</code> (action timeout), <code>expect.timeout</code> (assertion timeout), and <code>use.trace</code> (when to capture a trace file).</p>
+<div class="tip-box"><strong>Tip:</strong> Set <code>retries: 2</code> in CI and <code>retries: 0</code> locally. Retries hide real flakiness during development; you want tests to fail fast on your machine so you fix the root cause immediately.</div>
+<h2>Custom Fixtures</h2>
+<p>Fixtures are Playwright's dependency injection system. A custom fixture is a function that sets up a resource before a test and tears it down afterwards — exactly like a Jest <code>beforeEach/afterEach</code> pair but composable and scoped. You can extend the built-in <code>test</code> object with your own fixtures and then import that extended <code>test</code> in every test file to get automatic access to page objects, authenticated contexts, or seeded database state.</p>
+<h2>Projects</h2>
+<p>The <code>projects</code> array in <code>playwright.config.ts</code> lets you run the same tests across multiple browsers, device emulations, or environment configurations in a single command. Each project inherits the top-level <code>use</code> options but can override any setting. This is how you achieve true cross-browser coverage without writing any browser-specific test code.</p>
+              <div class="lang-switcher">
+                <button class="lang-tab active" onclick="switchLang('js', this)"><span class="lang-icon js">JS</span> JavaScript</button>
+                <button class="lang-tab" onclick="switchLang('java', this)"><span class="lang-icon java">JV</span> Java</button>
+                <button class="lang-tab" onclick="switchLang('python', this)"><span class="lang-icon python">PY</span> Python</button>
+              </div>
+              <div class="lang-panel" data-lang="js">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">playwright.config.ts</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code><span class="keyword">import</span> { <span class="variable">defineConfig</span>, <span class="variable">devices</span> } <span class="keyword">from</span> <span class="string">'@playwright/test'</span>;
+
+<span class="keyword">export default</span> <span class="function">defineConfig</span>({
+  <span class="variable">testDir</span>: <span class="string">'./tests'</span>,
+  <span class="variable">timeout</span>: <span class="number">30_000</span>,
+  <span class="variable">expect</span>: { <span class="variable">timeout</span>: <span class="number">10_000</span> },
+  <span class="variable">fullyParallel</span>: <span class="number">true</span>,
+  <span class="variable">retries</span>: <span class="variable">process</span>.<span class="variable">env</span>.<span class="variable">CI</span> ? <span class="number">2</span> : <span class="number">0</span>,
+  <span class="variable">workers</span>: <span class="variable">process</span>.<span class="variable">env</span>.<span class="variable">CI</span> ? <span class="number">4</span> : <span class="keyword">undefined</span>,
+  <span class="variable">reporter</span>: <span class="string">'html'</span>,
+  <span class="variable">use</span>: {
+    <span class="variable">baseURL</span>: <span class="variable">process</span>.<span class="variable">env</span>.<span class="variable">BASE_URL</span> || <span class="string">'http://localhost:3000'</span>,
+    <span class="variable">trace</span>: <span class="string">'on-first-retry'</span>,
+    <span class="variable">screenshot</span>: <span class="string">'only-on-failure'</span>,
+    <span class="variable">video</span>: <span class="string">'retain-on-failure'</span>,
+  },
+  <span class="variable">projects</span>: [
+    { <span class="variable">name</span>: <span class="string">'chromium'</span>, <span class="variable">use</span>: { ...<span class="variable">devices</span>[<span class="string">'Desktop Chrome'</span>] } },
+    { <span class="variable">name</span>: <span class="string">'firefox'</span>,  <span class="variable">use</span>: { ...<span class="variable">devices</span>[<span class="string">'Desktop Firefox'</span>] } },
+    { <span class="variable">name</span>: <span class="string">'mobile-chrome'</span>, <span class="variable">use</span>: { ...<span class="variable">devices</span>[<span class="string">'Pixel 7'</span>] } },
+  ],
+});</code></pre>
+  </div>
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">fixtures/index.ts</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code><span class="keyword">import</span> { <span class="variable">test</span> <span class="keyword">as</span> <span class="variable">base</span> } <span class="keyword">from</span> <span class="string">'@playwright/test'</span>;
+<span class="keyword">import</span> { <span class="type">LoginPage</span> } <span class="keyword">from</span> <span class="string">'../pages/LoginPage'</span>;
+<span class="keyword">import</span> { <span class="type">DashboardPage</span> } <span class="keyword">from</span> <span class="string">'../pages/DashboardPage'</span>;
+
+<span class="keyword">type</span> <span class="type">Fixtures</span> = {
+  <span class="variable">loginPage</span>: <span class="type">LoginPage</span>;
+  <span class="variable">dashboardPage</span>: <span class="type">DashboardPage</span>;
+  <span class="variable">authenticatedPage</span>: <span class="type">void</span>;
+};
+
+<span class="keyword">export const</span> <span class="variable">test</span> = <span class="variable">base</span>.<span class="function">extend</span>&lt;<span class="type">Fixtures</span>&gt;({
+  <span class="variable">loginPage</span>: <span class="keyword">async</span> ({ <span class="variable">page</span> }, <span class="variable">use</span>) => {
+    <span class="keyword">await</span> <span class="function">use</span>(<span class="keyword">new</span> <span class="type">LoginPage</span>(<span class="variable">page</span>));
+  },
+  <span class="variable">authenticatedPage</span>: <span class="keyword">async</span> ({ <span class="variable">page</span> }, <span class="variable">use</span>) => {
+    <span class="comment">// Log in once before every test that requests this fixture</span>
+    <span class="keyword">const</span> <span class="variable">lp</span> = <span class="keyword">new</span> <span class="type">LoginPage</span>(<span class="variable">page</span>);
+    <span class="keyword">await</span> <span class="variable">lp</span>.<span class="function">goto</span>();
+    <span class="keyword">await</span> <span class="variable">lp</span>.<span class="function">login</span>(<span class="string">'admin@example.com'</span>, <span class="string">'adminpass'</span>);
+    <span class="keyword">await</span> <span class="function">use</span>();
+  },
+});
+
+<span class="keyword">export</span> { <span class="variable">expect</span> } <span class="keyword">from</span> <span class="string">'@playwright/test'</span>;</code></pre>
+  </div>
+</div>
+<div class="lang-panel" data-lang="java">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">BaseTest.java</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code><span class="keyword">import</span> <span class="type">com.microsoft.playwright</span>.*;
+<span class="keyword">import</span> <span class="type">org.junit.jupiter.api</span>.*;
+
+<span class="keyword">public abstract class</span> <span class="type">BaseTest</span> {
+  <span class="keyword">static</span> <span class="type">Playwright</span> <span class="variable">playwright</span>;
+  <span class="keyword">static</span> <span class="type">Browser</span> <span class="variable">browser</span>;
+  <span class="type">BrowserContext</span> <span class="variable">context</span>;
+  <span class="type">Page</span> <span class="variable">page</span>;
+
+  <span class="decorator">@BeforeAll</span>
+  <span class="keyword">static void</span> <span class="function">setup</span>() {
+    <span class="variable">playwright</span> = <span class="type">Playwright</span>.<span class="function">create</span>();
+    <span class="variable">browser</span> = <span class="variable">playwright</span>.<span class="function">chromium</span>().<span class="function">launch</span>(
+        <span class="keyword">new</span> <span class="type">BrowserType.LaunchOptions</span>().<span class="function">setHeadless</span>(<span class="number">true</span>)
+    );
+  }
+
+  <span class="decorator">@BeforeEach</span>
+  <span class="keyword">void</span> <span class="function">createContextAndPage</span>() {
+    <span class="variable">context</span> = <span class="variable">browser</span>.<span class="function">newContext</span>(
+        <span class="keyword">new</span> <span class="type">Browser.NewContextOptions</span>()
+            .<span class="function">setBaseURL</span>(<span class="string">"http://localhost:3000"</span>)
+            .<span class="function">setViewportSize</span>(<span class="number">1280</span>, <span class="number">720</span>)
+    );
+    <span class="variable">page</span> = <span class="variable">context</span>.<span class="function">newPage</span>();
+  }
+
+  <span class="decorator">@AfterEach</span>
+  <span class="keyword">void</span> <span class="function">closeContext</span>() { <span class="variable">context</span>.<span class="function">close</span>(); }
+
+  <span class="decorator">@AfterAll</span>
+  <span class="keyword">static void</span> <span class="function">tearDown</span>() {
+    <span class="variable">browser</span>.<span class="function">close</span>(); <span class="variable">playwright</span>.<span class="function">close</span>();
+  }
+}</code></pre>
+  </div>
+</div>
+<div class="lang-panel" data-lang="python">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">conftest.py</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code><span class="keyword">import</span> <span class="type">pytest</span>
+<span class="keyword">from</span> <span class="type">playwright.sync_api</span> <span class="keyword">import</span> <span class="type">Page</span>, <span class="type">BrowserContext</span>
+<span class="keyword">from</span> <span class="type">pages.login_page</span> <span class="keyword">import</span> <span class="type">LoginPage</span>
+
+<span class="comment"># Global browser options</span>
+<span class="keyword">def</span> <span class="function">pytest_configure</span>(<span class="variable">config</span>):
+    <span class="variable">config</span>.<span class="variable">addinivalue_line</span>(
+        <span class="string">"markers"</span>, <span class="string">"smoke: mark test as smoke test"</span>
+    )
+
+<span class="decorator">@pytest.fixture</span>(<span class="variable">scope</span>=<span class="string">"session"</span>)
+<span class="keyword">def</span> <span class="function">browser_context_args</span>(<span class="variable">browser_context_args</span>):
+    <span class="keyword">return</span> {
+        **<span class="variable">browser_context_args</span>,
+        <span class="string">"base_url"</span>: <span class="string">"http://localhost:3000"</span>,
+        <span class="string">"viewport"</span>: {<span class="string">"width"</span>: <span class="number">1280</span>, <span class="string">"height"</span>: <span class="number">720</span>},
+        <span class="string">"record_video_dir"</span>: <span class="string">"test-results/videos"</span>,
+    }
+
+<span class="decorator">@pytest.fixture</span>
+<span class="keyword">def</span> <span class="function">authenticated_page</span>(<span class="variable">page</span>: <span class="type">Page</span>) -> <span class="type">Page</span>:
+    <span class="comment"># Log in once and yield the ready page</span>
+    <span class="variable">lp</span> = <span class="type">LoginPage</span>(<span class="variable">page</span>)
+    <span class="variable">lp</span>.<span class="function">navigate</span>()
+    <span class="variable">lp</span>.<span class="function">login</span>(<span class="string">"admin@example.com"</span>, <span class="string">"adminpass"</span>)
+    <span class="keyword">yield</span> <span class="variable">page</span>
+
+<span class="decorator">@pytest.fixture</span>
+<span class="keyword">def</span> <span class="function">login_page</span>(<span class="variable">page</span>: <span class="type">Page</span>) -> <span class="type">LoginPage</span>:
+    <span class="keyword">return</span> <span class="type">LoginPage</span>(<span class="variable">page</span>)</code></pre>
+  </div>
+</div>
+
+              <hr class="my-5">
+              <div class="mt-4">
+                <span class="badge bg-secondary me-2 mb-2">Playwright</span>
+                <span class="badge bg-secondary me-2 mb-2">Intermediate</span>
+                <span class="badge bg-secondary me-2 mb-2">Test Configuration & Fixtures</span>
+              </div>
+              <div class="tutorial-nav">
+  <a href="api-testing.html" class="prev"><span class="nav-label"><i class="bi bi-chevron-left"></i> Previous</span><span class="nav-title">API Testing with Playwright</span></a>
+  <a href="visual-testing-screenshots.html" class="next"><span class="nav-label">Next <i class="bi bi-chevron-right"></i></span><span class="nav-title">Visual Testing & Screenshots</span></a>
+</div>
+              <div class="text-muted small mt-5 pt-3 border-top">
+                <p class="mb-1">Written by PV</p>
+                <p class="mb-0">&copy; 2026 All Rights Reserved</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="global-lang-select">
+    <button class="active" onclick="switchAllLang('js', this)">JS</button>
+    <button onclick="switchAllLang('java', this)">Java</button>
+    <button onclick="switchAllLang('python', this)">Python</button>
+  </div>
+  <footer id="footer" class="footer light-background">
+    <div class="container">
+      <div class="copyright text-center"><p>&copy; <span>Copyright</span> <strong class="px-1 sitename">PV</strong> <span>All Rights Reserved<br></span></p></div>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://www.instagram.com/Chinna.Prasanna"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/"><i class="bi bi-github"></i></a>
+      </div>
+      <div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Tweaked by <a href="#">PV</a></div>
+    </div>
+  </footer>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script>
+    function switchLang(lang, btn) {
+      const article = btn.closest('article') || document;
+      article.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      article.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === lang); });
+      document.querySelectorAll('.global-lang-select button').forEach(b => {
+        const t = b.textContent.trim().toLowerCase();
+        b.classList.toggle('active', t === lang || (t === 'js' && lang === 'js'));
+      });
+      localStorage.setItem('pw-lang', lang);
+    }
+    function switchAllLang(lang, btn) {
+      document.querySelectorAll('.global-lang-select button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === lang); });
+      document.querySelectorAll('.lang-switcher .lang-tab').forEach(t => {
+        const icon = t.querySelector('.lang-icon');
+        t.classList.toggle('active', icon && icon.classList.contains(lang));
+      });
+      localStorage.setItem('pw-lang', lang);
+    }
+    function copyCode(btn) {
+      const code = btn.closest('.code-block-wrapper').querySelector('code');
+      navigator.clipboard.writeText(code.textContent);
+      btn.innerHTML = '<i class="bi bi-check2"></i> Copied!';
+      setTimeout(() => btn.innerHTML = '<i class="bi bi-clipboard"></i> Copy', 2000);
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('pw-lang') || 'js';
+      document.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === saved); });
+      document.querySelectorAll('.lang-switcher .lang-tab').forEach(t => {
+        const icon = t.querySelector('.lang-icon');
+        t.classList.toggle('active', icon && icon.classList.contains(saved));
+      });
+      document.querySelectorAll('.global-lang-select button').forEach(b => {
+        const t = b.textContent.trim().toLowerCase();
+        b.classList.toggle('active', t === saved);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Custom Reporters — Playwright Tutorial | PV</title>
+  <meta name="description" content="Build custom test reporters that send results to Slack, databases, or custom dashboards beyond the built-in HTML report.">
+  <meta name="keywords" content="reporter, custom reporter, HTML reporter, JSON reporter, Slack, test results, onTestEnd, suite">
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/css/main.css" rel="stylesheet">
+</head>
+<body class="blog-page">
+  <header id="header" class="header d-flex align-items-center light-background sticky-top">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+      <a href="../index.html" class="logo d-flex align-items-center me-auto me-xl-0"><h1 class="sitename">PV</h1></a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../resume.html">Resume</a></li>
+          <li><a href="../services.html">Services</a></li>
+          <li><a href="../portfolio.html">Portfolio</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../learning-hub.html" class="active">Learning Hub</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <div class="header-social-links">
+        <a href="https://www.instagram.com/Chinna.Prasanna" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/" class="github"><i class="bi bi-github"></i></a>
+      </div>
+    </div>
+  </header>
+  <main class="main">
+    <section id="tutorial" class="blog-post section">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center mb-4">
+          <div class="col-lg-10"><a href="../learning-hub.html#playwright-course" class="btn btn-link p-0"><i class="bi bi-chevron-left"></i> Back to Course</a></div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 d-none d-lg-block"><div class="course-sidebar">
+  <div class="course-nav-title">Course Contents</div>
+  <ul class="course-nav">
+    <li class="nav-section-label">Beginner</li>
+    <li><a href="introduction-to-playwright.html" class=""><span class="nav-number">1</span> Introduction to Playwright</a></li>
+    <li><a href="installation-and-setup.html" class=""><span class="nav-number">2</span> Installation & Setup</a></li>
+    <li><a href="writing-your-first-test.html" class=""><span class="nav-number">3</span> Writing Your First Test</a></li>
+    <li><a href="locators-and-selectors.html" class=""><span class="nav-number">4</span> Locators & Selectors</a></li>
+    <li><a href="actions-and-interactions.html" class=""><span class="nav-number">5</span> Actions & Interactions</a></li>
+    <li><a href="assertions.html" class=""><span class="nav-number">6</span> Assertions</a></li>
+    <li class="nav-section-label">Intermediate</li>
+    <li><a href="page-object-model.html" class=""><span class="nav-number">7</span> Page Object Model (POM)</a></li>
+    <li><a href="waits-and-timeouts.html" class=""><span class="nav-number">8</span> Handling Waits & Timeouts</a></li>
+    <li><a href="frames-and-iframes.html" class=""><span class="nav-number">9</span> Working with Frames & Iframes</a></li>
+    <li><a href="alerts-dialogs-popups.html" class=""><span class="nav-number">10</span> Alerts, Dialogs & Popups</a></li>
+    <li><a href="file-upload-download.html" class=""><span class="nav-number">11</span> File Upload & Download</a></li>
+    <li><a href="api-testing.html" class=""><span class="nav-number">12</span> API Testing with Playwright</a></li>
+    <li><a href="test-configuration-fixtures.html" class=""><span class="nav-number">13</span> Test Configuration & Fixtures</a></li>
+    <li class="nav-section-label">Advanced</li>
+    <li><a href="visual-testing-screenshots.html" class=""><span class="nav-number">14</span> Visual Testing & Screenshots</a></li>
+    <li><a href="parallel-execution-sharding.html" class=""><span class="nav-number">15</span> Parallel Execution & Sharding</a></li>
+    <li><a href="ci-cd-integration.html" class=""><span class="nav-number">16</span> CI/CD Integration</a></li>
+    <li><a href="custom-reporters.html" class=" active"><span class="nav-number">17</span> Custom Reporters</a></li>
+    <li><a href="network-interception-mocking.html" class=""><span class="nav-number">18</span> Network Interception & Mocking</a></li>
+    <li><a href="browser-contexts-authentication.html" class=""><span class="nav-number">19</span> Browser Contexts & Authentication</a></li>
+    <li><a href="debugging-and-tracing.html" class=""><span class="nav-number">20</span> Debugging & Tracing</a></li>
+  </ul>
+</div></div>
+          <div class="col-lg-7">
+            <article class="tutorial-post">
+              <div class="mb-2">
+                <span class="badge bg-danger me-2">Advanced</span>
+                <span class="text-muted small">Chapter 17 &middot; 14 min read</span>
+              </div>
+              <h1 class="mb-3">Custom Reporters</h1>
+              <p class="lead fst-italic mb-4">Build custom test reporters that send results to Slack, databases, or custom dashboards beyond the built-in HTML report.</p>
+              <h2>Built-In Reporters</h2>
+<p>Playwright ships with several reporters out of the box: <code>html</code> (interactive web report), <code>json</code> (machine-readable results), <code>junit</code> (XML for Jenkins/Azure DevOps), <code>dot</code> (minimal CI output), <code>list</code> (detailed per-test output), and <code>github</code> (annotations in GitHub Actions PR checks). You can activate multiple reporters simultaneously by passing an array in the config.</p>
+<div class="tip-box"><strong>Tip:</strong> Use <code>reporter: [['html', { open: 'never' }], ['json', { outputFile: 'results.json' }]]</code> to generate both an HTML report and a JSON file in the same run. CI systems can parse the JSON to post custom pass/fail summaries.</div>
+<h2>Writing a Custom Reporter</h2>
+<p>A custom reporter is a class that implements the <code>Reporter</code> interface with lifecycle hooks: <code>onBegin</code>, <code>onTestBegin</code>, <code>onTestEnd</code>, <code>onEnd</code>, and optionally <code>onStdOut</code> and <code>onStdErr</code>. The <code>onTestEnd</code> hook receives the full test result including title, status, duration, errors, and attachments. Use it to post results to a Slack webhook, write to a database, or feed a custom dashboard.</p>
+<h2>Python Reporter Hooks</h2>
+<p>In Python, pytest plugin hooks (<code>pytest_runtest_logreport</code>, <code>pytest_terminal_summary</code>) provide equivalent functionality. Package your hooks in a <code>conftest.py</code> or a standalone pip-installable pytest plugin to share them across multiple projects.</p>
+              <div class="lang-switcher">
+                <button class="lang-tab active" onclick="switchLang('js', this)"><span class="lang-icon js">JS</span> JavaScript</button>
+                <button class="lang-tab" onclick="switchLang('java', this)"><span class="lang-icon java">JV</span> Java</button>
+                <button class="lang-tab" onclick="switchLang('python', this)"><span class="lang-icon python">PY</span> Python</button>
+              </div>
+              <div class="lang-panel" data-lang="js">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">reporters/slack-reporter.ts</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code><span class="keyword">import</span> <span class="type">https</span> <span class="keyword">from</span> <span class="string">'https'</span>;
+<span class="keyword">import</span> <span class="keyword">type</span> { <span class="type">Reporter</span>, <span class="type">TestCase</span>, <span class="type">TestResult</span>, <span class="type">FullResult</span> } <span class="keyword">from</span> <span class="string">'@playwright/test/reporter'</span>;
+
+<span class="keyword">class</span> <span class="type">SlackReporter</span> <span class="keyword">implements</span> <span class="type">Reporter</span> {
+  <span class="keyword">private</span> <span class="variable">passed</span> = <span class="number">0</span>;
+  <span class="keyword">private</span> <span class="variable">failed</span> = <span class="number">0</span>;
+  <span class="keyword">private</span> <span class="variable">skipped</span> = <span class="number">0</span>;
+  <span class="keyword">private readonly</span> <span class="variable">webhookUrl</span>: <span class="type">string</span>;
+
+  <span class="function">constructor</span>(<span class="variable">options</span>: { <span class="variable">webhookUrl</span>: <span class="type">string</span> }) {
+    <span class="variable">this</span>.<span class="variable">webhookUrl</span> = <span class="variable">options</span>.<span class="variable">webhookUrl</span>;
+  }
+
+  <span class="function">onTestEnd</span>(<span class="variable">test</span>: <span class="type">TestCase</span>, <span class="variable">result</span>: <span class="type">TestResult</span>) {
+    <span class="keyword">if</span> (<span class="variable">result</span>.<span class="variable">status</span> === <span class="string">'passed'</span>)  <span class="variable">this</span>.<span class="variable">passed</span>++;
+    <span class="keyword">if</span> (<span class="variable">result</span>.<span class="variable">status</span> === <span class="string">'failed'</span>)  <span class="variable">this</span>.<span class="variable">failed</span>++;
+    <span class="keyword">if</span> (<span class="variable">result</span>.<span class="variable">status</span> === <span class="string">'skipped'</span>) <span class="variable">this</span>.<span class="variable">skipped</span>++;
+  }
+
+  <span class="keyword">async</span> <span class="function">onEnd</span>(<span class="variable">result</span>: <span class="type">FullResult</span>) {
+    <span class="keyword">const</span> <span class="variable">icon</span> = <span class="variable">result</span>.<span class="variable">status</span> === <span class="string">'passed'</span> ? <span class="string">':white_check_mark:'</span> : <span class="string">':x:'</span>;
+    <span class="keyword">const</span> <span class="variable">payload</span> = <span class="type">JSON</span>.<span class="function">stringify</span>({
+      <span class="variable">text</span>: <span class="string">`<span class="variable">${icon}</span> Playwright: <span class="variable">${this.passed}</span> passed / <span class="variable">${this.failed}</span> failed / <span class="variable">${this.skipped}</span> skipped`</span>,
+    });
+    <span class="comment">// Post to Slack webhook</span>
+    <span class="keyword">await</span> <span class="keyword">new</span> <span class="type">Promise</span>((<span class="variable">resolve</span>) => {
+      <span class="keyword">const</span> <span class="variable">req</span> = <span class="variable">https</span>.<span class="function">request</span>(<span class="variable">this</span>.<span class="variable">webhookUrl</span>, { <span class="variable">method</span>: <span class="string">'POST'</span> }, <span class="variable">resolve</span>);
+      <span class="variable">req</span>.<span class="function">end</span>(<span class="variable">payload</span>);
+    });
+  }
+}
+
+<span class="keyword">export default</span> <span class="type">SlackReporter</span>;</code></pre>
+  </div>
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">playwright.config.reporters.ts</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code><span class="keyword">import</span> { <span class="variable">defineConfig</span> } <span class="keyword">from</span> <span class="string">'@playwright/test'</span>;
+
+<span class="keyword">export default</span> <span class="function">defineConfig</span>({
+  <span class="comment">// Multiple reporters in parallel</span>
+  <span class="variable">reporter</span>: [
+    [<span class="string">'html'</span>, { <span class="variable">outputFolder</span>: <span class="string">'playwright-report'</span>, <span class="variable">open</span>: <span class="string">'never'</span> }],
+    [<span class="string">'json'</span>, { <span class="variable">outputFile</span>: <span class="string">'test-results/results.json'</span> }],
+    [<span class="string">'junit'</span>, { <span class="variable">outputFile</span>: <span class="string">'test-results/junit.xml'</span> }],
+    [<span class="string">'./reporters/slack-reporter.ts'</span>, {
+      <span class="variable">webhookUrl</span>: <span class="variable">process</span>.<span class="variable">env</span>.<span class="variable">SLACK_WEBHOOK_URL</span>
+    }],
+  ],
+});</code></pre>
+  </div>
+</div>
+<div class="lang-panel" data-lang="java">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">CustomReporter.java</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code><span class="keyword">import</span> <span class="type">com.microsoft.playwright</span>.*;
+
+<span class="comment">/**
+ * Playwright Java uses standard JUnit/TestNG reporters.
+ * Add custom logic via JUnit 5 TestExecutionListener.
+ */</span>
+<span class="keyword">import</span> <span class="type">org.junit.platform.launcher.TestExecutionListener</span>;
+<span class="keyword">import</span> <span class="type">org.junit.platform.launcher.TestIdentifier</span>;
+<span class="keyword">import</span> <span class="type">org.junit.platform.engine.TestExecutionResult</span>;
+
+<span class="keyword">public class</span> <span class="type">CustomReporter</span> <span class="keyword">implements</span> <span class="type">TestExecutionListener</span> {
+  <span class="keyword">private int</span> <span class="variable">passed</span> = <span class="number">0</span>;
+  <span class="keyword">private int</span> <span class="variable">failed</span> = <span class="number">0</span>;
+
+  <span class="decorator">@Override</span>
+  <span class="keyword">public void</span> <span class="function">executionFinished</span>(
+      <span class="type">TestIdentifier</span> <span class="variable">id</span>, <span class="type">TestExecutionResult</span> <span class="variable">result</span>) {
+    <span class="keyword">if</span> (!<span class="variable">id</span>.<span class="function">isTest</span>()) <span class="keyword">return</span>;
+    <span class="keyword">switch</span> (<span class="variable">result</span>.<span class="function">getStatus</span>()) {
+      <span class="keyword">case</span> <span class="variable">SUCCESSFUL</span> -> <span class="variable">passed</span>++;
+      <span class="keyword">case</span> <span class="variable">FAILED</span>     -> <span class="variable">failed</span>++;
+      <span class="keyword">default</span>         -> {}
+    }
+  }
+
+  <span class="decorator">@Override</span>
+  <span class="keyword">public void</span> <span class="function">testPlanExecutionFinished</span>(<span class="type">TestPlan</span> <span class="variable">plan</span>) {
+    <span class="variable">System</span>.<span class="variable">out</span>.<span class="function">printf</span>(<span class="string">"Results: %d passed, %d failed%n"</span>, <span class="variable">passed</span>, <span class="variable">failed</span>);
+  }
+}</code></pre>
+  </div>
+</div>
+<div class="lang-panel" data-lang="python">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">conftest_reporter.py</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code><span class="comment"># conftest.py — custom pytest reporter hooks</span>
+<span class="keyword">import</span> <span class="type">json</span>
+<span class="keyword">from</span> <span class="type">pathlib</span> <span class="keyword">import</span> <span class="type">Path</span>
+<span class="keyword">import</span> <span class="type">pytest</span>
+<span class="keyword">from</span> <span class="type">_pytest.terminal</span> <span class="keyword">import</span> <span class="type">TerminalReporter</span>
+
+<span class="variable">_results</span> = []
+
+<span class="keyword">def</span> <span class="function">pytest_runtest_logreport</span>(<span class="variable">report</span>):
+    <span class="keyword">if</span> <span class="variable">report</span>.<span class="variable">when</span> == <span class="string">"call"</span>:
+        <span class="variable">_results</span>.<span class="function">append</span>({
+            <span class="string">"nodeid"</span>: <span class="variable">report</span>.<span class="variable">nodeid</span>,
+            <span class="string">"outcome"</span>: <span class="variable">report</span>.<span class="variable">outcome</span>,
+            <span class="string">"duration"</span>: <span class="variable">report</span>.<span class="variable">duration</span>,
+        })
+
+<span class="keyword">def</span> <span class="function">pytest_terminal_summary</span>(<span class="variable">terminalreporter</span>: <span class="type">TerminalReporter</span>, <span class="variable">exitstatus</span>):
+    <span class="comment"># Write JSON results file for downstream tooling</span>
+    <span class="variable">output</span> = <span class="type">Path</span>(<span class="string">"test-results/custom-results.json"</span>)
+    <span class="variable">output</span>.<span class="variable">parent</span>.<span class="function">mkdir</span>(<span class="variable">exist_ok</span>=<span class="number">True</span>)
+    <span class="variable">output</span>.<span class="function">write_text</span>(<span class="variable">json</span>.<span class="function">dumps</span>(<span class="variable">_results</span>, <span class="variable">indent</span>=<span class="number">2</span>))
+    <span class="variable">passed</span> = <span class="built-in">sum</span>(<span class="number">1</span> <span class="keyword">for</span> <span class="variable">r</span> <span class="keyword">in</span> <span class="variable">_results</span> <span class="keyword">if</span> <span class="variable">r</span>[<span class="string">"outcome"</span>] == <span class="string">"passed"</span>)
+    <span class="variable">failed</span> = <span class="built-in">sum</span>(<span class="number">1</span> <span class="keyword">for</span> <span class="variable">r</span> <span class="keyword">in</span> <span class="variable">_results</span> <span class="keyword">if</span> <span class="variable">r</span>[<span class="string">"outcome"</span>] == <span class="string">"failed"</span>)
+    <span class="variable">terminalreporter</span>.<span class="function">write_line</span>(
+        <span class="string">f"Custom report: {passed} passed, {failed} failed → {output}"</span>
+    )</code></pre>
+  </div>
+</div>
+
+              <hr class="my-5">
+              <div class="mt-4">
+                <span class="badge bg-secondary me-2 mb-2">Playwright</span>
+                <span class="badge bg-secondary me-2 mb-2">Advanced</span>
+                <span class="badge bg-secondary me-2 mb-2">Custom Reporters</span>
+              </div>
+              <div class="tutorial-nav">
+  <a href="ci-cd-integration.html" class="prev"><span class="nav-label"><i class="bi bi-chevron-left"></i> Previous</span><span class="nav-title">CI/CD Integration</span></a>
+  <a href="network-interception-mocking.html" class="next"><span class="nav-label">Next <i class="bi bi-chevron-right"></i></span><span class="nav-title">Network Interception & Mocking</span></a>
+</div>
+              <div class="text-muted small mt-5 pt-3 border-top">
+                <p class="mb-1">Written by PV</p>
+                <p class="mb-0">&copy; 2026 All Rights Reserved</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="global-lang-select">
+    <button class="active" onclick="switchAllLang('js', this)">JS</button>
+    <button onclick="switchAllLang('java', this)">Java</button>
+    <button onclick="switchAllLang('python', this)">Python</button>
+  </div>
+  <footer id="footer" class="footer light-background">
+    <div class="container">
+      <div class="copyright text-center"><p>&copy; <span>Copyright</span> <strong class="px-1 sitename">PV</strong> <span>All Rights Reserved<br></span></p></div>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://www.instagram.com/Chinna.Prasanna"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/"><i class="bi bi-github"></i></a>
+      </div>
+      <div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Tweaked by <a href="#">PV</a></div>
+    </div>
+  </footer>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script>
+    function switchLang(lang, btn) {
+      const article = btn.closest('article') || document;
+      article.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      article.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === lang); });
+      document.querySelectorAll('.global-lang-select button').forEach(b => {
+        const t = b.textContent.trim().toLowerCase();
+        b.classList.toggle('active', t === lang || (t === 'js' && lang === 'js'));
+      });
+      localStorage.setItem('pw-lang', lang);
+    }
+    function switchAllLang(lang, btn) {
+      document.querySelectorAll('.global-lang-select button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === lang); });
+      document.querySelectorAll('.lang-switcher .lang-tab').forEach(t => {
+        const icon = t.querySelector('.lang-icon');
+        t.classList.toggle('active', icon && icon.classList.contains(lang));
+      });
+      localStorage.setItem('pw-lang', lang);
+    }
+    function copyCode(btn) {
+      const code = btn.closest('.code-block-wrapper').querySelector('code');
+      navigator.clipboard.writeText(code.textContent);
+      btn.innerHTML = '<i class="bi bi-check2"></i> Copied!';
+      setTimeout(() => btn.innerHTML = '<i class="bi bi-clipboard"></i> Copy', 2000);
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('pw-lang') || 'js';
+      document.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === saved); });
+      document.querySelectorAll('.lang-switcher .lang-tab').forEach(t => {
+        const icon = t.querySelector('.lang-icon');
+        t.classList.toggle('active', icon && icon.classList.contains(saved));
+      });
+      document.querySelectorAll('.global-lang-select button').forEach(b => {
+        const t = b.textContent.trim().toLowerCase();
+        b.classList.toggle('active', t === saved);
+      });
+    });
+  </script>
+</body>
+</html>

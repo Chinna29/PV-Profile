@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Parallel Execution & Sharding — Playwright Tutorial | PV</title>
+  <meta name="description" content="Run thousands of tests faster by executing them in parallel across workers and sharding across CI machines.">
+  <meta name="keywords" content="parallel, workers, fullyParallel, sharding, shard, CI, pytest-xdist, speed, scalability">
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/css/main.css" rel="stylesheet">
+</head>
+<body class="blog-page">
+  <header id="header" class="header d-flex align-items-center light-background sticky-top">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+      <a href="../index.html" class="logo d-flex align-items-center me-auto me-xl-0"><h1 class="sitename">PV</h1></a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../resume.html">Resume</a></li>
+          <li><a href="../services.html">Services</a></li>
+          <li><a href="../portfolio.html">Portfolio</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../learning-hub.html" class="active">Learning Hub</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <div class="header-social-links">
+        <a href="https://www.instagram.com/Chinna.Prasanna" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/" class="github"><i class="bi bi-github"></i></a>
+      </div>
+    </div>
+  </header>
+  <main class="main">
+    <section id="tutorial" class="blog-post section">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center mb-4">
+          <div class="col-lg-10"><a href="../learning-hub.html#playwright-course" class="btn btn-link p-0"><i class="bi bi-chevron-left"></i> Back to Course</a></div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 d-none d-lg-block"><div class="course-sidebar">
+  <div class="course-nav-title">Course Contents</div>
+  <ul class="course-nav">
+    <li class="nav-section-label">Beginner</li>
+    <li><a href="introduction-to-playwright.html" class=""><span class="nav-number">1</span> Introduction to Playwright</a></li>
+    <li><a href="installation-and-setup.html" class=""><span class="nav-number">2</span> Installation & Setup</a></li>
+    <li><a href="writing-your-first-test.html" class=""><span class="nav-number">3</span> Writing Your First Test</a></li>
+    <li><a href="locators-and-selectors.html" class=""><span class="nav-number">4</span> Locators & Selectors</a></li>
+    <li><a href="actions-and-interactions.html" class=""><span class="nav-number">5</span> Actions & Interactions</a></li>
+    <li><a href="assertions.html" class=""><span class="nav-number">6</span> Assertions</a></li>
+    <li class="nav-section-label">Intermediate</li>
+    <li><a href="page-object-model.html" class=""><span class="nav-number">7</span> Page Object Model (POM)</a></li>
+    <li><a href="waits-and-timeouts.html" class=""><span class="nav-number">8</span> Handling Waits & Timeouts</a></li>
+    <li><a href="frames-and-iframes.html" class=""><span class="nav-number">9</span> Working with Frames & Iframes</a></li>
+    <li><a href="alerts-dialogs-popups.html" class=""><span class="nav-number">10</span> Alerts, Dialogs & Popups</a></li>
+    <li><a href="file-upload-download.html" class=""><span class="nav-number">11</span> File Upload & Download</a></li>
+    <li><a href="api-testing.html" class=""><span class="nav-number">12</span> API Testing with Playwright</a></li>
+    <li><a href="test-configuration-fixtures.html" class=""><span class="nav-number">13</span> Test Configuration & Fixtures</a></li>
+    <li class="nav-section-label">Advanced</li>
+    <li><a href="visual-testing-screenshots.html" class=""><span class="nav-number">14</span> Visual Testing & Screenshots</a></li>
+    <li><a href="parallel-execution-sharding.html" class=" active"><span class="nav-number">15</span> Parallel Execution & Sharding</a></li>
+    <li><a href="ci-cd-integration.html" class=""><span class="nav-number">16</span> CI/CD Integration</a></li>
+    <li><a href="custom-reporters.html" class=""><span class="nav-number">17</span> Custom Reporters</a></li>
+    <li><a href="network-interception-mocking.html" class=""><span class="nav-number">18</span> Network Interception & Mocking</a></li>
+    <li><a href="browser-contexts-authentication.html" class=""><span class="nav-number">19</span> Browser Contexts & Authentication</a></li>
+    <li><a href="debugging-and-tracing.html" class=""><span class="nav-number">20</span> Debugging & Tracing</a></li>
+  </ul>
+</div></div>
+          <div class="col-lg-7">
+            <article class="tutorial-post">
+              <div class="mb-2">
+                <span class="badge bg-danger me-2">Advanced</span>
+                <span class="text-muted small">Chapter 15 &middot; 12 min read</span>
+              </div>
+              <h1 class="mb-3">Parallel Execution & Sharding</h1>
+              <p class="lead fst-italic mb-4">Run thousands of tests faster by executing them in parallel across workers and sharding across CI machines.</p>
+              <h2>How Playwright Parallelises Tests</h2>
+<p>By default, Playwright Test runs test files in parallel using a pool of worker processes, where each worker has its own browser instance. Tests within a single file run serially by default to preserve shared state. Enabling <code>fullyParallel: true</code> in the config also runs individual tests within a file in parallel, which is safe when each test is fully independent (the recommended design).</p>
+<div class="tip-box"><strong>Tip:</strong> Avoid shared mutable state between tests — no global variables, no shared database rows without isolation. Each test should arrange its own data via API calls or fixtures so it can run in any order or in parallel without conflicts.</div>
+<h2>Configuring Workers</h2>
+<p>The <code>workers</code> option controls how many parallel processes run simultaneously. On a developer machine, leaving it as <code>undefined</code> lets Playwright auto-detect (typically half the CPU count). In CI, set it explicitly — for example <code>4</code> — to match the available runners. Saturating all CPU cores rarely helps because browser tests are I/O-bound, not CPU-bound.</p>
+<h2>Sharding Across CI Machines</h2>
+<p>Sharding splits the test suite across multiple CI machines or jobs. Pass <code>--shard=1/3</code> to run the first third of tests, <code>--shard=2/3</code> for the second, and so on. After all shards complete, merge the blob reports with <code>npx playwright merge-reports</code> to get a single unified HTML report. Pytest users achieve equivalent parallelism with <code>pytest-xdist</code> and the <code>-n auto</code> flag.</p>
+              <div class="lang-switcher">
+                <button class="lang-tab active" onclick="switchLang('js', this)"><span class="lang-icon js">JS</span> JavaScript</button>
+                <button class="lang-tab" onclick="switchLang('java', this)"><span class="lang-icon java">JV</span> Java</button>
+                <button class="lang-tab" onclick="switchLang('python', this)"><span class="lang-icon python">PY</span> Python</button>
+              </div>
+              <div class="lang-panel" data-lang="js">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">playwright.config.parallel.ts</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code><span class="keyword">import</span> { <span class="variable">defineConfig</span> } <span class="keyword">from</span> <span class="string">'@playwright/test'</span>;
+
+<span class="keyword">export default</span> <span class="function">defineConfig</span>({
+  <span class="comment">// Run every test in every file in parallel</span>
+  <span class="variable">fullyParallel</span>: <span class="number">true</span>,
+
+  <span class="comment">// 4 workers in CI, auto in local dev</span>
+  <span class="variable">workers</span>: <span class="variable">process</span>.<span class="variable">env</span>.<span class="variable">CI</span> ? <span class="number">4</span> : <span class="keyword">undefined</span>,
+
+  <span class="comment">// Merge-able blob reports for sharding</span>
+  <span class="variable">reporter</span>: <span class="variable">process</span>.<span class="variable">env</span>.<span class="variable">CI</span>
+    ? [[ <span class="string">'blob'</span> ], [ <span class="string">'github'</span> ]]
+    : [[ <span class="string">'html'</span>, { <span class="variable">open</span>: <span class="string">'on-failure'</span> } ]],
+
+  <span class="variable">use</span>: {
+    <span class="variable">baseURL</span>: <span class="string">'http://localhost:3000'</span>,
+    <span class="variable">trace</span>: <span class="string">'on-first-retry'</span>,
+  },
+});
+
+<span class="comment">/* Run commands:
+   Local:   npx playwright test
+   Shard 1: npx playwright test --shard=1/3
+   Shard 2: npx playwright test --shard=2/3
+   Shard 3: npx playwright test --shard=3/3
+   Merge:   npx playwright merge-reports --reporter html ./all-blob-reports
+*/</span></code></pre>
+  </div>
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">tests/parallel-safe.spec.js</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code><span class="keyword">import</span> { <span class="variable">test</span>, <span class="variable">expect</span> } <span class="keyword">from</span> <span class="string">'@playwright/test'</span>;
+
+<span class="comment">// These tests are safe to run in parallel because</span>
+<span class="comment">// each one creates and deletes its own isolated data</span>
+
+<span class="function">test</span>(<span class="string">'create order A'</span>, <span class="keyword">async</span> ({ <span class="variable">request</span>, <span class="variable">page</span> }) => {
+  <span class="keyword">const</span> { <span class="variable">id</span> } = <span class="keyword">await</span> (<span class="keyword">await</span> <span class="variable">request</span>.<span class="function">post</span>(<span class="string">'/api/orders'</span>, {
+    <span class="variable">data</span>: { <span class="variable">product</span>: <span class="string">'Widget A'</span> }
+  })).<span class="function">json</span>();
+
+  <span class="keyword">await</span> <span class="variable">page</span>.<span class="function">goto</span>(<span class="string">`/orders/<span class="variable">${id}</span>`</span>);
+  <span class="keyword">await</span> <span class="function">expect</span>(<span class="variable">page</span>.<span class="function">getByText</span>(<span class="string">'Widget A'</span>)).<span class="function">toBeVisible</span>();
+  <span class="keyword">await</span> <span class="variable">request</span>.<span class="function">delete</span>(<span class="string">`/api/orders/<span class="variable">${id}</span>`</span>);
+});
+
+<span class="function">test</span>(<span class="string">'create order B'</span>, <span class="keyword">async</span> ({ <span class="variable">request</span>, <span class="variable">page</span> }) => {
+  <span class="keyword">const</span> { <span class="variable">id</span> } = <span class="keyword">await</span> (<span class="keyword">await</span> <span class="variable">request</span>.<span class="function">post</span>(<span class="string">'/api/orders'</span>, {
+    <span class="variable">data</span>: { <span class="variable">product</span>: <span class="string">'Widget B'</span> }
+  })).<span class="function">json</span>();
+
+  <span class="keyword">await</span> <span class="variable">page</span>.<span class="function">goto</span>(<span class="string">`/orders/<span class="variable">${id}</span>`</span>);
+  <span class="keyword">await</span> <span class="function">expect</span>(<span class="variable">page</span>.<span class="function">getByText</span>(<span class="string">'Widget B'</span>)).<span class="function">toBeVisible</span>();
+  <span class="keyword">await</span> <span class="variable">request</span>.<span class="function">delete</span>(<span class="string">`/api/orders/<span class="variable">${id}</span>`</span>);
+});</code></pre>
+  </div>
+</div>
+<div class="lang-panel" data-lang="java">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">ParallelTest.java</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code><span class="keyword">import</span> <span class="type">org.junit.jupiter.api</span>.*;
+<span class="keyword">import</span> <span class="type">org.junit.jupiter.api.parallel</span>.*;
+
+<span class="comment">// Enable parallel execution in junit-platform.properties:</span>
+<span class="comment">// junit.jupiter.execution.parallel.enabled=true</span>
+<span class="comment">// junit.jupiter.execution.parallel.mode.default=concurrent</span>
+
+<span class="decorator">@Execution</span>(<span class="type">ExecutionMode</span>.<span class="variable">CONCURRENT</span>)
+<span class="keyword">class</span> <span class="type">ParallelTest</span> <span class="keyword">extends</span> <span class="type">BaseTest</span> {
+
+  <span class="decorator">@Test</span>
+  <span class="keyword">void</span> <span class="function">orderA</span>() {
+    <span class="variable">page</span>.<span class="function">navigate</span>(<span class="string">"/orders/create"</span>);
+    <span class="variable">page</span>.<span class="function">getByLabel</span>(<span class="string">"Product"</span>).<span class="function">fill</span>(<span class="string">"Widget A"</span>);
+    <span class="variable">page</span>.<span class="function">getByRole</span>(<span class="type">AriaRole</span>.<span class="variable">BUTTON</span>,
+        <span class="keyword">new</span> <span class="type">Page.GetByRoleOptions</span>().<span class="function">setName</span>(<span class="string">"Place Order"</span>)).<span class="function">click</span>();
+  }
+
+  <span class="decorator">@Test</span>
+  <span class="keyword">void</span> <span class="function">orderB</span>() {
+    <span class="variable">page</span>.<span class="function">navigate</span>(<span class="string">"/orders/create"</span>);
+    <span class="variable">page</span>.<span class="function">getByLabel</span>(<span class="string">"Product"</span>).<span class="function">fill</span>(<span class="string">"Widget B"</span>);
+    <span class="variable">page</span>.<span class="function">getByRole</span>(<span class="type">AriaRole</span>.<span class="variable">BUTTON</span>,
+        <span class="keyword">new</span> <span class="type">Page.GetByRoleOptions</span>().<span class="function">setName</span>(<span class="string">"Place Order"</span>)).<span class="function">click</span>();
+  }
+}</code></pre>
+  </div>
+</div>
+<div class="lang-panel" data-lang="python">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">pytest.ini</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code><span class="comment"># pytest.ini — enable xdist parallel execution</span>
+[pytest]
+addopts = -n auto --dist=loadscope
+
+<span class="comment"># Install: pip install pytest-xdist</span>
+<span class="comment"># Run:     pytest -n 4          (4 workers)</span>
+<span class="comment"># Run:     pytest -n auto       (auto-detect CPUs)</span></code></pre>
+  </div>
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">test_parallel_safe.py</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code><span class="keyword">import</span> <span class="type">pytest</span>
+<span class="keyword">from</span> <span class="type">playwright.sync_api</span> <span class="keyword">import</span> <span class="type">APIRequestContext</span>, <span class="type">Page</span>, <span class="function">expect</span>
+
+<span class="decorator">@pytest.mark.parametrize</span>(<span class="string">"product"</span>, [<span class="string">"Widget A"</span>, <span class="string">"Widget B"</span>, <span class="string">"Widget C"</span>])
+<span class="keyword">def</span> <span class="function">test_create_order</span>(
+    <span class="variable">product</span>: <span class="type">str</span>,
+    <span class="variable">api_context</span>: <span class="type">APIRequestContext</span>,
+    <span class="variable">page</span>: <span class="type">Page</span>
+):
+    <span class="comment"># Each parametrized test is isolated by its own order</span>
+    <span class="variable">resp</span> = <span class="variable">api_context</span>.<span class="function">post</span>(<span class="string">"/api/orders"</span>, <span class="variable">data</span>={<span class="string">"product"</span>: <span class="variable">product</span>})
+    <span class="variable">order_id</span> = <span class="variable">resp</span>.<span class="function">json</span>()[<span class="string">"id"</span>]
+
+    <span class="variable">page</span>.<span class="function">goto</span>(<span class="string">f"/orders/{order_id}"</span>)
+    <span class="function">expect</span>(<span class="variable">page</span>.<span class="function">get_by_text</span>(<span class="variable">product</span>)).<span class="function">to_be_visible</span>()
+
+    <span class="variable">api_context</span>.<span class="function">delete</span>(<span class="string">f"/api/orders/{order_id}"</span>)</code></pre>
+  </div>
+</div>
+
+              <hr class="my-5">
+              <div class="mt-4">
+                <span class="badge bg-secondary me-2 mb-2">Playwright</span>
+                <span class="badge bg-secondary me-2 mb-2">Advanced</span>
+                <span class="badge bg-secondary me-2 mb-2">Parallel Execution & Sharding</span>
+              </div>
+              <div class="tutorial-nav">
+  <a href="visual-testing-screenshots.html" class="prev"><span class="nav-label"><i class="bi bi-chevron-left"></i> Previous</span><span class="nav-title">Visual Testing & Screenshots</span></a>
+  <a href="ci-cd-integration.html" class="next"><span class="nav-label">Next <i class="bi bi-chevron-right"></i></span><span class="nav-title">CI/CD Integration</span></a>
+</div>
+              <div class="text-muted small mt-5 pt-3 border-top">
+                <p class="mb-1">Written by PV</p>
+                <p class="mb-0">&copy; 2026 All Rights Reserved</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="global-lang-select">
+    <button class="active" onclick="switchAllLang('js', this)">JS</button>
+    <button onclick="switchAllLang('java', this)">Java</button>
+    <button onclick="switchAllLang('python', this)">Python</button>
+  </div>
+  <footer id="footer" class="footer light-background">
+    <div class="container">
+      <div class="copyright text-center"><p>&copy; <span>Copyright</span> <strong class="px-1 sitename">PV</strong> <span>All Rights Reserved<br></span></p></div>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://www.instagram.com/Chinna.Prasanna"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/"><i class="bi bi-github"></i></a>
+      </div>
+      <div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Tweaked by <a href="#">PV</a></div>
+    </div>
+  </footer>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script>
+    function switchLang(lang, btn) {
+      const article = btn.closest('article') || document;
+      article.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      article.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === lang); });
+      document.querySelectorAll('.global-lang-select button').forEach(b => {
+        const t = b.textContent.trim().toLowerCase();
+        b.classList.toggle('active', t === lang || (t === 'js' && lang === 'js'));
+      });
+      localStorage.setItem('pw-lang', lang);
+    }
+    function switchAllLang(lang, btn) {
+      document.querySelectorAll('.global-lang-select button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === lang); });
+      document.querySelectorAll('.lang-switcher .lang-tab').forEach(t => {
+        const icon = t.querySelector('.lang-icon');
+        t.classList.toggle('active', icon && icon.classList.contains(lang));
+      });
+      localStorage.setItem('pw-lang', lang);
+    }
+    function copyCode(btn) {
+      const code = btn.closest('.code-block-wrapper').querySelector('code');
+      navigator.clipboard.writeText(code.textContent);
+      btn.innerHTML = '<i class="bi bi-check2"></i> Copied!';
+      setTimeout(() => btn.innerHTML = '<i class="bi bi-clipboard"></i> Copy', 2000);
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('pw-lang') || 'js';
+      document.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === saved); });
+      document.querySelectorAll('.lang-switcher .lang-tab').forEach(t => {
+        const icon = t.querySelector('.lang-icon');
+        t.classList.toggle('active', icon && icon.classList.contains(saved));
+      });
+      document.querySelectorAll('.global-lang-select button').forEach(b => {
+        const t = b.textContent.trim().toLowerCase();
+        b.classList.toggle('active', t === saved);
+      });
+    });
+  </script>
+</body>
+</html>
