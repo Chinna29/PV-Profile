@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Test Framework Integration — API Testing Tutorial | PV</title>
+  <meta name="description" content="Build a reusable API testing framework with base classes, configuration management, custom helpers, logging, and reporting.">
+  <meta name="keywords" content="Test Framework, Base Class, Configuration, Helpers, Logging, Test Architecture, Reusable Framework">
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/css/main.css" rel="stylesheet">
+</head>
+<body class="blog-page">
+  <header id="header" class="header d-flex align-items-center light-background sticky-top">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+      <a href="../index.html" class="logo d-flex align-items-center me-auto me-xl-0"><h1 class="sitename">PV</h1></a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../resume.html">Resume</a></li>
+          <li><a href="../services.html">Services</a></li>
+          <li><a href="../portfolio.html">Portfolio</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../learning-hub.html" class="active">Learning Hub</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <div class="header-social-links">
+        <a href="https://www.instagram.com/Chinna.Prasanna" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/" class="github"><i class="bi bi-github"></i></a>
+      </div>
+    </div>
+  </header>
+  <main class="main">
+    <section id="tutorial" class="blog-post section">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center mb-4">
+          <div class="col-lg-10"><a href="../learning-hub.html#api-testing-course" class="btn btn-link p-0"><i class="bi bi-chevron-left"></i> Back to Course</a></div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 d-none d-lg-block"><div class="course-sidebar">
+  <div class="course-nav-title">Course Contents</div>
+  <ul class="course-nav">
+    <li class="nav-section-label">Beginner</li>
+    <li><a href="introduction-to-api-testing.html" class=""><span class="nav-number">1</span> Introduction to API Testing</a></li>
+    <li><a href="setup-and-project-structure.html" class=""><span class="nav-number">2</span> Setup & Project Structure</a></li>
+    <li><a href="your-first-get-request.html" class=""><span class="nav-number">3</span> Your First GET Request</a></li>
+    <li><a href="post-put-patch-delete.html" class=""><span class="nav-number">4</span> POST, PUT, PATCH & DELETE</a></li>
+    <li><a href="query-parameters-and-path-params.html" class=""><span class="nav-number">5</span> Query Parameters & Path Params</a></li>
+    <li><a href="headers-and-content-types.html" class=""><span class="nav-number">6</span> Headers & Content Types</a></li>
+    <li><a href="response-validation-and-assertions.html" class=""><span class="nav-number">7</span> Response Validation & Assertions</a></li>
+    <li class="nav-section-label">Intermediate</li>
+    <li><a href="authentication-and-authorization.html" class=""><span class="nav-number">8</span> Authentication & Authorization</a></li>
+    <li><a href="json-schema-validation.html" class=""><span class="nav-number">9</span> JSON Schema Validation</a></li>
+    <li><a href="request-and-response-serialization.html" class=""><span class="nav-number">10</span> Request & Response Serialization</a></li>
+    <li><a href="error-handling-and-negative-testing.html" class=""><span class="nav-number">11</span> Error Handling & Negative Testing</a></li>
+    <li><a href="data-driven-testing.html" class=""><span class="nav-number">12</span> Data-Driven Testing</a></li>
+    <li><a href="api-chaining-and-workflows.html" class=""><span class="nav-number">13</span> API Chaining & Workflows</a></li>
+    <li><a href="file-upload-and-multipart.html" class=""><span class="nav-number">14</span> File Upload & Multipart Requests</a></li>
+    <li class="nav-section-label">Advanced</li>
+    <li><a href="test-framework-integration.html" class=" active"><span class="nav-number">15</span> Test Framework Integration</a></li>
+    <li><a href="environment-configuration.html" class=""><span class="nav-number">16</span> Environment & Configuration Management</a></li>
+    <li><a href="retry-logic-and-resilience.html" class=""><span class="nav-number">17</span> Retry Logic & Resilience Testing</a></li>
+    <li><a href="mocking-and-service-virtualization.html" class=""><span class="nav-number">18</span> Mocking & Service Virtualization</a></li>
+    <li><a href="performance-and-load-testing.html" class=""><span class="nav-number">19</span> Performance & Load Testing</a></li>
+    <li><a href="ci-cd-and-reporting.html" class=""><span class="nav-number">20</span> CI/CD Integration & Reporting</a></li>
+  </ul>
+</div></div>
+          <div class="col-lg-7">
+            <article class="tutorial-post">
+              <div class="mb-2">
+                <span class="badge bg-danger me-2">Advanced</span>
+                <span class="text-muted small">Chapter 15 &middot; 14 min read</span>
+              </div>
+              <h1 class="mb-3">Test Framework Integration</h1>
+              <p class="lead fst-italic mb-4">Build a reusable API testing framework with base classes, configuration management, custom helpers, logging, and reporting.</p>
+              
+<h2>Building a Reusable API Test Framework</h2>
+<p>As your test suite grows, ad-hoc tests become unmaintainable. A well-structured framework provides reusable base classes, centralized configuration, shared helpers, and consistent reporting across all API tests.</p>
+
+<h3>Framework Components</h3>
+<ul>
+  <li><strong>Base test class</strong> — Common setup, teardown, and shared methods</li>
+  <li><strong>API client wrapper</strong> — Centralized HTTP client with logging and error handling</li>
+  <li><strong>Configuration management</strong> — Environment-specific settings (dev, staging, prod)</li>
+  <li><strong>Custom helpers</strong> — Reusable methods for auth, data generation, assertions</li>
+  <li><strong>Logging</strong> — Request/response logging for debugging</li>
+</ul>
+
+              <div class="lang-switcher">
+                <button class="lang-tab active" onclick="switchLang('js', this)"><span class="lang-icon js">JS</span> JavaScript</button>
+                <button class="lang-tab" onclick="switchLang('java', this)"><span class="lang-icon java">JV</span> Java</button>
+                <button class="lang-tab" onclick="switchLang('python', this)"><span class="lang-icon python">PY</span> Python</button>
+              </div>
+              <div class="lang-panel" data-lang="js">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">helpers/api-client.js</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code>// Reusable API client with logging and error handling
+export class ApiClient {
+  constructor(baseUrl, options = {}) {
+    this.baseUrl = baseUrl;
+    this.defaultHeaders = {
+      &#x27;Content-Type&#x27;: &#x27;application/json&#x27;,
+      &#x27;Accept&#x27;: &#x27;application/json&#x27;,
+      ...options.headers
+    };
+    this.timeout = options.timeout || 10000;
+  }
+
+  async request(method, path, { body, headers, params } = {}) {
+    const url = new URL(path, this.baseUrl);
+    if (params) {
+      Object.entries(params).forEach(([k, v]) =&gt;
+        url.searchParams.append(k, v)
+      );
+    }
+
+    const controller = new AbortController();
+    const timer = setTimeout(() =&gt; controller.abort(), this.timeout);
+
+    const startTime = Date.now();
+    console.log(`&gt;&gt; ${method} ${url}`);
+
+    try {
+      const resp = await fetch(url, {
+        method,
+        headers: { ...this.defaultHeaders, ...headers },
+        body: body ? JSON.stringify(body) : undefined,
+        signal: controller.signal
+      });
+
+      const elapsed = Date.now() - startTime;
+      const data = await resp.json().catch(() =&gt; null);
+
+      console.log(`&lt;&lt; ${resp.status} (${elapsed}ms)`);
+      return { status: resp.status, data, headers: resp.headers, elapsed };
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+
+  get(path, options)    { return this.request(&#x27;GET&#x27;, path, options); }
+  post(path, options)   { return this.request(&#x27;POST&#x27;, path, options); }
+  put(path, options)    { return this.request(&#x27;PUT&#x27;, path, options); }
+  patch(path, options)  { return this.request(&#x27;PATCH&#x27;, path, options); }
+  delete(path, options) { return this.request(&#x27;DELETE&#x27;, path, options); }
+
+  withAuth(token) {
+    this.defaultHeaders[&#x27;Authorization&#x27;] = `Bearer ${token}`;
+    return this;
+  }
+}
+
+// Usage
+const api = new ApiClient(&#x27;https://jsonplaceholder.typicode.com&#x27;);
+const { status, data } = await api.get(&#x27;/posts/1&#x27;);
+console.assert(status === 200);
+console.log(&#x27;Title:&#x27;, data.title);</code></pre>
+  </div>
+</div>
+<div class="lang-panel" data-lang="java">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">BaseTest.java</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code>package com.apitesting.base;
+
+import io.restassured.RestAssured;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.filter.log.LogDetail;
+import io.restassured.specification.RequestSpecification;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeSuite;
+import java.io.FileInputStream;
+import java.util.Properties;
+
+public class BaseTest {
+
+    protected static RequestSpecification baseSpec;
+    protected static Properties config;
+
+    @BeforeSuite
+    public void loadConfig() throws Exception {
+        config = new Properties();
+        config.load(new FileInputStream(&quot;src/test/resources/config.properties&quot;));
+    }
+
+    @BeforeClass
+    public void setup() {
+        String env = System.getProperty(&quot;env&quot;, &quot;test&quot;);
+        String baseUrl = config.getProperty(env + &quot;.base.url&quot;,
+            &quot;https://jsonplaceholder.typicode.com&quot;);
+
+        baseSpec = new RequestSpecBuilder()
+            .setBaseUri(baseUrl)
+            .setContentType(&quot;application/json&quot;)
+            .setAccept(&quot;application/json&quot;)
+            .log(LogDetail.ALL)         // Log all requests
+            .build();
+
+        RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
+    }
+
+    protected RequestSpecification authSpec(String token) {
+        return given()
+            .spec(baseSpec)
+            .header(&quot;Authorization&quot;, &quot;Bearer &quot; + token);
+    }
+
+    protected RequestSpecification spec() {
+        return given().spec(baseSpec);
+    }
+}
+
+// Usage in test class:
+// public class UserTests extends BaseTest {
+//     @Test
+//     public void testGetUser() {
+//         spec().when().get(&quot;/users/1&quot;)
+//             .then().statusCode(200);
+//     }
+// }</code></pre>
+  </div>
+</div>
+<div class="lang-panel" data-lang="python">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">helpers/api_client.py</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code>&quot;&quot;&quot;Reusable API client with logging and error handling&quot;&quot;&quot;
+import requests
+import logging
+import time
+
+logger = logging.getLogger(__name__)
+
+class ApiClient:
+    def __init__(self, base_url, headers=None, timeout=10):
+        self.session = requests.Session()
+        self.base_url = base_url
+        self.session.headers.update({
+            &#x27;Content-Type&#x27;: &#x27;application/json&#x27;,
+            &#x27;Accept&#x27;: &#x27;application/json&#x27;,
+            **(headers or {})
+        })
+        self.timeout = timeout
+
+    def request(self, method, path, **kwargs):
+        url = f&#x27;{self.base_url}{path}&#x27;
+        kwargs.setdefault(&#x27;timeout&#x27;, self.timeout)
+
+        logger.info(f&#x27;&gt;&gt; {method} {url}&#x27;)
+        start = time.time()
+
+        response = self.session.request(method, url, **kwargs)
+
+        elapsed = (time.time() - start) * 1000
+        logger.info(f&#x27;&lt;&lt; {response.status_code} ({elapsed:.0f}ms)&#x27;)
+
+        return response
+
+    def get(self, path, **kwargs):
+        return self.request(&#x27;GET&#x27;, path, **kwargs)
+
+    def post(self, path, **kwargs):
+        return self.request(&#x27;POST&#x27;, path, **kwargs)
+
+    def put(self, path, **kwargs):
+        return self.request(&#x27;PUT&#x27;, path, **kwargs)
+
+    def patch(self, path, **kwargs):
+        return self.request(&#x27;PATCH&#x27;, path, **kwargs)
+
+    def delete(self, path, **kwargs):
+        return self.request(&#x27;DELETE&#x27;, path, **kwargs)
+
+    def with_auth(self, token):
+        self.session.headers[&#x27;Authorization&#x27;] = f&#x27;Bearer {token}&#x27;
+        return self
+
+# conftest.py fixture
+# import pytest
+# @pytest.fixture
+# def api():
+#     return ApiClient(&#x27;https://jsonplaceholder.typicode.com&#x27;)</code></pre>
+  </div>
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">conftest.py</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code>&quot;&quot;&quot;Shared pytest fixtures&quot;&quot;&quot;
+import pytest
+import os
+from helpers.api_client import ApiClient
+
+@pytest.fixture(scope=&#x27;session&#x27;)
+def api():
+    &quot;&quot;&quot;Session-scoped API client&quot;&quot;&quot;
+    base_url = os.getenv(&#x27;API_BASE_URL&#x27;,
+                          &#x27;https://jsonplaceholder.typicode.com&#x27;)
+    return ApiClient(base_url)
+
+@pytest.fixture(scope=&#x27;session&#x27;)
+def auth_api():
+    &quot;&quot;&quot;Authenticated API client&quot;&quot;&quot;
+    client = ApiClient(&#x27;https://jsonplaceholder.typicode.com&#x27;)
+    token = os.getenv(&#x27;API_TOKEN&#x27;, &#x27;test-token&#x27;)
+    return client.with_auth(token)
+
+@pytest.fixture
+def sample_post():
+    return {&#x27;title&#x27;: &#x27;Test Post&#x27;, &#x27;body&#x27;: &#x27;Test Body&#x27;, &#x27;userId&#x27;: 1}</code></pre>
+  </div>
+</div>
+
+              <hr class="my-5">
+              <div class="mt-4">
+                <span class="badge bg-secondary me-2 mb-2">API Testing</span>
+                <span class="badge bg-secondary me-2 mb-2">Advanced</span>
+                <span class="badge bg-secondary me-2 mb-2">Test Framework Integration</span>
+              </div>
+              <div class="tutorial-nav">
+  <a href="file-upload-and-multipart.html" class="prev"><span class="nav-label"><i class="bi bi-chevron-left"></i> Previous</span><span class="nav-title">File Upload & Multipart Requests</span></a>
+  <a href="environment-configuration.html" class="next"><span class="nav-label">Next <i class="bi bi-chevron-right"></i></span><span class="nav-title">Environment & Configuration Management</span></a>
+</div>
+              <div class="text-muted small mt-5 pt-3 border-top">
+                <p class="mb-1">Written by PV</p>
+                <p class="mb-0">&copy; 2026 All Rights Reserved</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="global-lang-select">
+    <button class="active" onclick="switchAllLang('js', this)">JS</button>
+    <button onclick="switchAllLang('java', this)">Java</button>
+    <button onclick="switchAllLang('python', this)">Python</button>
+  </div>
+  <footer id="footer" class="footer light-background">
+    <div class="container">
+      <div class="copyright text-center"><p>&copy; <span>Copyright</span> <strong class="px-1 sitename">PV</strong> <span>All Rights Reserved<br></span></p></div>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://www.instagram.com/Chinna.Prasanna"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/"><i class="bi bi-github"></i></a>
+      </div>
+      <div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Tweaked by <a href="#">PV</a></div>
+    </div>
+  </footer>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script>
+    function switchLang(lang, btn) {
+      const article = btn.closest('article') || document;
+      article.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      article.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === lang); });
+      document.querySelectorAll('.global-lang-select button').forEach(b => {
+        const t = b.textContent.trim().toLowerCase();
+        b.classList.toggle('active', t === lang || (t === 'js' && lang === 'js'));
+      });
+      localStorage.setItem('pw-lang', lang);
+    }
+    function switchAllLang(lang, btn) {
+      document.querySelectorAll('.global-lang-select button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === lang); });
+      document.querySelectorAll('.lang-switcher .lang-tab').forEach(t => {
+        const icon = t.querySelector('.lang-icon');
+        t.classList.toggle('active', icon && icon.classList.contains(lang));
+      });
+      localStorage.setItem('pw-lang', lang);
+    }
+    function copyCode(btn) {
+      const code = btn.closest('.code-block-wrapper').querySelector('code');
+      navigator.clipboard.writeText(code.textContent);
+      btn.innerHTML = '<i class="bi bi-check2"></i> Copied!';
+      setTimeout(() => btn.innerHTML = '<i class="bi bi-clipboard"></i> Copy', 2000);
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('pw-lang') || 'js';
+      document.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === saved); });
+      document.querySelectorAll('.lang-switcher .lang-tab').forEach(t => {
+        const icon = t.querySelector('.lang-icon');
+        t.classList.toggle('active', icon && icon.classList.contains(saved));
+      });
+      document.querySelectorAll('.global-lang-select button').forEach(b => {
+        const t = b.textContent.trim().toLowerCase();
+        b.classList.toggle('active', t === saved);
+      });
+    });
+  </script>
+</body>
+</html>

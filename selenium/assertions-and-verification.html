@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Assertions & Verification — Selenium Tutorial | PV</title>
+  <meta name="description" content="Verify page state with assertions — check text, attributes, visibility, element state, page title, URL, and element counts.">
+  <meta name="keywords" content="Selenium Assertions, TestNG Assert, pytest assert, Element Verification, Page State, Soft Assertions">
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/css/main.css" rel="stylesheet">
+</head>
+<body class="blog-page">
+  <header id="header" class="header d-flex align-items-center light-background sticky-top">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+      <a href="../index.html" class="logo d-flex align-items-center me-auto me-xl-0"><h1 class="sitename">PV</h1></a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../resume.html">Resume</a></li>
+          <li><a href="../services.html">Services</a></li>
+          <li><a href="../portfolio.html">Portfolio</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../learning-hub.html" class="active">Learning Hub</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <div class="header-social-links">
+        <a href="https://www.instagram.com/Chinna.Prasanna" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/" class="github"><i class="bi bi-github"></i></a>
+      </div>
+    </div>
+  </header>
+  <main class="main">
+    <section id="tutorial" class="blog-post section">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center mb-4">
+          <div class="col-lg-10"><a href="../learning-hub.html#selenium-course" class="btn btn-link p-0"><i class="bi bi-chevron-left"></i> Back to Course</a></div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 d-none d-lg-block"><div class="course-sidebar">
+  <div class="course-nav-title">Course Contents</div>
+  <ul class="course-nav">
+    <li class="nav-section-label">Beginner</li>
+    <li><a href="introduction-to-selenium.html" class=""><span class="nav-number">1</span> Introduction to Selenium</a></li>
+    <li><a href="setup-maven-and-project-structure.html" class=""><span class="nav-number">2</span> Setup — Maven, pip & Project Structure</a></li>
+    <li><a href="writing-your-first-test.html" class=""><span class="nav-number">3</span> Writing Your First Test</a></li>
+    <li><a href="locators-and-finding-elements.html" class=""><span class="nav-number">4</span> Locators & Finding Elements</a></li>
+    <li><a href="interactions-click-type-select.html" class=""><span class="nav-number">5</span> Interactions — Click, Type & Select</a></li>
+    <li><a href="waits-explicit-implicit-fluent.html" class=""><span class="nav-number">6</span> Waits — Implicit, Explicit & Fluent</a></li>
+    <li><a href="assertions-and-verification.html" class=" active"><span class="nav-number">7</span> Assertions & Verification</a></li>
+    <li class="nav-section-label">Intermediate</li>
+    <li><a href="page-object-model.html" class=""><span class="nav-number">8</span> Page Object Model (POM)</a></li>
+    <li><a href="handling-alerts-frames-windows.html" class=""><span class="nav-number">9</span> Alerts, Frames & Multiple Windows</a></li>
+    <li><a href="actions-api-advanced-interactions.html" class=""><span class="nav-number">10</span> Actions API — Advanced Interactions</a></li>
+    <li><a href="file-upload-and-download.html" class=""><span class="nav-number">11</span> File Upload & Download</a></li>
+    <li><a href="javascript-executor.html" class=""><span class="nav-number">12</span> JavaScript Executor</a></li>
+    <li><a href="screenshots-and-visual-testing.html" class=""><span class="nav-number">13</span> Screenshots & Visual Testing</a></li>
+    <li><a href="chrome-devtools-protocol.html" class=""><span class="nav-number">14</span> Chrome DevTools Protocol (CDP)</a></li>
+    <li class="nav-section-label">Advanced</li>
+    <li><a href="base-test-class-and-framework.html" class=""><span class="nav-number">15</span> Base Test Class & Framework Design</a></li>
+    <li><a href="data-driven-testing.html" class=""><span class="nav-number">16</span> Data-Driven Testing</a></li>
+    <li><a href="cross-browser-testing.html" class=""><span class="nav-number">17</span> Cross-Browser Testing</a></li>
+    <li><a href="parallel-execution-and-reporting.html" class=""><span class="nav-number">18</span> Parallel Execution & Reporting</a></li>
+    <li><a href="ci-cd-integration.html" class=""><span class="nav-number">19</span> CI/CD Integration</a></li>
+    <li><a href="best-practices-and-design-patterns.html" class=""><span class="nav-number">20</span> Best Practices & Design Patterns</a></li>
+  </ul>
+</div></div>
+          <div class="col-lg-7">
+            <article class="tutorial-post">
+              <div class="mb-2">
+                <span class="badge bg-success me-2">Beginner</span>
+                <span class="text-muted small">Chapter 7 &middot; 9 min read</span>
+              </div>
+              <h1 class="mb-3">Assertions & Verification</h1>
+              <p class="lead fst-italic mb-4">Verify page state with assertions — check text, attributes, visibility, element state, page title, URL, and element counts.</p>
+              
+<h2>Assertions & Verification</h2>
+<p>Assertions are the proof that your tests actually verify something. Without them, your tests just exercise code without confirming correctness. Both TestNG (Java) and pytest (Python) provide powerful assertion mechanisms.</p>
+
+<h3>What to Assert</h3>
+<ul>
+  <li><strong>Text content</strong> — Element text, page title, alert text</li>
+  <li><strong>Attributes</strong> — Value, href, class, data-* attributes</li>
+  <li><strong>Visibility/state</strong> — isDisplayed, isEnabled, isSelected</li>
+  <li><strong>URL</strong> — Current URL after navigation</li>
+  <li><strong>Element count</strong> — Number of matching elements</li>
+</ul>
+
+<h3>Soft Assertions</h3>
+<p>Regular assertions stop the test on first failure. Soft assertions collect all failures and report them at the end — useful when you want to check multiple things in one test.</p>
+
+              <div class="lang-switcher">
+                <button class="lang-tab active" onclick="switchLang('java', this)"><span class="lang-icon java">JV</span> Java</button>
+                <button class="lang-tab" onclick="switchLang('python', this)"><span class="lang-icon python">PY</span> Python</button>
+              </div>
+              <div class="lang-panel" data-lang="java">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">AssertionsTest.java</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code>import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.*;
+import org.testng.asserts.SoftAssert;
+import java.util.List;
+
+public class AssertionsTest {
+
+    WebDriver driver;
+
+    @BeforeMethod
+    public void setup() {
+        driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(
+            java.time.Duration.ofSeconds(10));
+        driver.get(&quot;https://www.selenium.dev/selenium/web/web-form.html&quot;);
+    }
+
+    @Test
+    public void testTextAssertions() {
+        String title = driver.getTitle();
+        Assert.assertEquals(title, &quot;Web form&quot;);
+        Assert.assertTrue(title.contains(&quot;form&quot;));
+        Assert.assertFalse(title.isEmpty());
+    }
+
+    @Test
+    public void testElementStateAssertions() {
+        WebElement input = driver.findElement(By.name(&quot;my-text&quot;));
+        Assert.assertTrue(input.isDisplayed(), &quot;Input should be visible&quot;);
+        Assert.assertTrue(input.isEnabled(), &quot;Input should be enabled&quot;);
+
+        WebElement disabled = driver.findElement(By.name(&quot;my-disabled&quot;));
+        Assert.assertFalse(disabled.isEnabled(), &quot;Should be disabled&quot;);
+    }
+
+    @Test
+    public void testAttributeAssertions() {
+        WebElement input = driver.findElement(By.name(&quot;my-text&quot;));
+        Assert.assertEquals(input.getAttribute(&quot;type&quot;), &quot;text&quot;);
+        Assert.assertNotNull(input.getAttribute(&quot;name&quot;));
+        Assert.assertEquals(input.getAttribute(&quot;myprop&quot;), &quot;myvalue&quot;);
+    }
+
+    @Test
+    public void testUrlAssertions() {
+        String url = driver.getCurrentUrl();
+        Assert.assertTrue(url.contains(&quot;web-form&quot;));
+        Assert.assertTrue(url.startsWith(&quot;https://&quot;));
+    }
+
+    @Test
+    public void testElementCountAssertions() {
+        List&lt;WebElement&gt; inputs = driver.findElements(By.tagName(&quot;input&quot;));
+        Assert.assertTrue(inputs.size() &gt; 0, &quot;Should find inputs&quot;);
+        Assert.assertTrue(inputs.size() &gt;= 5,
+            &quot;Should have at least 5 inputs&quot;);
+    }
+
+    @Test
+    public void testSoftAssertions() {
+        SoftAssert soft = new SoftAssert();
+
+        soft.assertEquals(driver.getTitle(), &quot;Web form&quot;);
+        soft.assertTrue(driver.getCurrentUrl().contains(&quot;web-form&quot;));
+
+        WebElement input = driver.findElement(By.name(&quot;my-text&quot;));
+        soft.assertTrue(input.isDisplayed(), &quot;Input visible&quot;);
+        soft.assertTrue(input.isEnabled(), &quot;Input enabled&quot;);
+        soft.assertEquals(input.getAttribute(&quot;type&quot;), &quot;text&quot;);
+
+        // All failures reported together at assertAll()
+        soft.assertAll();
+    }
+
+    @AfterMethod
+    public void teardown() { if (driver != null) driver.quit(); }
+}</code></pre>
+  </div>
+</div>
+<div class="lang-panel" data-lang="python">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">test_assertions.py</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code>from selenium import webdriver
+from selenium.webdriver.common.by import By
+import pytest
+
+@pytest.fixture
+def driver():
+    d = webdriver.Chrome()
+    d.implicitly_wait(10)
+    d.get(&quot;https://www.selenium.dev/selenium/web/web-form.html&quot;)
+    yield d
+    d.quit()
+
+
+def test_text_assertions(driver):
+    title = driver.title
+    assert title == &quot;Web form&quot;
+    assert &quot;form&quot; in title
+    assert len(title) &gt; 0
+
+
+def test_element_state(driver):
+    input_el = driver.find_element(By.NAME, &quot;my-text&quot;)
+    assert input_el.is_displayed(), &quot;Input should be visible&quot;
+    assert input_el.is_enabled(), &quot;Input should be enabled&quot;
+
+    disabled = driver.find_element(By.NAME, &quot;my-disabled&quot;)
+    assert not disabled.is_enabled(), &quot;Should be disabled&quot;
+
+
+def test_attribute_assertions(driver):
+    input_el = driver.find_element(By.NAME, &quot;my-text&quot;)
+    assert input_el.get_attribute(&quot;type&quot;) == &quot;text&quot;
+    assert input_el.get_attribute(&quot;name&quot;) is not None
+    assert input_el.get_attribute(&quot;myprop&quot;) == &quot;myvalue&quot;
+
+
+def test_url_assertions(driver):
+    url = driver.current_url
+    assert &quot;web-form&quot; in url
+    assert url.startswith(&quot;https://&quot;)
+
+
+def test_element_count(driver):
+    inputs = driver.find_elements(By.TAG_NAME, &quot;input&quot;)
+    assert len(inputs) &gt; 0, &quot;Should find inputs&quot;
+    assert len(inputs) &gt;= 5, &quot;Should have at least 5 inputs&quot;
+
+
+def test_multiple_assertions(driver):
+    &quot;&quot;&quot;pytest collects assertion details on failure&quot;&quot;&quot;
+    assert driver.title == &quot;Web form&quot;
+    assert &quot;web-form&quot; in driver.current_url
+
+    input_el = driver.find_element(By.NAME, &quot;my-text&quot;)
+    assert input_el.is_displayed()
+    assert input_el.is_enabled()
+    assert input_el.get_attribute(&quot;type&quot;) == &quot;text&quot;
+
+    # For soft-assertion style, use pytest-check plugin:
+    # pip install pytest-check
+    # from pytest_check import check
+    # with check:
+    #     assert False, &quot;This won&#x27;t stop the test&quot;
+    # with check:
+    #     assert True, &quot;This still runs&quot; </code></pre>
+  </div>
+</div>
+
+              <hr class="my-5">
+              <div class="mt-4">
+                <span class="badge bg-secondary me-2 mb-2">Selenium</span>
+                <span class="badge bg-secondary me-2 mb-2">Beginner</span>
+                <span class="badge bg-secondary me-2 mb-2">Assertions & Verification</span>
+              </div>
+              <div class="tutorial-nav">
+  <a href="waits-explicit-implicit-fluent.html" class="prev"><span class="nav-label"><i class="bi bi-chevron-left"></i> Previous</span><span class="nav-title">Waits — Implicit, Explicit & Fluent</span></a>
+  <a href="page-object-model.html" class="next"><span class="nav-label">Next <i class="bi bi-chevron-right"></i></span><span class="nav-title">Page Object Model (POM)</span></a>
+</div>
+              <div class="text-muted small mt-5 pt-3 border-top">
+                <p class="mb-1">Written by PV</p>
+                <p class="mb-0">&copy; 2026 All Rights Reserved</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="global-lang-select">
+    <button class="active" onclick="switchAllLang('java', this)">Java</button>
+    <button onclick="switchAllLang('python', this)">Python</button>
+  </div>
+  <footer id="footer" class="footer light-background">
+    <div class="container">
+      <div class="copyright text-center"><p>&copy; <span>Copyright</span> <strong class="px-1 sitename">PV</strong> <span>All Rights Reserved<br></span></p></div>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://www.instagram.com/Chinna.Prasanna"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/"><i class="bi bi-github"></i></a>
+      </div>
+      <div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Tweaked by <a href="#">PV</a></div>
+    </div>
+  </footer>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script>
+    function switchLang(lang, btn) {
+      const article = btn.closest('article') || document;
+      article.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      article.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === lang); });
+      document.querySelectorAll('.global-lang-select button').forEach(b => {
+        const t = b.textContent.trim().toLowerCase();
+        b.classList.toggle('active', t === lang);
+      });
+      localStorage.setItem('sel-lang', lang);
+    }
+    function switchAllLang(lang, btn) {
+      document.querySelectorAll('.global-lang-select button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === lang); });
+      document.querySelectorAll('.lang-switcher .lang-tab').forEach(t => {
+        const icon = t.querySelector('.lang-icon');
+        t.classList.toggle('active', icon && icon.classList.contains(lang));
+      });
+      localStorage.setItem('sel-lang', lang);
+    }
+    function copyCode(btn) {
+      const code = btn.closest('.code-block-wrapper').querySelector('code');
+      navigator.clipboard.writeText(code.textContent);
+      btn.innerHTML = '<i class="bi bi-check2"></i> Copied!';
+      setTimeout(() => btn.innerHTML = '<i class="bi bi-clipboard"></i> Copy', 2000);
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('sel-lang') || 'java';
+      document.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === saved); });
+      document.querySelectorAll('.lang-switcher .lang-tab').forEach(t => {
+        const icon = t.querySelector('.lang-icon');
+        t.classList.toggle('active', icon && icon.classList.contains(saved));
+      });
+      document.querySelectorAll('.global-lang-select button').forEach(b => {
+        const t = b.textContent.trim().toLowerCase();
+        b.classList.toggle('active', t === saved);
+      });
+    });
+  </script>
+</body>
+</html>

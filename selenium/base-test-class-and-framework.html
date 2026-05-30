@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Base Test Class & Framework Design — Selenium Tutorial | PV</title>
+  <meta name="description" content="Build a production-ready test framework with base classes, driver factory, configuration management, and utility helpers.">
+  <meta name="keywords" content="Test Framework, Base Class, Driver Factory, Configuration, Test Architecture, Reusable Framework">
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/css/main.css" rel="stylesheet">
+</head>
+<body class="blog-page">
+  <header id="header" class="header d-flex align-items-center light-background sticky-top">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+      <a href="../index.html" class="logo d-flex align-items-center me-auto me-xl-0"><h1 class="sitename">PV</h1></a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../resume.html">Resume</a></li>
+          <li><a href="../services.html">Services</a></li>
+          <li><a href="../portfolio.html">Portfolio</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../learning-hub.html" class="active">Learning Hub</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <div class="header-social-links">
+        <a href="https://www.instagram.com/Chinna.Prasanna" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/" class="github"><i class="bi bi-github"></i></a>
+      </div>
+    </div>
+  </header>
+  <main class="main">
+    <section id="tutorial" class="blog-post section">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center mb-4">
+          <div class="col-lg-10"><a href="../learning-hub.html#selenium-course" class="btn btn-link p-0"><i class="bi bi-chevron-left"></i> Back to Course</a></div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 d-none d-lg-block"><div class="course-sidebar">
+  <div class="course-nav-title">Course Contents</div>
+  <ul class="course-nav">
+    <li class="nav-section-label">Beginner</li>
+    <li><a href="introduction-to-selenium.html" class=""><span class="nav-number">1</span> Introduction to Selenium</a></li>
+    <li><a href="setup-maven-and-project-structure.html" class=""><span class="nav-number">2</span> Setup — Maven, pip & Project Structure</a></li>
+    <li><a href="writing-your-first-test.html" class=""><span class="nav-number">3</span> Writing Your First Test</a></li>
+    <li><a href="locators-and-finding-elements.html" class=""><span class="nav-number">4</span> Locators & Finding Elements</a></li>
+    <li><a href="interactions-click-type-select.html" class=""><span class="nav-number">5</span> Interactions — Click, Type & Select</a></li>
+    <li><a href="waits-explicit-implicit-fluent.html" class=""><span class="nav-number">6</span> Waits — Implicit, Explicit & Fluent</a></li>
+    <li><a href="assertions-and-verification.html" class=""><span class="nav-number">7</span> Assertions & Verification</a></li>
+    <li class="nav-section-label">Intermediate</li>
+    <li><a href="page-object-model.html" class=""><span class="nav-number">8</span> Page Object Model (POM)</a></li>
+    <li><a href="handling-alerts-frames-windows.html" class=""><span class="nav-number">9</span> Alerts, Frames & Multiple Windows</a></li>
+    <li><a href="actions-api-advanced-interactions.html" class=""><span class="nav-number">10</span> Actions API — Advanced Interactions</a></li>
+    <li><a href="file-upload-and-download.html" class=""><span class="nav-number">11</span> File Upload & Download</a></li>
+    <li><a href="javascript-executor.html" class=""><span class="nav-number">12</span> JavaScript Executor</a></li>
+    <li><a href="screenshots-and-visual-testing.html" class=""><span class="nav-number">13</span> Screenshots & Visual Testing</a></li>
+    <li><a href="chrome-devtools-protocol.html" class=""><span class="nav-number">14</span> Chrome DevTools Protocol (CDP)</a></li>
+    <li class="nav-section-label">Advanced</li>
+    <li><a href="base-test-class-and-framework.html" class=" active"><span class="nav-number">15</span> Base Test Class & Framework Design</a></li>
+    <li><a href="data-driven-testing.html" class=""><span class="nav-number">16</span> Data-Driven Testing</a></li>
+    <li><a href="cross-browser-testing.html" class=""><span class="nav-number">17</span> Cross-Browser Testing</a></li>
+    <li><a href="parallel-execution-and-reporting.html" class=""><span class="nav-number">18</span> Parallel Execution & Reporting</a></li>
+    <li><a href="ci-cd-integration.html" class=""><span class="nav-number">19</span> CI/CD Integration</a></li>
+    <li><a href="best-practices-and-design-patterns.html" class=""><span class="nav-number">20</span> Best Practices & Design Patterns</a></li>
+  </ul>
+</div></div>
+          <div class="col-lg-7">
+            <article class="tutorial-post">
+              <div class="mb-2">
+                <span class="badge bg-danger me-2">Advanced</span>
+                <span class="text-muted small">Chapter 15 &middot; 14 min read</span>
+              </div>
+              <h1 class="mb-3">Base Test Class & Framework Design</h1>
+              <p class="lead fst-italic mb-4">Build a production-ready test framework with base classes, driver factory, configuration management, and utility helpers.</p>
+              
+<h2>Production-Ready Test Framework</h2>
+<p>A well-designed framework is the difference between tests that scale and tests that break. Build a solid foundation with a base test class, driver factory, centralized config, and reusable utilities.</p>
+
+              <div class="lang-switcher">
+                <button class="lang-tab active" onclick="switchLang('java', this)"><span class="lang-icon java">JV</span> Java</button>
+                <button class="lang-tab" onclick="switchLang('python', this)"><span class="lang-icon python">PY</span> Python</button>
+              </div>
+              <div class="lang-panel" data-lang="java">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">DriverFactory.java</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code>package com.selenium.course.base;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import java.time.Duration;
+
+public class DriverFactory {
+
+    private static ThreadLocal&lt;WebDriver&gt; driver = new ThreadLocal&lt;&gt;();
+
+    public static WebDriver getDriver() {
+        return driver.get();
+    }
+
+    public static void initDriver(String browser, boolean headless) {
+        WebDriver webDriver;
+
+        switch (browser.toLowerCase()) {
+            case &quot;firefox&quot;:
+                FirefoxOptions ffOptions = new FirefoxOptions();
+                if (headless) ffOptions.addArguments(&quot;--headless&quot;);
+                webDriver = new FirefoxDriver(ffOptions);
+                break;
+            case &quot;edge&quot;:
+                webDriver = new EdgeDriver();
+                break;
+            default:
+                ChromeOptions chromeOptions = new ChromeOptions();
+                if (headless) chromeOptions.addArguments(&quot;--headless=new&quot;);
+                chromeOptions.addArguments(&quot;--no-sandbox&quot;);
+                chromeOptions.addArguments(&quot;--window-size=1920,1080&quot;);
+                webDriver = new ChromeDriver(chromeOptions);
+        }
+
+        webDriver.manage().timeouts()
+            .implicitlyWait(Duration.ofSeconds(10));
+        webDriver.manage().timeouts()
+            .pageLoadTimeout(Duration.ofSeconds(30));
+        webDriver.manage().window().maximize();
+
+        driver.set(webDriver);
+    }
+
+    public static void quitDriver() {
+        if (driver.get() != null) {
+            driver.get().quit();
+            driver.remove();
+        }
+    }
+}</code></pre>
+  </div>
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">BaseTest.java</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code>package com.selenium.course.base;
+
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.*;
+import java.io.FileInputStream;
+import java.util.Properties;
+
+public class BaseTest {
+
+    protected WebDriver driver;
+    protected static Properties config;
+
+    @BeforeSuite
+    public void loadConfig() throws Exception {
+        config = new Properties();
+        String env = System.getProperty(&quot;env&quot;, &quot;test&quot;);
+        config.load(new FileInputStream(
+            &quot;src/test/resources/config-&quot; + env + &quot;.properties&quot;));
+    }
+
+    @BeforeMethod
+    @Parameters({&quot;browser&quot;})
+    public void setup(@Optional(&quot;chrome&quot;) String browser) {
+        boolean headless = Boolean.parseBoolean(
+            System.getProperty(&quot;headless&quot;, &quot;false&quot;));
+
+        DriverFactory.initDriver(browser, headless);
+        driver = DriverFactory.getDriver();
+
+        String baseUrl = config.getProperty(&quot;base.url&quot;);
+        if (baseUrl != null) {
+            driver.get(baseUrl);
+        }
+    }
+
+    @AfterMethod
+    public void teardown() {
+        DriverFactory.quitDriver();
+    }
+}
+
+// Run: mvn test -Dbrowser=chrome -Dheadless=true -Denv=staging</code></pre>
+  </div>
+</div>
+<div class="lang-panel" data-lang="python">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">base/driver_factory.py</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code>&quot;&quot;&quot;Driver factory with browser selection and options&quot;&quot;&quot;
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options as ChromeOptions
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
+
+def create_driver(browser=&#x27;chrome&#x27;, headless=False):
+    if browser == &#x27;firefox&#x27;:
+        options = FirefoxOptions()
+        if headless:
+            options.add_argument(&#x27;--headless&#x27;)
+        return webdriver.Firefox(options=options)
+
+    elif browser == &#x27;edge&#x27;:
+        return webdriver.Edge()
+
+    else:  # Chrome (default)
+        options = ChromeOptions()
+        if headless:
+            options.add_argument(&#x27;--headless=new&#x27;)
+        options.add_argument(&#x27;--no-sandbox&#x27;)
+        options.add_argument(&#x27;--window-size=1920,1080&#x27;)
+        return webdriver.Chrome(options=options)</code></pre>
+  </div>
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">conftest.py</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code>&quot;&quot;&quot;Centralized fixtures for entire framework&quot;&quot;&quot;
+import pytest, os
+from base.driver_factory import create_driver
+
+def pytest_addoption(parser):
+    parser.addoption(&#x27;--browser&#x27;, default=&#x27;chrome&#x27;,
+                     help=&#x27;Browser: chrome, firefox, edge&#x27;)
+    parser.addoption(&#x27;--headless&#x27;, action=&#x27;store_true&#x27;,
+                     help=&#x27;Run in headless mode&#x27;)
+    parser.addoption(&#x27;--env&#x27;, default=&#x27;test&#x27;,
+                     help=&#x27;Environment: test, staging, prod&#x27;)
+
+@pytest.fixture(scope=&#x27;function&#x27;)
+def driver(request):
+    browser = request.config.getoption(&#x27;--browser&#x27;)
+    headless = request.config.getoption(&#x27;--headless&#x27;)
+
+    d = create_driver(browser, headless)
+    d.implicitly_wait(10)
+    d.set_page_load_timeout(30)
+    d.maximize_window()
+
+    yield d
+    d.quit()
+
+@pytest.fixture(scope=&#x27;session&#x27;)
+def config(request):
+    env = request.config.getoption(&#x27;--env&#x27;)
+    configs = {
+        &#x27;test&#x27;: {&#x27;base_url&#x27;: &#x27;https://www.selenium.dev/&#x27;},
+        &#x27;staging&#x27;: {&#x27;base_url&#x27;: &#x27;https://staging.example.com/&#x27;},
+    }
+    return configs.get(env, configs[&#x27;test&#x27;])
+
+# Run: pytest --browser=chrome --headless --env=staging</code></pre>
+  </div>
+</div>
+
+              <hr class="my-5">
+              <div class="mt-4">
+                <span class="badge bg-secondary me-2 mb-2">Selenium</span>
+                <span class="badge bg-secondary me-2 mb-2">Advanced</span>
+                <span class="badge bg-secondary me-2 mb-2">Base Test Class & Framework Design</span>
+              </div>
+              <div class="tutorial-nav">
+  <a href="chrome-devtools-protocol.html" class="prev"><span class="nav-label"><i class="bi bi-chevron-left"></i> Previous</span><span class="nav-title">Chrome DevTools Protocol (CDP)</span></a>
+  <a href="data-driven-testing.html" class="next"><span class="nav-label">Next <i class="bi bi-chevron-right"></i></span><span class="nav-title">Data-Driven Testing</span></a>
+</div>
+              <div class="text-muted small mt-5 pt-3 border-top">
+                <p class="mb-1">Written by PV</p>
+                <p class="mb-0">&copy; 2026 All Rights Reserved</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="global-lang-select">
+    <button class="active" onclick="switchAllLang('java', this)">Java</button>
+    <button onclick="switchAllLang('python', this)">Python</button>
+  </div>
+  <footer id="footer" class="footer light-background">
+    <div class="container">
+      <div class="copyright text-center"><p>&copy; <span>Copyright</span> <strong class="px-1 sitename">PV</strong> <span>All Rights Reserved<br></span></p></div>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://www.instagram.com/Chinna.Prasanna"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/"><i class="bi bi-github"></i></a>
+      </div>
+      <div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Tweaked by <a href="#">PV</a></div>
+    </div>
+  </footer>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script>
+    function switchLang(lang, btn) {
+      const article = btn.closest('article') || document;
+      article.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      article.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === lang); });
+      document.querySelectorAll('.global-lang-select button').forEach(b => {
+        const t = b.textContent.trim().toLowerCase();
+        b.classList.toggle('active', t === lang);
+      });
+      localStorage.setItem('sel-lang', lang);
+    }
+    function switchAllLang(lang, btn) {
+      document.querySelectorAll('.global-lang-select button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === lang); });
+      document.querySelectorAll('.lang-switcher .lang-tab').forEach(t => {
+        const icon = t.querySelector('.lang-icon');
+        t.classList.toggle('active', icon && icon.classList.contains(lang));
+      });
+      localStorage.setItem('sel-lang', lang);
+    }
+    function copyCode(btn) {
+      const code = btn.closest('.code-block-wrapper').querySelector('code');
+      navigator.clipboard.writeText(code.textContent);
+      btn.innerHTML = '<i class="bi bi-check2"></i> Copied!';
+      setTimeout(() => btn.innerHTML = '<i class="bi bi-clipboard"></i> Copy', 2000);
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('sel-lang') || 'java';
+      document.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === saved); });
+      document.querySelectorAll('.lang-switcher .lang-tab').forEach(t => {
+        const icon = t.querySelector('.lang-icon');
+        t.classList.toggle('active', icon && icon.classList.contains(saved));
+      });
+      document.querySelectorAll('.global-lang-select button').forEach(b => {
+        const t = b.textContent.trim().toLowerCase();
+        b.classList.toggle('active', t === saved);
+      });
+    });
+  </script>
+</body>
+</html>

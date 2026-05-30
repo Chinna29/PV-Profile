@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Setup — Maven, pip & Project Structure — Selenium Tutorial | PV</title>
+  <meta name="description" content="Set up a Selenium 4 project with Maven (Java) and pip (Python). Configure dependencies, project layout, and test runners.">
+  <meta name="keywords" content="Selenium Setup, Maven, pip, Project Structure, TestNG, pytest, Selenium 4 Dependencies">
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/css/main.css" rel="stylesheet">
+</head>
+<body class="blog-page">
+  <header id="header" class="header d-flex align-items-center light-background sticky-top">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+      <a href="../index.html" class="logo d-flex align-items-center me-auto me-xl-0"><h1 class="sitename">PV</h1></a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../resume.html">Resume</a></li>
+          <li><a href="../services.html">Services</a></li>
+          <li><a href="../portfolio.html">Portfolio</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../learning-hub.html" class="active">Learning Hub</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <div class="header-social-links">
+        <a href="https://www.instagram.com/Chinna.Prasanna" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/" class="github"><i class="bi bi-github"></i></a>
+      </div>
+    </div>
+  </header>
+  <main class="main">
+    <section id="tutorial" class="blog-post section">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center mb-4">
+          <div class="col-lg-10"><a href="../learning-hub.html#selenium-course" class="btn btn-link p-0"><i class="bi bi-chevron-left"></i> Back to Course</a></div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 d-none d-lg-block"><div class="course-sidebar">
+  <div class="course-nav-title">Course Contents</div>
+  <ul class="course-nav">
+    <li class="nav-section-label">Beginner</li>
+    <li><a href="introduction-to-selenium.html" class=""><span class="nav-number">1</span> Introduction to Selenium</a></li>
+    <li><a href="setup-maven-and-project-structure.html" class=" active"><span class="nav-number">2</span> Setup — Maven, pip & Project Structure</a></li>
+    <li><a href="writing-your-first-test.html" class=""><span class="nav-number">3</span> Writing Your First Test</a></li>
+    <li><a href="locators-and-finding-elements.html" class=""><span class="nav-number">4</span> Locators & Finding Elements</a></li>
+    <li><a href="interactions-click-type-select.html" class=""><span class="nav-number">5</span> Interactions — Click, Type & Select</a></li>
+    <li><a href="waits-explicit-implicit-fluent.html" class=""><span class="nav-number">6</span> Waits — Implicit, Explicit & Fluent</a></li>
+    <li><a href="assertions-and-verification.html" class=""><span class="nav-number">7</span> Assertions & Verification</a></li>
+    <li class="nav-section-label">Intermediate</li>
+    <li><a href="page-object-model.html" class=""><span class="nav-number">8</span> Page Object Model (POM)</a></li>
+    <li><a href="handling-alerts-frames-windows.html" class=""><span class="nav-number">9</span> Alerts, Frames & Multiple Windows</a></li>
+    <li><a href="actions-api-advanced-interactions.html" class=""><span class="nav-number">10</span> Actions API — Advanced Interactions</a></li>
+    <li><a href="file-upload-and-download.html" class=""><span class="nav-number">11</span> File Upload & Download</a></li>
+    <li><a href="javascript-executor.html" class=""><span class="nav-number">12</span> JavaScript Executor</a></li>
+    <li><a href="screenshots-and-visual-testing.html" class=""><span class="nav-number">13</span> Screenshots & Visual Testing</a></li>
+    <li><a href="chrome-devtools-protocol.html" class=""><span class="nav-number">14</span> Chrome DevTools Protocol (CDP)</a></li>
+    <li class="nav-section-label">Advanced</li>
+    <li><a href="base-test-class-and-framework.html" class=""><span class="nav-number">15</span> Base Test Class & Framework Design</a></li>
+    <li><a href="data-driven-testing.html" class=""><span class="nav-number">16</span> Data-Driven Testing</a></li>
+    <li><a href="cross-browser-testing.html" class=""><span class="nav-number">17</span> Cross-Browser Testing</a></li>
+    <li><a href="parallel-execution-and-reporting.html" class=""><span class="nav-number">18</span> Parallel Execution & Reporting</a></li>
+    <li><a href="ci-cd-integration.html" class=""><span class="nav-number">19</span> CI/CD Integration</a></li>
+    <li><a href="best-practices-and-design-patterns.html" class=""><span class="nav-number">20</span> Best Practices & Design Patterns</a></li>
+  </ul>
+</div></div>
+          <div class="col-lg-7">
+            <article class="tutorial-post">
+              <div class="mb-2">
+                <span class="badge bg-success me-2">Beginner</span>
+                <span class="text-muted small">Chapter 2 &middot; 10 min read</span>
+              </div>
+              <h1 class="mb-3">Setup — Maven, pip & Project Structure</h1>
+              <p class="lead fst-italic mb-4">Set up a Selenium 4 project with Maven (Java) and pip (Python). Configure dependencies, project layout, and test runners.</p>
+              
+<h2>Setting Up Your Selenium 4 Project</h2>
+<p>A clean project structure is the foundation of maintainable test automation. Java projects use Maven for dependency management, while Python uses pip. Both need proper folder layouts and test runner configuration.</p>
+
+<h3>Java with Maven</h3>
+<p>Maven handles dependency resolution, build lifecycle, and test execution. We'll use Selenium 4.x with TestNG as the test framework and WebDriverManager for automatic driver setup.</p>
+
+<h3>Python with pip</h3>
+<p>Python's simplicity makes setup quick — install selenium and pytest, create your folder structure, and you're ready to write tests. Selenium 4's built-in Selenium Manager removes the need for external driver management.</p>
+
+<h3>Selenium Manager (New in Selenium 4.6+)</h3>
+<p>Selenium Manager is a built-in tool that automatically downloads and configures the correct browser driver. No more manual ChromeDriver downloads or version mismatches. It works in both Java and Python out of the box.</p>
+
+              <div class="lang-switcher">
+                <button class="lang-tab active" onclick="switchLang('java', this)"><span class="lang-icon java">JV</span> Java</button>
+                <button class="lang-tab" onclick="switchLang('python', this)"><span class="lang-icon python">PY</span> Python</button>
+              </div>
+              <div class="lang-panel" data-lang="java">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">pom.xml</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;groupId&gt;com.selenium.course&lt;/groupId&gt;
+    &lt;artifactId&gt;selenium-course&lt;/artifactId&gt;
+    &lt;version&gt;1.0.0&lt;/version&gt;
+
+    &lt;properties&gt;
+        &lt;maven.compiler.source&gt;17&lt;/maven.compiler.source&gt;
+        &lt;maven.compiler.target&gt;17&lt;/maven.compiler.target&gt;
+        &lt;selenium.version&gt;4.27.0&lt;/selenium.version&gt;
+        &lt;testng.version&gt;7.10.2&lt;/testng.version&gt;
+        &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+    &lt;/properties&gt;
+
+    &lt;dependencies&gt;
+        &lt;!-- Selenium 4 --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.seleniumhq.selenium&lt;/groupId&gt;
+            &lt;artifactId&gt;selenium-java&lt;/artifactId&gt;
+            &lt;version&gt;${selenium.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+
+        &lt;!-- TestNG --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.testng&lt;/groupId&gt;
+            &lt;artifactId&gt;testng&lt;/artifactId&gt;
+            &lt;version&gt;${testng.version}&lt;/version&gt;
+            &lt;scope&gt;test&lt;/scope&gt;
+        &lt;/dependency&gt;
+
+        &lt;!-- WebDriverManager (optional — Selenium Manager is built in) --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;io.github.bonigarcia&lt;/groupId&gt;
+            &lt;artifactId&gt;webdrivermanager&lt;/artifactId&gt;
+            &lt;version&gt;5.9.2&lt;/version&gt;
+            &lt;scope&gt;test&lt;/scope&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+
+    &lt;build&gt;
+        &lt;plugins&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+                &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;
+                &lt;version&gt;3.2.5&lt;/version&gt;
+                &lt;configuration&gt;
+                    &lt;suiteXmlFiles&gt;
+                        &lt;suiteXmlFile&gt;src/test/resources/testng.xml&lt;/suiteXmlFile&gt;
+                    &lt;/suiteXmlFiles&gt;
+                &lt;/configuration&gt;
+            &lt;/plugin&gt;
+        &lt;/plugins&gt;
+    &lt;/build&gt;
+&lt;/project&gt;</code></pre>
+  </div>
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">project-structure.txt</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code># Recommended Java project structure
+selenium-course/
++-- pom.xml
++-- src/
+|   +-- test/
+|       +-- java/com/selenium/course/
+|       |   +-- base/
+|       |   |   +-- BaseTest.java          # Setup/teardown
+|       |   +-- pages/
+|       |   |   +-- LoginPage.java         # Page Objects
+|       |   |   +-- HomePage.java
+|       |   +-- tests/
+|       |   |   +-- LoginTest.java         # Test classes
+|       |   |   +-- NavigationTest.java
+|       |   +-- utils/
+|       |       +-- WaitHelper.java        # Utilities
+|       |       +-- ScreenshotUtil.java
+|       +-- resources/
+|           +-- testng.xml
+|           +-- config.properties
++-- test-output/                            # Reports</code></pre>
+  </div>
+</div>
+<div class="lang-panel" data-lang="python">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">requirements.txt</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code># requirements.txt
+selenium==4.27.0
+pytest==8.3.4
+pytest-html==4.1.1
+webdriver-manager==4.0.2
+python-dotenv==1.0.1</code></pre>
+  </div>
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">project-structure.txt</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code># Recommended Python project structure
+selenium-course/
++-- requirements.txt
++-- pytest.ini
++-- conftest.py                   # Shared fixtures
++-- config/
+|   +-- __init__.py
+|   +-- settings.py               # URLs, timeouts
++-- pages/
+|   +-- __init__.py
+|   +-- login_page.py             # Page Objects
+|   +-- home_page.py
++-- tests/
+|   +-- __init__.py
+|   +-- test_login.py             # Test files
+|   +-- test_navigation.py
++-- utils/
+|   +-- __init__.py
+|   +-- wait_helper.py            # Utilities
+|   +-- screenshot_util.py
++-- reports/                       # HTML reports</code></pre>
+  </div>
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">conftest.py</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code># conftest.py — shared pytest fixtures
+import pytest
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+
+@pytest.fixture(scope=&#x27;function&#x27;)
+def driver():
+    &quot;&quot;&quot;Create a fresh browser instance for each test.&quot;&quot;&quot;
+    options = Options()
+    # options.add_argument(&#x27;--headless=new&#x27;)  # Uncomment for headless
+    options.add_argument(&#x27;--no-sandbox&#x27;)
+    options.add_argument(&#x27;--window-size=1920,1080&#x27;)
+
+    driver = webdriver.Chrome(options=options)
+    driver.implicitly_wait(10)
+
+    yield driver
+
+    driver.quit()
+
+@pytest.fixture(scope=&#x27;session&#x27;)
+def base_url():
+    return &#x27;https://www.selenium.dev/&#x27;</code></pre>
+  </div>
+</div>
+
+              <hr class="my-5">
+              <div class="mt-4">
+                <span class="badge bg-secondary me-2 mb-2">Selenium</span>
+                <span class="badge bg-secondary me-2 mb-2">Beginner</span>
+                <span class="badge bg-secondary me-2 mb-2">Setup — Maven, pip & Project Structure</span>
+              </div>
+              <div class="tutorial-nav">
+  <a href="introduction-to-selenium.html" class="prev"><span class="nav-label"><i class="bi bi-chevron-left"></i> Previous</span><span class="nav-title">Introduction to Selenium</span></a>
+  <a href="writing-your-first-test.html" class="next"><span class="nav-label">Next <i class="bi bi-chevron-right"></i></span><span class="nav-title">Writing Your First Test</span></a>
+</div>
+              <div class="text-muted small mt-5 pt-3 border-top">
+                <p class="mb-1">Written by PV</p>
+                <p class="mb-0">&copy; 2026 All Rights Reserved</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="global-lang-select">
+    <button class="active" onclick="switchAllLang('java', this)">Java</button>
+    <button onclick="switchAllLang('python', this)">Python</button>
+  </div>
+  <footer id="footer" class="footer light-background">
+    <div class="container">
+      <div class="copyright text-center"><p>&copy; <span>Copyright</span> <strong class="px-1 sitename">PV</strong> <span>All Rights Reserved<br></span></p></div>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://www.instagram.com/Chinna.Prasanna"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/"><i class="bi bi-github"></i></a>
+      </div>
+      <div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Tweaked by <a href="#">PV</a></div>
+    </div>
+  </footer>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script>
+    function switchLang(lang, btn) {
+      const article = btn.closest('article') || document;
+      article.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      article.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === lang); });
+      document.querySelectorAll('.global-lang-select button').forEach(b => {
+        const t = b.textContent.trim().toLowerCase();
+        b.classList.toggle('active', t === lang);
+      });
+      localStorage.setItem('sel-lang', lang);
+    }
+    function switchAllLang(lang, btn) {
+      document.querySelectorAll('.global-lang-select button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === lang); });
+      document.querySelectorAll('.lang-switcher .lang-tab').forEach(t => {
+        const icon = t.querySelector('.lang-icon');
+        t.classList.toggle('active', icon && icon.classList.contains(lang));
+      });
+      localStorage.setItem('sel-lang', lang);
+    }
+    function copyCode(btn) {
+      const code = btn.closest('.code-block-wrapper').querySelector('code');
+      navigator.clipboard.writeText(code.textContent);
+      btn.innerHTML = '<i class="bi bi-check2"></i> Copied!';
+      setTimeout(() => btn.innerHTML = '<i class="bi bi-clipboard"></i> Copy', 2000);
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('sel-lang') || 'java';
+      document.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === saved); });
+      document.querySelectorAll('.lang-switcher .lang-tab').forEach(t => {
+        const icon = t.querySelector('.lang-icon');
+        t.classList.toggle('active', icon && icon.classList.contains(saved));
+      });
+      document.querySelectorAll('.global-lang-select button').forEach(b => {
+        const t = b.textContent.trim().toLowerCase();
+        b.classList.toggle('active', t === saved);
+      });
+    });
+  </script>
+</body>
+</html>

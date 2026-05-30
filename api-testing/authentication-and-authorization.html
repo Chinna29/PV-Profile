@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Authentication & Authorization — API Testing Tutorial | PV</title>
+  <meta name="description" content="Implement Bearer tokens, Basic auth, API keys, and OAuth2 flows. Test protected endpoints and validate access control.">
+  <meta name="keywords" content="API Authentication, Bearer Token, Basic Auth, API Key, OAuth2, JWT, Authorization Header">
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/css/main.css" rel="stylesheet">
+</head>
+<body class="blog-page">
+  <header id="header" class="header d-flex align-items-center light-background sticky-top">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+      <a href="../index.html" class="logo d-flex align-items-center me-auto me-xl-0"><h1 class="sitename">PV</h1></a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../resume.html">Resume</a></li>
+          <li><a href="../services.html">Services</a></li>
+          <li><a href="../portfolio.html">Portfolio</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../learning-hub.html" class="active">Learning Hub</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <div class="header-social-links">
+        <a href="https://www.instagram.com/Chinna.Prasanna" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/" class="github"><i class="bi bi-github"></i></a>
+      </div>
+    </div>
+  </header>
+  <main class="main">
+    <section id="tutorial" class="blog-post section">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center mb-4">
+          <div class="col-lg-10"><a href="../learning-hub.html#api-testing-course" class="btn btn-link p-0"><i class="bi bi-chevron-left"></i> Back to Course</a></div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 d-none d-lg-block"><div class="course-sidebar">
+  <div class="course-nav-title">Course Contents</div>
+  <ul class="course-nav">
+    <li class="nav-section-label">Beginner</li>
+    <li><a href="introduction-to-api-testing.html" class=""><span class="nav-number">1</span> Introduction to API Testing</a></li>
+    <li><a href="setup-and-project-structure.html" class=""><span class="nav-number">2</span> Setup & Project Structure</a></li>
+    <li><a href="your-first-get-request.html" class=""><span class="nav-number">3</span> Your First GET Request</a></li>
+    <li><a href="post-put-patch-delete.html" class=""><span class="nav-number">4</span> POST, PUT, PATCH & DELETE</a></li>
+    <li><a href="query-parameters-and-path-params.html" class=""><span class="nav-number">5</span> Query Parameters & Path Params</a></li>
+    <li><a href="headers-and-content-types.html" class=""><span class="nav-number">6</span> Headers & Content Types</a></li>
+    <li><a href="response-validation-and-assertions.html" class=""><span class="nav-number">7</span> Response Validation & Assertions</a></li>
+    <li class="nav-section-label">Intermediate</li>
+    <li><a href="authentication-and-authorization.html" class=" active"><span class="nav-number">8</span> Authentication & Authorization</a></li>
+    <li><a href="json-schema-validation.html" class=""><span class="nav-number">9</span> JSON Schema Validation</a></li>
+    <li><a href="request-and-response-serialization.html" class=""><span class="nav-number">10</span> Request & Response Serialization</a></li>
+    <li><a href="error-handling-and-negative-testing.html" class=""><span class="nav-number">11</span> Error Handling & Negative Testing</a></li>
+    <li><a href="data-driven-testing.html" class=""><span class="nav-number">12</span> Data-Driven Testing</a></li>
+    <li><a href="api-chaining-and-workflows.html" class=""><span class="nav-number">13</span> API Chaining & Workflows</a></li>
+    <li><a href="file-upload-and-multipart.html" class=""><span class="nav-number">14</span> File Upload & Multipart Requests</a></li>
+    <li class="nav-section-label">Advanced</li>
+    <li><a href="test-framework-integration.html" class=""><span class="nav-number">15</span> Test Framework Integration</a></li>
+    <li><a href="environment-configuration.html" class=""><span class="nav-number">16</span> Environment & Configuration Management</a></li>
+    <li><a href="retry-logic-and-resilience.html" class=""><span class="nav-number">17</span> Retry Logic & Resilience Testing</a></li>
+    <li><a href="mocking-and-service-virtualization.html" class=""><span class="nav-number">18</span> Mocking & Service Virtualization</a></li>
+    <li><a href="performance-and-load-testing.html" class=""><span class="nav-number">19</span> Performance & Load Testing</a></li>
+    <li><a href="ci-cd-and-reporting.html" class=""><span class="nav-number">20</span> CI/CD Integration & Reporting</a></li>
+  </ul>
+</div></div>
+          <div class="col-lg-7">
+            <article class="tutorial-post">
+              <div class="mb-2">
+                <span class="badge bg-warning me-2">Intermediate</span>
+                <span class="text-muted small">Chapter 8 &middot; 12 min read</span>
+              </div>
+              <h1 class="mb-3">Authentication & Authorization</h1>
+              <p class="lead fst-italic mb-4">Implement Bearer tokens, Basic auth, API keys, and OAuth2 flows. Test protected endpoints and validate access control.</p>
+              
+<h2>API Authentication & Authorization</h2>
+<p>Most real-world APIs require authentication. Understanding different auth mechanisms and testing them properly is crucial for any API tester.</p>
+
+<h3>Common Authentication Methods</h3>
+<ul>
+  <li><strong>Bearer Token</strong> — A token (often JWT) sent in the Authorization header. Most common in modern APIs.</li>
+  <li><strong>Basic Auth</strong> — Username and password encoded in Base64. Simple but less secure.</li>
+  <li><strong>API Key</strong> — A static key sent as a header or query parameter. Common in third-party APIs.</li>
+  <li><strong>OAuth 2.0</strong> — A delegation framework for granting limited access. Used by Google, GitHub, etc.</li>
+</ul>
+
+<h3>What to Test</h3>
+<p>Test both happy paths (valid credentials) and negative scenarios: expired tokens, invalid tokens, missing auth, wrong permissions, and token refresh flows.</p>
+
+              <div class="lang-switcher">
+                <button class="lang-tab active" onclick="switchLang('js', this)"><span class="lang-icon js">JS</span> JavaScript</button>
+                <button class="lang-tab" onclick="switchLang('java', this)"><span class="lang-icon java">JV</span> Java</button>
+                <button class="lang-tab" onclick="switchLang('python', this)"><span class="lang-icon python">PY</span> Python</button>
+              </div>
+              <div class="lang-panel" data-lang="js">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">auth.test.js</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code>// Bearer Token Authentication
+const token = &#x27;your-jwt-token-here&#x27;;
+
+const bearerResponse = await fetch(&#x27;https://httpbin.org/bearer&#x27;, {
+  headers: {
+    &#x27;Authorization&#x27;: `Bearer ${token}`
+  }
+});
+console.log(&#x27;Bearer status:&#x27;, bearerResponse.status);
+
+// Basic Authentication
+const username = &#x27;testuser&#x27;;
+const password = &#x27;testpass&#x27;;
+const basicCredentials = btoa(`${username}:${password}`);
+
+const basicResponse = await fetch(
+  `https://httpbin.org/basic-auth/${username}/${password}`, {
+  headers: {
+    &#x27;Authorization&#x27;: `Basic ${basicCredentials}`
+  }
+});
+const basicData = await basicResponse.json();
+console.assert(basicResponse.status === 200);
+console.assert(basicData.authenticated === true);
+
+// API Key in header
+const apiKeyResponse = await fetch(&#x27;https://httpbin.org/headers&#x27;, {
+  headers: {
+    &#x27;X-API-Key&#x27;: &#x27;my-secret-api-key&#x27;
+  }
+});
+const apiData = await apiKeyResponse.json();
+console.log(&#x27;API Key sent:&#x27;, apiData.headers[&#x27;X-Api-Key&#x27;]);
+
+// API Key as query parameter
+const apiKeyQueryResp = await fetch(
+  &#x27;https://httpbin.org/get?api_key=my-secret-api-key&#x27;
+);
+
+// Test missing auth — should return 401
+const noAuthResponse = await fetch(&#x27;https://httpbin.org/bearer&#x27;);
+console.assert(noAuthResponse.status === 401, &#x27;Should be 401 without token&#x27;);
+
+// Reusable auth helper
+function createAuthHeaders(token) {
+  return {
+    &#x27;Authorization&#x27;: `Bearer ${token}`,
+    &#x27;Content-Type&#x27;: &#x27;application/json&#x27;
+  };
+}
+
+console.log(&#x27;All auth tests passed!&#x27;);</code></pre>
+  </div>
+</div>
+<div class="lang-panel" data-lang="java">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">AuthenticationTest.java</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code>import static io.restassured.RestAssured.*;
+import static org.hamcrest.Matchers.*;
+import io.restassured.specification.RequestSpecification;
+import org.testng.annotations.Test;
+
+public class AuthenticationTest {
+
+    @Test
+    public void testBearerToken() {
+        String token = &quot;your-jwt-token-here&quot;;
+
+        given()
+            .header(&quot;Authorization&quot;, &quot;Bearer &quot; + token)
+        .when()
+            .get(&quot;https://httpbin.org/bearer&quot;)
+        .then()
+            .statusCode(200)
+            .body(&quot;authenticated&quot;, equalTo(true));
+    }
+
+    @Test
+    public void testBasicAuth() {
+        given()
+            .auth().preemptive().basic(&quot;testuser&quot;, &quot;testpass&quot;)
+        .when()
+            .get(&quot;https://httpbin.org/basic-auth/testuser/testpass&quot;)
+        .then()
+            .statusCode(200)
+            .body(&quot;authenticated&quot;, equalTo(true))
+            .body(&quot;user&quot;, equalTo(&quot;testuser&quot;));
+    }
+
+    @Test
+    public void testApiKeyInHeader() {
+        given()
+            .header(&quot;X-API-Key&quot;, &quot;my-secret-api-key&quot;)
+        .when()
+            .get(&quot;https://httpbin.org/headers&quot;)
+        .then()
+            .statusCode(200)
+            .body(&quot;headers.X-Api-Key&quot;, equalTo(&quot;my-secret-api-key&quot;));
+    }
+
+    @Test
+    public void testMissingAuth_ShouldReturn401() {
+        given()
+        .when()
+            .get(&quot;https://httpbin.org/bearer&quot;)
+        .then()
+            .statusCode(401);
+    }
+
+    // Reusable auth spec
+    private RequestSpecification authSpec(String token) {
+        return given()
+            .header(&quot;Authorization&quot;, &quot;Bearer &quot; + token)
+            .contentType(&quot;application/json&quot;);
+    }
+}</code></pre>
+  </div>
+</div>
+<div class="lang-panel" data-lang="python">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">test_authentication.py</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code>import requests
+from requests.auth import HTTPBasicAuth
+import base64
+
+def test_bearer_token():
+    &quot;&quot;&quot;Bearer token authentication&quot;&quot;&quot;
+    token = &#x27;your-jwt-token-here&#x27;
+
+    response = requests.get(
+        &#x27;https://httpbin.org/bearer&#x27;,
+        headers={&#x27;Authorization&#x27;: f&#x27;Bearer {token}&#x27;}
+    )
+    assert response.status_code == 200
+    assert response.json()[&#x27;authenticated&#x27;] is True
+
+def test_basic_auth():
+    &quot;&quot;&quot;Basic authentication — Requests makes this easy&quot;&quot;&quot;
+    response = requests.get(
+        &#x27;https://httpbin.org/basic-auth/testuser/testpass&#x27;,
+        auth=HTTPBasicAuth(&#x27;testuser&#x27;, &#x27;testpass&#x27;)
+    )
+    assert response.status_code == 200
+    assert response.json()[&#x27;authenticated&#x27;] is True
+    assert response.json()[&#x27;user&#x27;] == &#x27;testuser&#x27;
+
+def test_api_key_header():
+    &quot;&quot;&quot;API key in custom header&quot;&quot;&quot;
+    response = requests.get(
+        &#x27;https://httpbin.org/headers&#x27;,
+        headers={&#x27;X-API-Key&#x27;: &#x27;my-secret-api-key&#x27;}
+    )
+    assert response.status_code == 200
+    assert response.json()[&#x27;headers&#x27;][&#x27;X-Api-Key&#x27;] == &#x27;my-secret-api-key&#x27;
+
+def test_api_key_query_param():
+    &quot;&quot;&quot;API key as query parameter&quot;&quot;&quot;
+    response = requests.get(
+        &#x27;https://httpbin.org/get&#x27;,
+        params={&#x27;api_key&#x27;: &#x27;my-secret-api-key&#x27;}
+    )
+    assert response.status_code == 200
+
+def test_missing_auth():
+    &quot;&quot;&quot;Missing auth should return 401&quot;&quot;&quot;
+    response = requests.get(&#x27;https://httpbin.org/bearer&#x27;)
+    assert response.status_code == 401
+
+# Reusable session with auth
+def create_auth_session(token):
+    session = requests.Session()
+    session.headers.update({
+        &#x27;Authorization&#x27;: f&#x27;Bearer {token}&#x27;,
+        &#x27;Content-Type&#x27;: &#x27;application/json&#x27;
+    })
+    return session</code></pre>
+  </div>
+</div>
+
+              <hr class="my-5">
+              <div class="mt-4">
+                <span class="badge bg-secondary me-2 mb-2">API Testing</span>
+                <span class="badge bg-secondary me-2 mb-2">Intermediate</span>
+                <span class="badge bg-secondary me-2 mb-2">Authentication & Authorization</span>
+              </div>
+              <div class="tutorial-nav">
+  <a href="response-validation-and-assertions.html" class="prev"><span class="nav-label"><i class="bi bi-chevron-left"></i> Previous</span><span class="nav-title">Response Validation & Assertions</span></a>
+  <a href="json-schema-validation.html" class="next"><span class="nav-label">Next <i class="bi bi-chevron-right"></i></span><span class="nav-title">JSON Schema Validation</span></a>
+</div>
+              <div class="text-muted small mt-5 pt-3 border-top">
+                <p class="mb-1">Written by PV</p>
+                <p class="mb-0">&copy; 2026 All Rights Reserved</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="global-lang-select">
+    <button class="active" onclick="switchAllLang('js', this)">JS</button>
+    <button onclick="switchAllLang('java', this)">Java</button>
+    <button onclick="switchAllLang('python', this)">Python</button>
+  </div>
+  <footer id="footer" class="footer light-background">
+    <div class="container">
+      <div class="copyright text-center"><p>&copy; <span>Copyright</span> <strong class="px-1 sitename">PV</strong> <span>All Rights Reserved<br></span></p></div>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://www.instagram.com/Chinna.Prasanna"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/"><i class="bi bi-github"></i></a>
+      </div>
+      <div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Tweaked by <a href="#">PV</a></div>
+    </div>
+  </footer>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script>
+    function switchLang(lang, btn) {
+      const article = btn.closest('article') || document;
+      article.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      article.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === lang); });
+      document.querySelectorAll('.global-lang-select button').forEach(b => {
+        const t = b.textContent.trim().toLowerCase();
+        b.classList.toggle('active', t === lang || (t === 'js' && lang === 'js'));
+      });
+      localStorage.setItem('pw-lang', lang);
+    }
+    function switchAllLang(lang, btn) {
+      document.querySelectorAll('.global-lang-select button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === lang); });
+      document.querySelectorAll('.lang-switcher .lang-tab').forEach(t => {
+        const icon = t.querySelector('.lang-icon');
+        t.classList.toggle('active', icon && icon.classList.contains(lang));
+      });
+      localStorage.setItem('pw-lang', lang);
+    }
+    function copyCode(btn) {
+      const code = btn.closest('.code-block-wrapper').querySelector('code');
+      navigator.clipboard.writeText(code.textContent);
+      btn.innerHTML = '<i class="bi bi-check2"></i> Copied!';
+      setTimeout(() => btn.innerHTML = '<i class="bi bi-clipboard"></i> Copy', 2000);
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('pw-lang') || 'js';
+      document.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === saved); });
+      document.querySelectorAll('.lang-switcher .lang-tab').forEach(t => {
+        const icon = t.querySelector('.lang-icon');
+        t.classList.toggle('active', icon && icon.classList.contains(saved));
+      });
+      document.querySelectorAll('.global-lang-select button').forEach(b => {
+        const t = b.textContent.trim().toLowerCase();
+        b.classList.toggle('active', t === saved);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Retry Logic & Resilience Testing — API Testing Tutorial | PV</title>
+  <meta name="description" content="Implement retry mechanisms for flaky APIs, test rate limiting, handle transient failures, and build resilient test suites.">
+  <meta name="keywords" content="Retry Logic, Resilience Testing, Rate Limiting, Transient Failures, Exponential Backoff, Retry Mechanism">
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/css/main.css" rel="stylesheet">
+</head>
+<body class="blog-page">
+  <header id="header" class="header d-flex align-items-center light-background sticky-top">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+      <a href="../index.html" class="logo d-flex align-items-center me-auto me-xl-0"><h1 class="sitename">PV</h1></a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../resume.html">Resume</a></li>
+          <li><a href="../services.html">Services</a></li>
+          <li><a href="../portfolio.html">Portfolio</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../learning-hub.html" class="active">Learning Hub</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <div class="header-social-links">
+        <a href="https://www.instagram.com/Chinna.Prasanna" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/" class="github"><i class="bi bi-github"></i></a>
+      </div>
+    </div>
+  </header>
+  <main class="main">
+    <section id="tutorial" class="blog-post section">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center mb-4">
+          <div class="col-lg-10"><a href="../learning-hub.html#api-testing-course" class="btn btn-link p-0"><i class="bi bi-chevron-left"></i> Back to Course</a></div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 d-none d-lg-block"><div class="course-sidebar">
+  <div class="course-nav-title">Course Contents</div>
+  <ul class="course-nav">
+    <li class="nav-section-label">Beginner</li>
+    <li><a href="introduction-to-api-testing.html" class=""><span class="nav-number">1</span> Introduction to API Testing</a></li>
+    <li><a href="setup-and-project-structure.html" class=""><span class="nav-number">2</span> Setup & Project Structure</a></li>
+    <li><a href="your-first-get-request.html" class=""><span class="nav-number">3</span> Your First GET Request</a></li>
+    <li><a href="post-put-patch-delete.html" class=""><span class="nav-number">4</span> POST, PUT, PATCH & DELETE</a></li>
+    <li><a href="query-parameters-and-path-params.html" class=""><span class="nav-number">5</span> Query Parameters & Path Params</a></li>
+    <li><a href="headers-and-content-types.html" class=""><span class="nav-number">6</span> Headers & Content Types</a></li>
+    <li><a href="response-validation-and-assertions.html" class=""><span class="nav-number">7</span> Response Validation & Assertions</a></li>
+    <li class="nav-section-label">Intermediate</li>
+    <li><a href="authentication-and-authorization.html" class=""><span class="nav-number">8</span> Authentication & Authorization</a></li>
+    <li><a href="json-schema-validation.html" class=""><span class="nav-number">9</span> JSON Schema Validation</a></li>
+    <li><a href="request-and-response-serialization.html" class=""><span class="nav-number">10</span> Request & Response Serialization</a></li>
+    <li><a href="error-handling-and-negative-testing.html" class=""><span class="nav-number">11</span> Error Handling & Negative Testing</a></li>
+    <li><a href="data-driven-testing.html" class=""><span class="nav-number">12</span> Data-Driven Testing</a></li>
+    <li><a href="api-chaining-and-workflows.html" class=""><span class="nav-number">13</span> API Chaining & Workflows</a></li>
+    <li><a href="file-upload-and-multipart.html" class=""><span class="nav-number">14</span> File Upload & Multipart Requests</a></li>
+    <li class="nav-section-label">Advanced</li>
+    <li><a href="test-framework-integration.html" class=""><span class="nav-number">15</span> Test Framework Integration</a></li>
+    <li><a href="environment-configuration.html" class=""><span class="nav-number">16</span> Environment & Configuration Management</a></li>
+    <li><a href="retry-logic-and-resilience.html" class=" active"><span class="nav-number">17</span> Retry Logic & Resilience Testing</a></li>
+    <li><a href="mocking-and-service-virtualization.html" class=""><span class="nav-number">18</span> Mocking & Service Virtualization</a></li>
+    <li><a href="performance-and-load-testing.html" class=""><span class="nav-number">19</span> Performance & Load Testing</a></li>
+    <li><a href="ci-cd-and-reporting.html" class=""><span class="nav-number">20</span> CI/CD Integration & Reporting</a></li>
+  </ul>
+</div></div>
+          <div class="col-lg-7">
+            <article class="tutorial-post">
+              <div class="mb-2">
+                <span class="badge bg-danger me-2">Advanced</span>
+                <span class="text-muted small">Chapter 17 &middot; 10 min read</span>
+              </div>
+              <h1 class="mb-3">Retry Logic & Resilience Testing</h1>
+              <p class="lead fst-italic mb-4">Implement retry mechanisms for flaky APIs, test rate limiting, handle transient failures, and build resilient test suites.</p>
+              
+<h2>Retry Logic & Resilience</h2>
+<p>APIs can have transient failures — network hiccups, rate limits, temporary outages. A resilient test suite handles these gracefully with retry logic, backoff strategies, and proper timeout management.</p>
+
+<h3>Retry Strategies</h3>
+<ul>
+  <li><strong>Fixed delay</strong> — Wait the same duration between retries</li>
+  <li><strong>Exponential backoff</strong> — Double the wait time after each retry (1s, 2s, 4s, 8s)</li>
+  <li><strong>Jitter</strong> — Add randomness to avoid thundering herd</li>
+</ul>
+
+<h3>Rate Limiting</h3>
+<p>APIs enforce rate limits to prevent abuse. Your tests should respect these limits and test the API's behavior when limits are exceeded (429 Too Many Requests).</p>
+
+              <div class="lang-switcher">
+                <button class="lang-tab active" onclick="switchLang('js', this)"><span class="lang-icon js">JS</span> JavaScript</button>
+                <button class="lang-tab" onclick="switchLang('java', this)"><span class="lang-icon java">JV</span> Java</button>
+                <button class="lang-tab" onclick="switchLang('python', this)"><span class="lang-icon python">PY</span> Python</button>
+              </div>
+              <div class="lang-panel" data-lang="js">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">retry-logic.js</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code>// Retry wrapper with exponential backoff
+async function fetchWithRetry(url, options = {}, maxRetries = 3) {
+  const retryableStatuses = [429, 500, 502, 503, 504];
+  let lastError;
+
+  for (let attempt = 1; attempt &lt;= maxRetries; attempt++) {
+    try {
+      const response = await fetch(url, options);
+
+      if (!retryableStatuses.includes(response.status)) {
+        return response; // Success or non-retryable error
+      }
+
+      // Check for Retry-After header
+      const retryAfter = response.headers.get(&#x27;Retry-After&#x27;);
+      const delay = retryAfter
+        ? parseInt(retryAfter) * 1000
+        : Math.pow(2, attempt) * 1000 + Math.random() * 1000;
+
+      console.log(`Attempt ${attempt} got ${response.status}, retrying in ${delay}ms...`);
+      await new Promise(r =&gt; setTimeout(r, delay));
+      lastError = new Error(`HTTP ${response.status}`);
+
+    } catch (error) {
+      lastError = error;
+      if (attempt &lt; maxRetries) {
+        const delay = Math.pow(2, attempt) * 1000;
+        console.log(`Attempt ${attempt} failed: ${error.message}, retrying...`);
+        await new Promise(r =&gt; setTimeout(r, delay));
+      }
+    }
+  }
+  throw lastError;
+}
+
+// Usage
+const response = await fetchWithRetry(
+  &#x27;https://jsonplaceholder.typicode.com/posts/1&#x27;
+);
+const data = await response.json();
+console.assert(response.status === 200);
+
+// Test rate limiting behavior
+async function testRateLimit() {
+  const requests = Array(10).fill().map(() =&gt;
+    fetch(&#x27;https://jsonplaceholder.typicode.com/posts&#x27;)
+  );
+  const responses = await Promise.all(requests);
+  const statuses = responses.map(r =&gt; r.status);
+  console.log(&#x27;Rate limit test statuses:&#x27;, statuses);
+}
+await testRateLimit();
+
+console.log(&#x27;Retry logic tests passed!&#x27;);</code></pre>
+  </div>
+</div>
+<div class="lang-panel" data-lang="java">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">RetryHelper.java</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code>package com.apitesting.utils;
+
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import java.util.Set;
+import java.util.function.Supplier;
+
+public class RetryHelper {
+
+    private static final Set&lt;Integer&gt; RETRYABLE = Set.of(429, 500, 502, 503, 504);
+
+    public static Response withRetry(
+            Supplier&lt;Response&gt; requestSupplier,
+            int maxRetries) {
+
+        Response response = null;
+        Exception lastException = null;
+
+        for (int attempt = 1; attempt &lt;= maxRetries; attempt++) {
+            try {
+                response = requestSupplier.get();
+
+                if (!RETRYABLE.contains(response.getStatusCode())) {
+                    return response;
+                }
+
+                long delay = (long) Math.pow(2, attempt) * 1000
+                    + (long)(Math.random() * 1000);
+                System.out.printf(&quot;Attempt %d got %d, retrying in %dms...%n&quot;,
+                    attempt, response.getStatusCode(), delay);
+                Thread.sleep(delay);
+
+            } catch (Exception e) {
+                lastException = e;
+                if (attempt &lt; maxRetries) {
+                    try {
+                        Thread.sleep((long) Math.pow(2, attempt) * 1000);
+                    } catch (InterruptedException ie) {
+                        Thread.currentThread().interrupt();
+                    }
+                }
+            }
+        }
+
+        if (response != null) return response;
+        throw new RuntimeException(&quot;All retries exhausted&quot;, lastException);
+    }
+}
+
+// Usage:
+// Response resp = RetryHelper.withRetry(
+//     () -&gt; given().baseUri(BASE).when().get(&quot;/posts/1&quot;),
+//     3
+// );</code></pre>
+  </div>
+</div>
+<div class="lang-panel" data-lang="python">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">helpers/retry.py</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code>&quot;&quot;&quot;Retry logic with exponential backoff&quot;&quot;&quot;
+import time
+import random
+import requests
+import functools
+
+RETRYABLE_STATUSES = {429, 500, 502, 503, 504}
+
+def retry_request(max_retries=3, backoff_base=2):
+    &quot;&quot;&quot;Decorator for retrying API requests&quot;&quot;&quot;
+    def decorator(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs):
+            last_exception = None
+
+            for attempt in range(1, max_retries + 1):
+                try:
+                    response = func(*args, **kwargs)
+
+                    if response.status_code not in RETRYABLE_STATUSES:
+                        return response
+
+                    # Check Retry-After header
+                    retry_after = response.headers.get(&#x27;Retry-After&#x27;)
+                    if retry_after:
+                        delay = int(retry_after)
+                    else:
+                        delay = backoff_base ** attempt + random.random()
+
+                    print(f&quot;Attempt {attempt}: {response.status_code}, &quot;
+                          f&quot;retrying in {delay:.1f}s...&quot;)
+                    time.sleep(delay)
+
+                except requests.RequestException as e:
+                    last_exception = e
+                    if attempt &lt; max_retries:
+                        delay = backoff_base ** attempt
+                        print(f&quot;Attempt {attempt} failed: {e}, retrying...&quot;)
+                        time.sleep(delay)
+
+            if last_exception:
+                raise last_exception
+            return response
+
+        return wrapper
+    return decorator
+
+# Usage
+@retry_request(max_retries=3)
+def get_post(post_id):
+    return requests.get(
+        f&#x27;https://jsonplaceholder.typicode.com/posts/{post_id}&#x27;
+    )
+
+# Or use directly with ApiClient:
+# class ResilientApiClient(ApiClient):
+#     @retry_request(max_retries=3)
+#     def request(self, method, path, **kwargs):
+#         return super().request(method, path, **kwargs)</code></pre>
+  </div>
+</div>
+
+              <hr class="my-5">
+              <div class="mt-4">
+                <span class="badge bg-secondary me-2 mb-2">API Testing</span>
+                <span class="badge bg-secondary me-2 mb-2">Advanced</span>
+                <span class="badge bg-secondary me-2 mb-2">Retry Logic & Resilience Testing</span>
+              </div>
+              <div class="tutorial-nav">
+  <a href="environment-configuration.html" class="prev"><span class="nav-label"><i class="bi bi-chevron-left"></i> Previous</span><span class="nav-title">Environment & Configuration Management</span></a>
+  <a href="mocking-and-service-virtualization.html" class="next"><span class="nav-label">Next <i class="bi bi-chevron-right"></i></span><span class="nav-title">Mocking & Service Virtualization</span></a>
+</div>
+              <div class="text-muted small mt-5 pt-3 border-top">
+                <p class="mb-1">Written by PV</p>
+                <p class="mb-0">&copy; 2026 All Rights Reserved</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="global-lang-select">
+    <button class="active" onclick="switchAllLang('js', this)">JS</button>
+    <button onclick="switchAllLang('java', this)">Java</button>
+    <button onclick="switchAllLang('python', this)">Python</button>
+  </div>
+  <footer id="footer" class="footer light-background">
+    <div class="container">
+      <div class="copyright text-center"><p>&copy; <span>Copyright</span> <strong class="px-1 sitename">PV</strong> <span>All Rights Reserved<br></span></p></div>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://www.instagram.com/Chinna.Prasanna"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/"><i class="bi bi-github"></i></a>
+      </div>
+      <div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Tweaked by <a href="#">PV</a></div>
+    </div>
+  </footer>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script>
+    function switchLang(lang, btn) {
+      const article = btn.closest('article') || document;
+      article.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      article.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === lang); });
+      document.querySelectorAll('.global-lang-select button').forEach(b => {
+        const t = b.textContent.trim().toLowerCase();
+        b.classList.toggle('active', t === lang || (t === 'js' && lang === 'js'));
+      });
+      localStorage.setItem('pw-lang', lang);
+    }
+    function switchAllLang(lang, btn) {
+      document.querySelectorAll('.global-lang-select button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === lang); });
+      document.querySelectorAll('.lang-switcher .lang-tab').forEach(t => {
+        const icon = t.querySelector('.lang-icon');
+        t.classList.toggle('active', icon && icon.classList.contains(lang));
+      });
+      localStorage.setItem('pw-lang', lang);
+    }
+    function copyCode(btn) {
+      const code = btn.closest('.code-block-wrapper').querySelector('code');
+      navigator.clipboard.writeText(code.textContent);
+      btn.innerHTML = '<i class="bi bi-check2"></i> Copied!';
+      setTimeout(() => btn.innerHTML = '<i class="bi bi-clipboard"></i> Copy', 2000);
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('pw-lang') || 'js';
+      document.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === saved); });
+      document.querySelectorAll('.lang-switcher .lang-tab').forEach(t => {
+        const icon = t.querySelector('.lang-icon');
+        t.classList.toggle('active', icon && icon.classList.contains(saved));
+      });
+      document.querySelectorAll('.global-lang-select button').forEach(b => {
+        const t = b.textContent.trim().toLowerCase();
+        b.classList.toggle('active', t === saved);
+      });
+    });
+  </script>
+</body>
+</html>

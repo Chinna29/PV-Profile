@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>File Upload & Multipart Requests — API Testing Tutorial | PV</title>
+  <meta name="description" content="Upload files via multipart/form-data, handle binary data, test file validation, and work with mixed payloads (files + JSON).">
+  <meta name="keywords" content="File Upload, Multipart Form Data, Binary Upload, Form Data, File Validation, Multipart Request">
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/css/main.css" rel="stylesheet">
+</head>
+<body class="blog-page">
+  <header id="header" class="header d-flex align-items-center light-background sticky-top">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+      <a href="../index.html" class="logo d-flex align-items-center me-auto me-xl-0"><h1 class="sitename">PV</h1></a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../resume.html">Resume</a></li>
+          <li><a href="../services.html">Services</a></li>
+          <li><a href="../portfolio.html">Portfolio</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../learning-hub.html" class="active">Learning Hub</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <div class="header-social-links">
+        <a href="https://www.instagram.com/Chinna.Prasanna" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/" class="github"><i class="bi bi-github"></i></a>
+      </div>
+    </div>
+  </header>
+  <main class="main">
+    <section id="tutorial" class="blog-post section">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center mb-4">
+          <div class="col-lg-10"><a href="../learning-hub.html#api-testing-course" class="btn btn-link p-0"><i class="bi bi-chevron-left"></i> Back to Course</a></div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 d-none d-lg-block"><div class="course-sidebar">
+  <div class="course-nav-title">Course Contents</div>
+  <ul class="course-nav">
+    <li class="nav-section-label">Beginner</li>
+    <li><a href="introduction-to-api-testing.html" class=""><span class="nav-number">1</span> Introduction to API Testing</a></li>
+    <li><a href="setup-and-project-structure.html" class=""><span class="nav-number">2</span> Setup & Project Structure</a></li>
+    <li><a href="your-first-get-request.html" class=""><span class="nav-number">3</span> Your First GET Request</a></li>
+    <li><a href="post-put-patch-delete.html" class=""><span class="nav-number">4</span> POST, PUT, PATCH & DELETE</a></li>
+    <li><a href="query-parameters-and-path-params.html" class=""><span class="nav-number">5</span> Query Parameters & Path Params</a></li>
+    <li><a href="headers-and-content-types.html" class=""><span class="nav-number">6</span> Headers & Content Types</a></li>
+    <li><a href="response-validation-and-assertions.html" class=""><span class="nav-number">7</span> Response Validation & Assertions</a></li>
+    <li class="nav-section-label">Intermediate</li>
+    <li><a href="authentication-and-authorization.html" class=""><span class="nav-number">8</span> Authentication & Authorization</a></li>
+    <li><a href="json-schema-validation.html" class=""><span class="nav-number">9</span> JSON Schema Validation</a></li>
+    <li><a href="request-and-response-serialization.html" class=""><span class="nav-number">10</span> Request & Response Serialization</a></li>
+    <li><a href="error-handling-and-negative-testing.html" class=""><span class="nav-number">11</span> Error Handling & Negative Testing</a></li>
+    <li><a href="data-driven-testing.html" class=""><span class="nav-number">12</span> Data-Driven Testing</a></li>
+    <li><a href="api-chaining-and-workflows.html" class=""><span class="nav-number">13</span> API Chaining & Workflows</a></li>
+    <li><a href="file-upload-and-multipart.html" class=" active"><span class="nav-number">14</span> File Upload & Multipart Requests</a></li>
+    <li class="nav-section-label">Advanced</li>
+    <li><a href="test-framework-integration.html" class=""><span class="nav-number">15</span> Test Framework Integration</a></li>
+    <li><a href="environment-configuration.html" class=""><span class="nav-number">16</span> Environment & Configuration Management</a></li>
+    <li><a href="retry-logic-and-resilience.html" class=""><span class="nav-number">17</span> Retry Logic & Resilience Testing</a></li>
+    <li><a href="mocking-and-service-virtualization.html" class=""><span class="nav-number">18</span> Mocking & Service Virtualization</a></li>
+    <li><a href="performance-and-load-testing.html" class=""><span class="nav-number">19</span> Performance & Load Testing</a></li>
+    <li><a href="ci-cd-and-reporting.html" class=""><span class="nav-number">20</span> CI/CD Integration & Reporting</a></li>
+  </ul>
+</div></div>
+          <div class="col-lg-7">
+            <article class="tutorial-post">
+              <div class="mb-2">
+                <span class="badge bg-warning me-2">Intermediate</span>
+                <span class="text-muted small">Chapter 14 &middot; 9 min read</span>
+              </div>
+              <h1 class="mb-3">File Upload & Multipart Requests</h1>
+              <p class="lead fst-italic mb-4">Upload files via multipart/form-data, handle binary data, test file validation, and work with mixed payloads (files + JSON).</p>
+              
+<h2>File Upload & Multipart Requests</h2>
+<p>Many APIs accept file uploads — profile pictures, documents, CSV imports. These use <code>multipart/form-data</code> encoding instead of JSON. Understanding how to construct and test these requests is essential.</p>
+
+<h3>Multipart Form Data</h3>
+<p>Unlike JSON, multipart requests can contain both files and text fields in a single request. Each part has its own content type, and boundaries separate the parts.</p>
+
+<h3>What to Test</h3>
+<ul>
+  <li>Valid file upload with correct type/size</li>
+  <li>Invalid file types (e.g., uploading .exe when only images allowed)</li>
+  <li>File size limits (too large, zero bytes)</li>
+  <li>Multiple file uploads</li>
+  <li>Mixed payload: file + metadata fields</li>
+</ul>
+
+              <div class="lang-switcher">
+                <button class="lang-tab active" onclick="switchLang('js', this)"><span class="lang-icon js">JS</span> JavaScript</button>
+                <button class="lang-tab" onclick="switchLang('java', this)"><span class="lang-icon java">JV</span> Java</button>
+                <button class="lang-tab" onclick="switchLang('python', this)"><span class="lang-icon python">PY</span> Python</button>
+              </div>
+              <div class="lang-panel" data-lang="js">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">file-upload.test.js</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code>// File upload using FormData with Fetch
+const formData = new FormData();
+
+// Create a test file from a Blob
+const fileContent = new Blob([&#x27;Hello, this is test content&#x27;], {
+  type: &#x27;text/plain&#x27;
+});
+formData.append(&#x27;file&#x27;, fileContent, &#x27;test-file.txt&#x27;);
+formData.append(&#x27;description&#x27;, &#x27;Test file upload&#x27;);
+formData.append(&#x27;category&#x27;, &#x27;documents&#x27;);
+
+const response = await fetch(&#x27;https://httpbin.org/post&#x27;, {
+  method: &#x27;POST&#x27;,
+  body: formData
+  // Note: Don&#x27;t set Content-Type — Fetch sets it with boundary automatically
+});
+
+const result = await response.json();
+console.assert(response.status === 200);
+console.log(&#x27;Uploaded files:&#x27;, Object.keys(result.files));
+console.log(&#x27;Form fields:&#x27;, result.form);
+
+// Multiple files
+const multiForm = new FormData();
+multiForm.append(&#x27;file1&#x27;, new Blob([&#x27;File 1 content&#x27;]), &#x27;file1.txt&#x27;);
+multiForm.append(&#x27;file2&#x27;, new Blob([&#x27;File 2 content&#x27;]), &#x27;file2.txt&#x27;);
+
+const multiResp = await fetch(&#x27;https://httpbin.org/post&#x27;, {
+  method: &#x27;POST&#x27;,
+  body: multiForm
+});
+const multiResult = await multiResp.json();
+console.assert(Object.keys(multiResult.files).length === 2);
+
+// Binary upload (e.g., image as raw bytes)
+const binaryData = new Uint8Array([137, 80, 78, 71]); // PNG header
+const binaryResp = await fetch(&#x27;https://httpbin.org/post&#x27;, {
+  method: &#x27;POST&#x27;,
+  headers: { &#x27;Content-Type&#x27;: &#x27;application/octet-stream&#x27; },
+  body: binaryData
+});
+console.assert(binaryResp.status === 200);
+
+console.log(&#x27;File upload tests passed!&#x27;);</code></pre>
+  </div>
+</div>
+<div class="lang-panel" data-lang="java">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">FileUploadTest.java</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code>import static io.restassured.RestAssured.*;
+import static org.hamcrest.Matchers.*;
+import org.testng.annotations.Test;
+import java.io.File;
+
+public class FileUploadTest {
+
+    @Test
+    public void testSingleFileUpload() {
+        File testFile = new File(&quot;src/test/resources/test-file.txt&quot;);
+
+        given()
+            .multiPart(&quot;file&quot;, testFile, &quot;text/plain&quot;)
+            .formParam(&quot;description&quot;, &quot;Test file upload&quot;)
+            .formParam(&quot;category&quot;, &quot;documents&quot;)
+        .when()
+            .post(&quot;https://httpbin.org/post&quot;)
+        .then()
+            .statusCode(200)
+            .body(&quot;files&quot;, not(anEmptyMap()))
+            .body(&quot;form.description&quot;, equalTo(&quot;Test file upload&quot;));
+    }
+
+    @Test
+    public void testMultipleFileUpload() {
+        given()
+            .multiPart(&quot;file1&quot;, new File(&quot;src/test/resources/file1.txt&quot;))
+            .multiPart(&quot;file2&quot;, new File(&quot;src/test/resources/file2.txt&quot;))
+        .when()
+            .post(&quot;https://httpbin.org/post&quot;)
+        .then()
+            .statusCode(200)
+            .body(&quot;files.size()&quot;, equalTo(2));
+    }
+
+    @Test
+    public void testFileUploadWithJson() {
+        // Mixed: file + JSON metadata
+        given()
+            .multiPart(&quot;file&quot;, new File(&quot;src/test/resources/test-file.txt&quot;))
+            .multiPart(&quot;metadata&quot;, &quot;{\&quot;type\&quot;: \&quot;report\&quot;}&quot;,
+                       &quot;application/json&quot;)
+        .when()
+            .post(&quot;https://httpbin.org/post&quot;)
+        .then()
+            .statusCode(200);
+    }
+
+    @Test
+    public void testUploadByteArray() {
+        byte[] content = &quot;Dynamic content&quot;.getBytes();
+
+        given()
+            .multiPart(&quot;file&quot;, &quot;dynamic.txt&quot;, content, &quot;text/plain&quot;)
+        .when()
+            .post(&quot;https://httpbin.org/post&quot;)
+        .then()
+            .statusCode(200);
+    }
+}</code></pre>
+  </div>
+</div>
+<div class="lang-panel" data-lang="python">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">test_file_upload.py</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code>import requests
+import io
+
+def test_single_file_upload():
+    &quot;&quot;&quot;Upload a single file&quot;&quot;&quot;
+    files = {
+        &#x27;file&#x27;: (&#x27;test-file.txt&#x27;, b&#x27;Hello, this is test content&#x27;, &#x27;text/plain&#x27;)
+    }
+    data = {
+        &#x27;description&#x27;: &#x27;Test file upload&#x27;,
+        &#x27;category&#x27;: &#x27;documents&#x27;
+    }
+
+    response = requests.post(
+        &#x27;https://httpbin.org/post&#x27;,
+        files=files,
+        data=data
+    )
+
+    assert response.status_code == 200
+    result = response.json()
+    assert &#x27;file&#x27; in result[&#x27;files&#x27;]
+    assert result[&#x27;form&#x27;][&#x27;description&#x27;] == &#x27;Test file upload&#x27;
+
+def test_multiple_files():
+    &quot;&quot;&quot;Upload multiple files at once&quot;&quot;&quot;
+    files = [
+        (&#x27;files&#x27;, (&#x27;file1.txt&#x27;, b&#x27;File 1 content&#x27;, &#x27;text/plain&#x27;)),
+        (&#x27;files&#x27;, (&#x27;file2.txt&#x27;, b&#x27;File 2 content&#x27;, &#x27;text/plain&#x27;))
+    ]
+
+    response = requests.post(&#x27;https://httpbin.org/post&#x27;, files=files)
+    assert response.status_code == 200
+
+def test_file_from_disk():
+    &quot;&quot;&quot;Upload a file from disk&quot;&quot;&quot;
+    # Create a temp file
+    import tempfile, os
+    with tempfile.NamedTemporaryFile(mode=&#x27;w&#x27;, suffix=&#x27;.txt&#x27;,
+                                      delete=False) as f:
+        f.write(&#x27;Content from disk&#x27;)
+        temp_path = f.name
+
+    try:
+        with open(temp_path, &#x27;rb&#x27;) as f:
+            response = requests.post(
+                &#x27;https://httpbin.org/post&#x27;,
+                files={&#x27;file&#x27;: f}
+            )
+        assert response.status_code == 200
+    finally:
+        os.unlink(temp_path)
+
+def test_binary_upload():
+    &quot;&quot;&quot;Upload raw binary data&quot;&quot;&quot;
+    binary_data = bytes([137, 80, 78, 71])  # PNG header bytes
+
+    response = requests.post(
+        &#x27;https://httpbin.org/post&#x27;,
+        data=binary_data,
+        headers={&#x27;Content-Type&#x27;: &#x27;application/octet-stream&#x27;}
+    )
+    assert response.status_code == 200</code></pre>
+  </div>
+</div>
+
+              <hr class="my-5">
+              <div class="mt-4">
+                <span class="badge bg-secondary me-2 mb-2">API Testing</span>
+                <span class="badge bg-secondary me-2 mb-2">Intermediate</span>
+                <span class="badge bg-secondary me-2 mb-2">File Upload & Multipart Requests</span>
+              </div>
+              <div class="tutorial-nav">
+  <a href="api-chaining-and-workflows.html" class="prev"><span class="nav-label"><i class="bi bi-chevron-left"></i> Previous</span><span class="nav-title">API Chaining & Workflows</span></a>
+  <a href="test-framework-integration.html" class="next"><span class="nav-label">Next <i class="bi bi-chevron-right"></i></span><span class="nav-title">Test Framework Integration</span></a>
+</div>
+              <div class="text-muted small mt-5 pt-3 border-top">
+                <p class="mb-1">Written by PV</p>
+                <p class="mb-0">&copy; 2026 All Rights Reserved</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="global-lang-select">
+    <button class="active" onclick="switchAllLang('js', this)">JS</button>
+    <button onclick="switchAllLang('java', this)">Java</button>
+    <button onclick="switchAllLang('python', this)">Python</button>
+  </div>
+  <footer id="footer" class="footer light-background">
+    <div class="container">
+      <div class="copyright text-center"><p>&copy; <span>Copyright</span> <strong class="px-1 sitename">PV</strong> <span>All Rights Reserved<br></span></p></div>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://www.instagram.com/Chinna.Prasanna"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/"><i class="bi bi-github"></i></a>
+      </div>
+      <div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Tweaked by <a href="#">PV</a></div>
+    </div>
+  </footer>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script>
+    function switchLang(lang, btn) {
+      const article = btn.closest('article') || document;
+      article.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      article.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === lang); });
+      document.querySelectorAll('.global-lang-select button').forEach(b => {
+        const t = b.textContent.trim().toLowerCase();
+        b.classList.toggle('active', t === lang || (t === 'js' && lang === 'js'));
+      });
+      localStorage.setItem('pw-lang', lang);
+    }
+    function switchAllLang(lang, btn) {
+      document.querySelectorAll('.global-lang-select button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === lang); });
+      document.querySelectorAll('.lang-switcher .lang-tab').forEach(t => {
+        const icon = t.querySelector('.lang-icon');
+        t.classList.toggle('active', icon && icon.classList.contains(lang));
+      });
+      localStorage.setItem('pw-lang', lang);
+    }
+    function copyCode(btn) {
+      const code = btn.closest('.code-block-wrapper').querySelector('code');
+      navigator.clipboard.writeText(code.textContent);
+      btn.innerHTML = '<i class="bi bi-check2"></i> Copied!';
+      setTimeout(() => btn.innerHTML = '<i class="bi bi-clipboard"></i> Copy', 2000);
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('pw-lang') || 'js';
+      document.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === saved); });
+      document.querySelectorAll('.lang-switcher .lang-tab').forEach(t => {
+        const icon = t.querySelector('.lang-icon');
+        t.classList.toggle('active', icon && icon.classList.contains(saved));
+      });
+      document.querySelectorAll('.global-lang-select button').forEach(b => {
+        const t = b.textContent.trim().toLowerCase();
+        b.classList.toggle('active', t === saved);
+      });
+    });
+  </script>
+</body>
+</html>

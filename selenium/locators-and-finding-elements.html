@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Locators & Finding Elements — Selenium Tutorial | PV</title>
+  <meta name="description" content="Master all Selenium locator strategies — ID, name, className, tagName, CSS selectors, XPath, linkText, and Selenium 4 relative locators.">
+  <meta name="keywords" content="Selenium Locators, CSS Selector, XPath, findElement, By, Relative Locators, Element Selection">
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/css/main.css" rel="stylesheet">
+</head>
+<body class="blog-page">
+  <header id="header" class="header d-flex align-items-center light-background sticky-top">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+      <a href="../index.html" class="logo d-flex align-items-center me-auto me-xl-0"><h1 class="sitename">PV</h1></a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../resume.html">Resume</a></li>
+          <li><a href="../services.html">Services</a></li>
+          <li><a href="../portfolio.html">Portfolio</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../learning-hub.html" class="active">Learning Hub</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <div class="header-social-links">
+        <a href="https://www.instagram.com/Chinna.Prasanna" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/" class="github"><i class="bi bi-github"></i></a>
+      </div>
+    </div>
+  </header>
+  <main class="main">
+    <section id="tutorial" class="blog-post section">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center mb-4">
+          <div class="col-lg-10"><a href="../learning-hub.html#selenium-course" class="btn btn-link p-0"><i class="bi bi-chevron-left"></i> Back to Course</a></div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 d-none d-lg-block"><div class="course-sidebar">
+  <div class="course-nav-title">Course Contents</div>
+  <ul class="course-nav">
+    <li class="nav-section-label">Beginner</li>
+    <li><a href="introduction-to-selenium.html" class=""><span class="nav-number">1</span> Introduction to Selenium</a></li>
+    <li><a href="setup-maven-and-project-structure.html" class=""><span class="nav-number">2</span> Setup — Maven, pip & Project Structure</a></li>
+    <li><a href="writing-your-first-test.html" class=""><span class="nav-number">3</span> Writing Your First Test</a></li>
+    <li><a href="locators-and-finding-elements.html" class=" active"><span class="nav-number">4</span> Locators & Finding Elements</a></li>
+    <li><a href="interactions-click-type-select.html" class=""><span class="nav-number">5</span> Interactions — Click, Type & Select</a></li>
+    <li><a href="waits-explicit-implicit-fluent.html" class=""><span class="nav-number">6</span> Waits — Implicit, Explicit & Fluent</a></li>
+    <li><a href="assertions-and-verification.html" class=""><span class="nav-number">7</span> Assertions & Verification</a></li>
+    <li class="nav-section-label">Intermediate</li>
+    <li><a href="page-object-model.html" class=""><span class="nav-number">8</span> Page Object Model (POM)</a></li>
+    <li><a href="handling-alerts-frames-windows.html" class=""><span class="nav-number">9</span> Alerts, Frames & Multiple Windows</a></li>
+    <li><a href="actions-api-advanced-interactions.html" class=""><span class="nav-number">10</span> Actions API — Advanced Interactions</a></li>
+    <li><a href="file-upload-and-download.html" class=""><span class="nav-number">11</span> File Upload & Download</a></li>
+    <li><a href="javascript-executor.html" class=""><span class="nav-number">12</span> JavaScript Executor</a></li>
+    <li><a href="screenshots-and-visual-testing.html" class=""><span class="nav-number">13</span> Screenshots & Visual Testing</a></li>
+    <li><a href="chrome-devtools-protocol.html" class=""><span class="nav-number">14</span> Chrome DevTools Protocol (CDP)</a></li>
+    <li class="nav-section-label">Advanced</li>
+    <li><a href="base-test-class-and-framework.html" class=""><span class="nav-number">15</span> Base Test Class & Framework Design</a></li>
+    <li><a href="data-driven-testing.html" class=""><span class="nav-number">16</span> Data-Driven Testing</a></li>
+    <li><a href="cross-browser-testing.html" class=""><span class="nav-number">17</span> Cross-Browser Testing</a></li>
+    <li><a href="parallel-execution-and-reporting.html" class=""><span class="nav-number">18</span> Parallel Execution & Reporting</a></li>
+    <li><a href="ci-cd-integration.html" class=""><span class="nav-number">19</span> CI/CD Integration</a></li>
+    <li><a href="best-practices-and-design-patterns.html" class=""><span class="nav-number">20</span> Best Practices & Design Patterns</a></li>
+  </ul>
+</div></div>
+          <div class="col-lg-7">
+            <article class="tutorial-post">
+              <div class="mb-2">
+                <span class="badge bg-success me-2">Beginner</span>
+                <span class="text-muted small">Chapter 4 &middot; 12 min read</span>
+              </div>
+              <h1 class="mb-3">Locators & Finding Elements</h1>
+              <p class="lead fst-italic mb-4">Master all Selenium locator strategies — ID, name, className, tagName, CSS selectors, XPath, linkText, and Selenium 4 relative locators.</p>
+              
+<h2>Finding Elements on the Page</h2>
+<p>Locators are the most critical skill in Selenium. Every interaction — clicking, typing, reading — starts with finding the right element. Selenium offers 8 built-in locator strategies plus Selenium 4's relative locators.</p>
+
+<h3>Locator Strategies (Best to Worst)</h3>
+<ol>
+  <li><strong>By.id</strong> — Fastest and most reliable (when IDs exist and are unique)</li>
+  <li><strong>By.name</strong> — Good for form elements</li>
+  <li><strong>By.cssSelector</strong> — Powerful, flexible, and performant</li>
+  <li><strong>By.xpath</strong> — Most flexible, handles complex scenarios, but slower</li>
+  <li><strong>By.linkText / partialLinkText</strong> — For anchor tags only</li>
+  <li><strong>By.className</strong> — Risky if classes change frequently</li>
+  <li><strong>By.tagName</strong> — Rarely unique enough</li>
+</ol>
+
+<h3>Selenium 4 Relative Locators</h3>
+<p>New in Selenium 4 — find elements based on their position relative to other elements: <code>above()</code>, <code>below()</code>, <code>toLeftOf()</code>, <code>toRightOf()</code>, and <code>near()</code>. This is invaluable when elements lack good attributes.</p>
+
+              <div class="lang-switcher">
+                <button class="lang-tab active" onclick="switchLang('java', this)"><span class="lang-icon java">JV</span> Java</button>
+                <button class="lang-tab" onclick="switchLang('python', this)"><span class="lang-icon python">PY</span> Python</button>
+              </div>
+              <div class="lang-panel" data-lang="java">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">LocatorsTest.java</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code>import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.locators.RelativeLocator;
+import org.testng.Assert;
+import org.testng.annotations.*;
+import java.util.List;
+
+public class LocatorsTest {
+
+    WebDriver driver;
+
+    @BeforeMethod
+    public void setup() {
+        driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(
+            java.time.Duration.ofSeconds(10));
+        driver.get(&quot;https://www.selenium.dev/selenium/web/web-form.html&quot;);
+    }
+
+    @Test
+    public void testById() {
+        WebElement element = driver.findElement(By.id(&quot;my-text-id&quot;));
+        Assert.assertTrue(element.isDisplayed());
+    }
+
+    @Test
+    public void testByName() {
+        WebElement input = driver.findElement(By.name(&quot;my-text&quot;));
+        input.sendKeys(&quot;Hello Selenium!&quot;);
+        Assert.assertEquals(input.getAttribute(&quot;value&quot;), &quot;Hello Selenium!&quot;);
+    }
+
+    @Test
+    public void testByCssSelector() {
+        // Attribute selector
+        WebElement el = driver.findElement(
+            By.cssSelector(&quot;input[name=&#x27;my-text&#x27;]&quot;));
+
+        // Class selector
+        WebElement form = driver.findElement(By.cssSelector(&quot;.container&quot;));
+
+        // Combination
+        WebElement specific = driver.findElement(
+            By.cssSelector(&quot;form .row input[type=&#x27;password&#x27;]&quot;));
+
+        Assert.assertNotNull(specific);
+    }
+
+    @Test
+    public void testByXPath() {
+        // Absolute path (fragile — avoid)
+        // WebElement el = driver.findElement(By.xpath(&quot;/html/body/...&quot;));
+
+        // Relative XPath (preferred)
+        WebElement input = driver.findElement(
+            By.xpath(&quot;//input[@name=&#x27;my-text&#x27;]&quot;));
+
+        // Text-based
+        WebElement label = driver.findElement(
+            By.xpath(&quot;//label[text()=&#x27;Text input&#x27;]&quot;));
+
+        // Contains
+        WebElement partial = driver.findElement(
+            By.xpath(&quot;//input[contains(@name, &#x27;text&#x27;)]&quot;));
+
+        Assert.assertTrue(input.isDisplayed());
+    }
+
+    @Test
+    public void testByLinkText() {
+        WebElement link = driver.findElement(
+            By.linkText(&quot;Return to index&quot;));
+        Assert.assertTrue(link.isDisplayed());
+
+        WebElement partial = driver.findElement(
+            By.partialLinkText(&quot;Return&quot;));
+        Assert.assertTrue(partial.isDisplayed());
+    }
+
+    @Test
+    public void testFindMultipleElements() {
+        List&lt;WebElement&gt; inputs = driver.findElements(By.tagName(&quot;input&quot;));
+        System.out.println(&quot;Found &quot; + inputs.size() + &quot; input elements&quot;);
+        Assert.assertTrue(inputs.size() &gt; 0);
+    }
+
+    @Test
+    public void testRelativeLocators_Selenium4() {
+        // Find the password field below the text input
+        WebElement textInput = driver.findElement(By.name(&quot;my-text&quot;));
+
+        WebElement passwordField = driver.findElement(
+            RelativeLocator.with(By.tagName(&quot;input&quot;))
+                .below(textInput));
+
+        Assert.assertEquals(passwordField.getAttribute(&quot;type&quot;), &quot;password&quot;);
+
+        // Find element near another element
+        WebElement label = driver.findElement(
+            RelativeLocator.with(By.tagName(&quot;label&quot;))
+                .near(textInput));
+        Assert.assertNotNull(label);
+    }
+
+    @AfterMethod
+    public void teardown() { if (driver != null) driver.quit(); }
+}</code></pre>
+  </div>
+</div>
+<div class="lang-panel" data-lang="python">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">test_locators.py</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code>from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.relative_locator import locate_with
+import pytest
+
+@pytest.fixture
+def driver():
+    d = webdriver.Chrome()
+    d.implicitly_wait(10)
+    d.get(&quot;https://www.selenium.dev/selenium/web/web-form.html&quot;)
+    yield d
+    d.quit()
+
+
+def test_by_id(driver):
+    element = driver.find_element(By.ID, &quot;my-text-id&quot;)
+    assert element.is_displayed()
+
+
+def test_by_name(driver):
+    input_el = driver.find_element(By.NAME, &quot;my-text&quot;)
+    input_el.send_keys(&quot;Hello Selenium!&quot;)
+    assert input_el.get_attribute(&quot;value&quot;) == &quot;Hello Selenium!&quot;
+
+
+def test_by_css_selector(driver):
+    # Attribute selector
+    el = driver.find_element(By.CSS_SELECTOR, &quot;input[name=&#x27;my-text&#x27;]&quot;)
+
+    # Class selector
+    form = driver.find_element(By.CSS_SELECTOR, &quot;.container&quot;)
+
+    # Combination
+    specific = driver.find_element(
+        By.CSS_SELECTOR, &quot;form .row input[type=&#x27;password&#x27;]&quot;)
+    assert specific is not None
+
+
+def test_by_xpath(driver):
+    # Relative XPath
+    input_el = driver.find_element(By.XPATH, &quot;//input[@name=&#x27;my-text&#x27;]&quot;)
+
+    # Text-based
+    label = driver.find_element(By.XPATH, &quot;//label[text()=&#x27;Text input&#x27;]&quot;)
+
+    # Contains
+    partial = driver.find_element(
+        By.XPATH, &quot;//input[contains(@name, &#x27;text&#x27;)]&quot;)
+    assert input_el.is_displayed()
+
+
+def test_by_link_text(driver):
+    link = driver.find_element(By.LINK_TEXT, &quot;Return to index&quot;)
+    assert link.is_displayed()
+
+    partial = driver.find_element(By.PARTIAL_LINK_TEXT, &quot;Return&quot;)
+    assert partial.is_displayed()
+
+
+def test_find_multiple_elements(driver):
+    inputs = driver.find_elements(By.TAG_NAME, &quot;input&quot;)
+    print(f&quot;Found {len(inputs)} input elements&quot;)
+    assert len(inputs) &gt; 0
+
+
+def test_relative_locators_selenium4(driver):
+    &quot;&quot;&quot;Selenium 4 relative locators&quot;&quot;&quot;
+    text_input = driver.find_element(By.NAME, &quot;my-text&quot;)
+
+    # Find element below
+    password = driver.find_element(
+        locate_with(By.TAG_NAME, &quot;input&quot;).below(text_input))
+    assert password.get_attribute(&quot;type&quot;) == &quot;password&quot;
+
+    # Find element near
+    label = driver.find_element(
+        locate_with(By.TAG_NAME, &quot;label&quot;).near(text_input))
+    assert label is not None</code></pre>
+  </div>
+</div>
+
+              <hr class="my-5">
+              <div class="mt-4">
+                <span class="badge bg-secondary me-2 mb-2">Selenium</span>
+                <span class="badge bg-secondary me-2 mb-2">Beginner</span>
+                <span class="badge bg-secondary me-2 mb-2">Locators & Finding Elements</span>
+              </div>
+              <div class="tutorial-nav">
+  <a href="writing-your-first-test.html" class="prev"><span class="nav-label"><i class="bi bi-chevron-left"></i> Previous</span><span class="nav-title">Writing Your First Test</span></a>
+  <a href="interactions-click-type-select.html" class="next"><span class="nav-label">Next <i class="bi bi-chevron-right"></i></span><span class="nav-title">Interactions — Click, Type & Select</span></a>
+</div>
+              <div class="text-muted small mt-5 pt-3 border-top">
+                <p class="mb-1">Written by PV</p>
+                <p class="mb-0">&copy; 2026 All Rights Reserved</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="global-lang-select">
+    <button class="active" onclick="switchAllLang('java', this)">Java</button>
+    <button onclick="switchAllLang('python', this)">Python</button>
+  </div>
+  <footer id="footer" class="footer light-background">
+    <div class="container">
+      <div class="copyright text-center"><p>&copy; <span>Copyright</span> <strong class="px-1 sitename">PV</strong> <span>All Rights Reserved<br></span></p></div>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://www.instagram.com/Chinna.Prasanna"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/"><i class="bi bi-github"></i></a>
+      </div>
+      <div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Tweaked by <a href="#">PV</a></div>
+    </div>
+  </footer>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script>
+    function switchLang(lang, btn) {
+      const article = btn.closest('article') || document;
+      article.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      article.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === lang); });
+      document.querySelectorAll('.global-lang-select button').forEach(b => {
+        const t = b.textContent.trim().toLowerCase();
+        b.classList.toggle('active', t === lang);
+      });
+      localStorage.setItem('sel-lang', lang);
+    }
+    function switchAllLang(lang, btn) {
+      document.querySelectorAll('.global-lang-select button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === lang); });
+      document.querySelectorAll('.lang-switcher .lang-tab').forEach(t => {
+        const icon = t.querySelector('.lang-icon');
+        t.classList.toggle('active', icon && icon.classList.contains(lang));
+      });
+      localStorage.setItem('sel-lang', lang);
+    }
+    function copyCode(btn) {
+      const code = btn.closest('.code-block-wrapper').querySelector('code');
+      navigator.clipboard.writeText(code.textContent);
+      btn.innerHTML = '<i class="bi bi-check2"></i> Copied!';
+      setTimeout(() => btn.innerHTML = '<i class="bi bi-clipboard"></i> Copy', 2000);
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('sel-lang') || 'java';
+      document.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === saved); });
+      document.querySelectorAll('.lang-switcher .lang-tab').forEach(t => {
+        const icon = t.querySelector('.lang-icon');
+        t.classList.toggle('active', icon && icon.classList.contains(saved));
+      });
+      document.querySelectorAll('.global-lang-select button').forEach(b => {
+        const t = b.textContent.trim().toLowerCase();
+        b.classList.toggle('active', t === saved);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Page Object Model (POM) — Selenium Tutorial | PV</title>
+  <meta name="description" content="Structure tests using the Page Object design pattern — encapsulate page elements, actions, and verifications in reusable classes.">
+  <meta name="keywords" content="Page Object Model, POM, Design Pattern, Test Maintainability, Page Factory, Reusable Tests">
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/css/main.css" rel="stylesheet">
+</head>
+<body class="blog-page">
+  <header id="header" class="header d-flex align-items-center light-background sticky-top">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+      <a href="../index.html" class="logo d-flex align-items-center me-auto me-xl-0"><h1 class="sitename">PV</h1></a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../resume.html">Resume</a></li>
+          <li><a href="../services.html">Services</a></li>
+          <li><a href="../portfolio.html">Portfolio</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../learning-hub.html" class="active">Learning Hub</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <div class="header-social-links">
+        <a href="https://www.instagram.com/Chinna.Prasanna" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/" class="github"><i class="bi bi-github"></i></a>
+      </div>
+    </div>
+  </header>
+  <main class="main">
+    <section id="tutorial" class="blog-post section">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center mb-4">
+          <div class="col-lg-10"><a href="../learning-hub.html#selenium-course" class="btn btn-link p-0"><i class="bi bi-chevron-left"></i> Back to Course</a></div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 d-none d-lg-block"><div class="course-sidebar">
+  <div class="course-nav-title">Course Contents</div>
+  <ul class="course-nav">
+    <li class="nav-section-label">Beginner</li>
+    <li><a href="introduction-to-selenium.html" class=""><span class="nav-number">1</span> Introduction to Selenium</a></li>
+    <li><a href="setup-maven-and-project-structure.html" class=""><span class="nav-number">2</span> Setup — Maven, pip & Project Structure</a></li>
+    <li><a href="writing-your-first-test.html" class=""><span class="nav-number">3</span> Writing Your First Test</a></li>
+    <li><a href="locators-and-finding-elements.html" class=""><span class="nav-number">4</span> Locators & Finding Elements</a></li>
+    <li><a href="interactions-click-type-select.html" class=""><span class="nav-number">5</span> Interactions — Click, Type & Select</a></li>
+    <li><a href="waits-explicit-implicit-fluent.html" class=""><span class="nav-number">6</span> Waits — Implicit, Explicit & Fluent</a></li>
+    <li><a href="assertions-and-verification.html" class=""><span class="nav-number">7</span> Assertions & Verification</a></li>
+    <li class="nav-section-label">Intermediate</li>
+    <li><a href="page-object-model.html" class=" active"><span class="nav-number">8</span> Page Object Model (POM)</a></li>
+    <li><a href="handling-alerts-frames-windows.html" class=""><span class="nav-number">9</span> Alerts, Frames & Multiple Windows</a></li>
+    <li><a href="actions-api-advanced-interactions.html" class=""><span class="nav-number">10</span> Actions API — Advanced Interactions</a></li>
+    <li><a href="file-upload-and-download.html" class=""><span class="nav-number">11</span> File Upload & Download</a></li>
+    <li><a href="javascript-executor.html" class=""><span class="nav-number">12</span> JavaScript Executor</a></li>
+    <li><a href="screenshots-and-visual-testing.html" class=""><span class="nav-number">13</span> Screenshots & Visual Testing</a></li>
+    <li><a href="chrome-devtools-protocol.html" class=""><span class="nav-number">14</span> Chrome DevTools Protocol (CDP)</a></li>
+    <li class="nav-section-label">Advanced</li>
+    <li><a href="base-test-class-and-framework.html" class=""><span class="nav-number">15</span> Base Test Class & Framework Design</a></li>
+    <li><a href="data-driven-testing.html" class=""><span class="nav-number">16</span> Data-Driven Testing</a></li>
+    <li><a href="cross-browser-testing.html" class=""><span class="nav-number">17</span> Cross-Browser Testing</a></li>
+    <li><a href="parallel-execution-and-reporting.html" class=""><span class="nav-number">18</span> Parallel Execution & Reporting</a></li>
+    <li><a href="ci-cd-integration.html" class=""><span class="nav-number">19</span> CI/CD Integration</a></li>
+    <li><a href="best-practices-and-design-patterns.html" class=""><span class="nav-number">20</span> Best Practices & Design Patterns</a></li>
+  </ul>
+</div></div>
+          <div class="col-lg-7">
+            <article class="tutorial-post">
+              <div class="mb-2">
+                <span class="badge bg-warning me-2">Intermediate</span>
+                <span class="text-muted small">Chapter 8 &middot; 13 min read</span>
+              </div>
+              <h1 class="mb-3">Page Object Model (POM)</h1>
+              <p class="lead fst-italic mb-4">Structure tests using the Page Object design pattern — encapsulate page elements, actions, and verifications in reusable classes.</p>
+              
+<h2>Page Object Model (POM)</h2>
+<p>The Page Object Model is the most important design pattern in Selenium testing. It separates test logic from page interaction code, making tests readable, maintainable, and resistant to UI changes.</p>
+
+<h3>Principles</h3>
+<ul>
+  <li>Each page (or significant component) gets its own class</li>
+  <li>Locators and interactions are encapsulated in the page class</li>
+  <li>Test classes use page objects — they never touch raw WebDriver</li>
+  <li>When the UI changes, you update one page class, not dozens of tests</li>
+</ul>
+
+<h3>PageFactory (Java)</h3>
+<p>Java's PageFactory provides <code>@FindBy</code> annotations for declarative element location and lazy initialization. It's a cleaner syntax compared to manual <code>driver.findElement()</code> calls in page objects.</p>
+
+              <div class="lang-switcher">
+                <button class="lang-tab active" onclick="switchLang('java', this)"><span class="lang-icon java">JV</span> Java</button>
+                <button class="lang-tab" onclick="switchLang('python', this)"><span class="lang-icon python">PY</span> Python</button>
+              </div>
+              <div class="lang-panel" data-lang="java">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">LoginPage.java</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code>package com.selenium.course.pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class LoginPage {
+
+    private WebDriver driver;
+
+    // Locators via @FindBy annotations
+    @FindBy(id = &quot;username&quot;)
+    private WebElement usernameInput;
+
+    @FindBy(id = &quot;password&quot;)
+    private WebElement passwordInput;
+
+    @FindBy(css = &quot;button[type=&#x27;submit&#x27;]&quot;)
+    private WebElement loginButton;
+
+    @FindBy(css = &quot;.error-message&quot;)
+    private WebElement errorMessage;
+
+    // Constructor — initializes PageFactory
+    public LoginPage(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
+
+    // Actions
+    public LoginPage enterUsername(String username) {
+        usernameInput.clear();
+        usernameInput.sendKeys(username);
+        return this;  // Fluent API — enables chaining
+    }
+
+    public LoginPage enterPassword(String password) {
+        passwordInput.clear();
+        passwordInput.sendKeys(password);
+        return this;
+    }
+
+    public HomePage clickLogin() {
+        loginButton.click();
+        return new HomePage(driver);
+    }
+
+    public LoginPage clickLoginExpectingError() {
+        loginButton.click();
+        return this;
+    }
+
+    // Verifications
+    public String getErrorMessage() {
+        return errorMessage.getText();
+    }
+
+    public boolean isLoginButtonDisplayed() {
+        return loginButton.isDisplayed();
+    }
+
+    // Fluent login shortcut
+    public HomePage loginAs(String username, String password) {
+        return enterUsername(username)
+            .enterPassword(password)
+            .clickLogin();
+    }
+}</code></pre>
+  </div>
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">LoginTest.java</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code>package com.selenium.course.tests;
+
+import com.selenium.course.base.BaseTest;
+import com.selenium.course.pages.LoginPage;
+import com.selenium.course.pages.HomePage;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+public class LoginTest extends BaseTest {
+
+    @Test
+    public void testSuccessfulLogin() {
+        LoginPage loginPage = new LoginPage(driver);
+
+        // Fluent API chaining
+        HomePage homePage = loginPage
+            .enterUsername(&quot;admin&quot;)
+            .enterPassword(&quot;admin123&quot;)
+            .clickLogin();
+
+        Assert.assertTrue(homePage.isWelcomeDisplayed());
+    }
+
+    @Test
+    public void testInvalidLogin() {
+        LoginPage loginPage = new LoginPage(driver);
+
+        loginPage.enterUsername(&quot;wrong&quot;)
+            .enterPassword(&quot;wrong&quot;)
+            .clickLoginExpectingError();
+
+        Assert.assertEquals(
+            loginPage.getErrorMessage(),
+            &quot;Invalid credentials&quot;);
+    }
+
+    @Test
+    public void testFluentLogin() {
+        // One-liner using the convenience method
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage home = loginPage.loginAs(&quot;admin&quot;, &quot;admin123&quot;);
+        Assert.assertTrue(home.isWelcomeDisplayed());
+    }
+}</code></pre>
+  </div>
+</div>
+<div class="lang-panel" data-lang="python">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">pages/login_page.py</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code>&quot;&quot;&quot;Login page object&quot;&quot;&quot;
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+
+class LoginPage:
+
+    # Locators
+    USERNAME_INPUT = (By.ID, &quot;username&quot;)
+    PASSWORD_INPUT = (By.ID, &quot;password&quot;)
+    LOGIN_BUTTON = (By.CSS_SELECTOR, &quot;button[type=&#x27;submit&#x27;]&quot;)
+    ERROR_MESSAGE = (By.CSS_SELECTOR, &quot;.error-message&quot;)
+
+    def __init__(self, driver):
+        self.driver = driver
+        self.wait = WebDriverWait(driver, 10)
+
+    # Actions
+    def enter_username(self, username):
+        el = self.wait.until(EC.visibility_of_element_located(
+            self.USERNAME_INPUT))
+        el.clear()
+        el.send_keys(username)
+        return self  # Fluent API
+
+    def enter_password(self, password):
+        el = self.driver.find_element(*self.PASSWORD_INPUT)
+        el.clear()
+        el.send_keys(password)
+        return self
+
+    def click_login(self):
+        self.driver.find_element(*self.LOGIN_BUTTON).click()
+        from pages.home_page import HomePage
+        return HomePage(self.driver)
+
+    def click_login_expecting_error(self):
+        self.driver.find_element(*self.LOGIN_BUTTON).click()
+        return self
+
+    # Verifications
+    def get_error_message(self):
+        return self.driver.find_element(*self.ERROR_MESSAGE).text
+
+    def is_login_button_displayed(self):
+        return self.driver.find_element(*self.LOGIN_BUTTON).is_displayed()
+
+    # Convenience method
+    def login_as(self, username, password):
+        return (self.enter_username(username)
+                    .enter_password(password)
+                    .click_login())</code></pre>
+  </div>
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">tests/test_login.py</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code>&quot;&quot;&quot;Login tests using Page Object Model&quot;&quot;&quot;
+from pages.login_page import LoginPage
+import pytest
+
+def test_successful_login(driver):
+    login_page = LoginPage(driver)
+
+    home_page = (login_page
+        .enter_username(&quot;admin&quot;)
+        .enter_password(&quot;admin123&quot;)
+        .click_login())
+
+    assert home_page.is_welcome_displayed()
+
+def test_invalid_login(driver):
+    login_page = LoginPage(driver)
+
+    (login_page
+        .enter_username(&quot;wrong&quot;)
+        .enter_password(&quot;wrong&quot;)
+        .click_login_expecting_error())
+
+    assert login_page.get_error_message() == &quot;Invalid credentials&quot;
+
+def test_fluent_login(driver):
+    login_page = LoginPage(driver)
+    home = login_page.login_as(&quot;admin&quot;, &quot;admin123&quot;)
+    assert home.is_welcome_displayed()</code></pre>
+  </div>
+</div>
+
+              <hr class="my-5">
+              <div class="mt-4">
+                <span class="badge bg-secondary me-2 mb-2">Selenium</span>
+                <span class="badge bg-secondary me-2 mb-2">Intermediate</span>
+                <span class="badge bg-secondary me-2 mb-2">Page Object Model (POM)</span>
+              </div>
+              <div class="tutorial-nav">
+  <a href="assertions-and-verification.html" class="prev"><span class="nav-label"><i class="bi bi-chevron-left"></i> Previous</span><span class="nav-title">Assertions & Verification</span></a>
+  <a href="handling-alerts-frames-windows.html" class="next"><span class="nav-label">Next <i class="bi bi-chevron-right"></i></span><span class="nav-title">Alerts, Frames & Multiple Windows</span></a>
+</div>
+              <div class="text-muted small mt-5 pt-3 border-top">
+                <p class="mb-1">Written by PV</p>
+                <p class="mb-0">&copy; 2026 All Rights Reserved</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="global-lang-select">
+    <button class="active" onclick="switchAllLang('java', this)">Java</button>
+    <button onclick="switchAllLang('python', this)">Python</button>
+  </div>
+  <footer id="footer" class="footer light-background">
+    <div class="container">
+      <div class="copyright text-center"><p>&copy; <span>Copyright</span> <strong class="px-1 sitename">PV</strong> <span>All Rights Reserved<br></span></p></div>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://www.instagram.com/Chinna.Prasanna"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/"><i class="bi bi-github"></i></a>
+      </div>
+      <div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Tweaked by <a href="#">PV</a></div>
+    </div>
+  </footer>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script>
+    function switchLang(lang, btn) {
+      const article = btn.closest('article') || document;
+      article.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      article.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === lang); });
+      document.querySelectorAll('.global-lang-select button').forEach(b => {
+        const t = b.textContent.trim().toLowerCase();
+        b.classList.toggle('active', t === lang);
+      });
+      localStorage.setItem('sel-lang', lang);
+    }
+    function switchAllLang(lang, btn) {
+      document.querySelectorAll('.global-lang-select button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === lang); });
+      document.querySelectorAll('.lang-switcher .lang-tab').forEach(t => {
+        const icon = t.querySelector('.lang-icon');
+        t.classList.toggle('active', icon && icon.classList.contains(lang));
+      });
+      localStorage.setItem('sel-lang', lang);
+    }
+    function copyCode(btn) {
+      const code = btn.closest('.code-block-wrapper').querySelector('code');
+      navigator.clipboard.writeText(code.textContent);
+      btn.innerHTML = '<i class="bi bi-check2"></i> Copied!';
+      setTimeout(() => btn.innerHTML = '<i class="bi bi-clipboard"></i> Copy', 2000);
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('sel-lang') || 'java';
+      document.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === saved); });
+      document.querySelectorAll('.lang-switcher .lang-tab').forEach(t => {
+        const icon = t.querySelector('.lang-icon');
+        t.classList.toggle('active', icon && icon.classList.contains(saved));
+      });
+      document.querySelectorAll('.global-lang-select button').forEach(b => {
+        const t = b.textContent.trim().toLowerCase();
+        b.classList.toggle('active', t === saved);
+      });
+    });
+  </script>
+</body>
+</html>

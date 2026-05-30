@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>API Chaining & Workflows — API Testing Tutorial | PV</title>
+  <meta name="description" content="Chain multiple API calls together — create a resource, read it, update it, then delete it. Pass data between requests and test end-to-end flows.">
+  <meta name="keywords" content="API Chaining, Request Chaining, Workflow Testing, End-to-End API, Data Passing, Sequential Requests">
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/css/main.css" rel="stylesheet">
+</head>
+<body class="blog-page">
+  <header id="header" class="header d-flex align-items-center light-background sticky-top">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+      <a href="../index.html" class="logo d-flex align-items-center me-auto me-xl-0"><h1 class="sitename">PV</h1></a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../resume.html">Resume</a></li>
+          <li><a href="../services.html">Services</a></li>
+          <li><a href="../portfolio.html">Portfolio</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../learning-hub.html" class="active">Learning Hub</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <div class="header-social-links">
+        <a href="https://www.instagram.com/Chinna.Prasanna" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/" class="github"><i class="bi bi-github"></i></a>
+      </div>
+    </div>
+  </header>
+  <main class="main">
+    <section id="tutorial" class="blog-post section">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center mb-4">
+          <div class="col-lg-10"><a href="../learning-hub.html#api-testing-course" class="btn btn-link p-0"><i class="bi bi-chevron-left"></i> Back to Course</a></div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 d-none d-lg-block"><div class="course-sidebar">
+  <div class="course-nav-title">Course Contents</div>
+  <ul class="course-nav">
+    <li class="nav-section-label">Beginner</li>
+    <li><a href="introduction-to-api-testing.html" class=""><span class="nav-number">1</span> Introduction to API Testing</a></li>
+    <li><a href="setup-and-project-structure.html" class=""><span class="nav-number">2</span> Setup & Project Structure</a></li>
+    <li><a href="your-first-get-request.html" class=""><span class="nav-number">3</span> Your First GET Request</a></li>
+    <li><a href="post-put-patch-delete.html" class=""><span class="nav-number">4</span> POST, PUT, PATCH & DELETE</a></li>
+    <li><a href="query-parameters-and-path-params.html" class=""><span class="nav-number">5</span> Query Parameters & Path Params</a></li>
+    <li><a href="headers-and-content-types.html" class=""><span class="nav-number">6</span> Headers & Content Types</a></li>
+    <li><a href="response-validation-and-assertions.html" class=""><span class="nav-number">7</span> Response Validation & Assertions</a></li>
+    <li class="nav-section-label">Intermediate</li>
+    <li><a href="authentication-and-authorization.html" class=""><span class="nav-number">8</span> Authentication & Authorization</a></li>
+    <li><a href="json-schema-validation.html" class=""><span class="nav-number">9</span> JSON Schema Validation</a></li>
+    <li><a href="request-and-response-serialization.html" class=""><span class="nav-number">10</span> Request & Response Serialization</a></li>
+    <li><a href="error-handling-and-negative-testing.html" class=""><span class="nav-number">11</span> Error Handling & Negative Testing</a></li>
+    <li><a href="data-driven-testing.html" class=""><span class="nav-number">12</span> Data-Driven Testing</a></li>
+    <li><a href="api-chaining-and-workflows.html" class=" active"><span class="nav-number">13</span> API Chaining & Workflows</a></li>
+    <li><a href="file-upload-and-multipart.html" class=""><span class="nav-number">14</span> File Upload & Multipart Requests</a></li>
+    <li class="nav-section-label">Advanced</li>
+    <li><a href="test-framework-integration.html" class=""><span class="nav-number">15</span> Test Framework Integration</a></li>
+    <li><a href="environment-configuration.html" class=""><span class="nav-number">16</span> Environment & Configuration Management</a></li>
+    <li><a href="retry-logic-and-resilience.html" class=""><span class="nav-number">17</span> Retry Logic & Resilience Testing</a></li>
+    <li><a href="mocking-and-service-virtualization.html" class=""><span class="nav-number">18</span> Mocking & Service Virtualization</a></li>
+    <li><a href="performance-and-load-testing.html" class=""><span class="nav-number">19</span> Performance & Load Testing</a></li>
+    <li><a href="ci-cd-and-reporting.html" class=""><span class="nav-number">20</span> CI/CD Integration & Reporting</a></li>
+  </ul>
+</div></div>
+          <div class="col-lg-7">
+            <article class="tutorial-post">
+              <div class="mb-2">
+                <span class="badge bg-warning me-2">Intermediate</span>
+                <span class="text-muted small">Chapter 13 &middot; 11 min read</span>
+              </div>
+              <h1 class="mb-3">API Chaining & Workflows</h1>
+              <p class="lead fst-italic mb-4">Chain multiple API calls together — create a resource, read it, update it, then delete it. Pass data between requests and test end-to-end flows.</p>
+              
+<h2>Chaining API Calls</h2>
+<p>Real API testing rarely involves single isolated requests. Business workflows require chaining: create a user, then create their profile, then assign them to a team. Each step depends on data from the previous one.</p>
+
+<h3>Common Patterns</h3>
+<ul>
+  <li><strong>CRUD chain</strong> — Create → Read → Update → Delete a single resource</li>
+  <li><strong>Data dependency</strong> — Use the ID from a POST response in subsequent GET/PUT/DELETE calls</li>
+  <li><strong>Setup/teardown</strong> — Create test data via API before tests, clean up after</li>
+  <li><strong>Business flow</strong> — Register → Login → Perform action → Verify state</li>
+</ul>
+
+              <div class="lang-switcher">
+                <button class="lang-tab active" onclick="switchLang('js', this)"><span class="lang-icon js">JS</span> JavaScript</button>
+                <button class="lang-tab" onclick="switchLang('java', this)"><span class="lang-icon java">JV</span> Java</button>
+                <button class="lang-tab" onclick="switchLang('python', this)"><span class="lang-icon python">PY</span> Python</button>
+              </div>
+              <div class="lang-panel" data-lang="js">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">api-chaining.test.js</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code>const BASE = &#x27;https://jsonplaceholder.typicode.com&#x27;;
+const headers = { &#x27;Content-Type&#x27;: &#x27;application/json&#x27; };
+
+// Full CRUD workflow chain
+console.log(&#x27;--- CRUD Workflow ---&#x27;);
+
+// 1. CREATE
+const createResp = await fetch(`${BASE}/posts`, {
+  method: &#x27;POST&#x27;, headers,
+  body: JSON.stringify({
+    title: &#x27;Chained Post&#x27;,
+    body: &#x27;Created in workflow&#x27;,
+    userId: 1
+  })
+});
+const created = await createResp.json();
+console.assert(createResp.status === 201);
+const postId = created.id;
+console.log(`1. Created post ID: ${postId}`);
+
+// 2. READ — verify it exists
+const readResp = await fetch(`${BASE}/posts/${postId}`);
+const read = await readResp.json();
+console.log(`2. Read post: &quot;${read.title}&quot;`);
+
+// 3. UPDATE — modify the post
+const updateResp = await fetch(`${BASE}/posts/${postId}`, {
+  method: &#x27;PUT&#x27;, headers,
+  body: JSON.stringify({
+    id: postId,
+    title: &#x27;Updated Chained Post&#x27;,
+    body: &#x27;Modified in workflow&#x27;,
+    userId: 1
+  })
+});
+const updated = await updateResp.json();
+console.assert(updated.title === &#x27;Updated Chained Post&#x27;);
+console.log(`3. Updated to: &quot;${updated.title}&quot;`);
+
+// 4. DELETE — remove the post
+const deleteResp = await fetch(`${BASE}/posts/${postId}`, {
+  method: &#x27;DELETE&#x27;
+});
+console.assert(deleteResp.status === 200);
+console.log(`4. Deleted post ${postId}`);
+
+// Multi-resource workflow: User -&gt; Posts -&gt; Comments
+console.log(&#x27;\n--- Multi-Resource Workflow ---&#x27;);
+const userResp = await fetch(`${BASE}/users/1`);
+const user = await userResp.json();
+console.log(`User: ${user.name}`);
+
+const userPosts = await fetch(`${BASE}/posts?userId=${user.id}`);
+const posts = await userPosts.json();
+console.log(`Posts by ${user.name}: ${posts.length}`);
+
+const firstPostComments = await fetch(`${BASE}/posts/${posts[0].id}/comments`);
+const comments = await firstPostComments.json();
+console.log(`Comments on first post: ${comments.length}`);
+
+console.log(&#x27;All chaining tests passed!&#x27;);</code></pre>
+  </div>
+</div>
+<div class="lang-panel" data-lang="java">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">ApiChainingTest.java</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code>import static io.restassured.RestAssured.*;
+import io.restassured.response.Response;
+import org.testng.annotations.Test;
+import org.testng.Assert;
+import java.util.List;
+
+public class ApiChainingTest {
+
+    private static final String BASE = &quot;https://jsonplaceholder.typicode.com&quot;;
+
+    @Test
+    public void testCrudWorkflow() {
+        // 1. CREATE
+        Response createResp = given().baseUri(BASE)
+            .contentType(&quot;application/json&quot;)
+            .body(&quot;{\&quot;title\&quot;: \&quot;Chained Post\&quot;, \&quot;body\&quot;: \&quot;Created\&quot;, \&quot;userId\&quot;: 1}&quot;)
+        .when().post(&quot;/posts&quot;)
+        .then().statusCode(201).extract().response();
+
+        int postId = createResp.jsonPath().getInt(&quot;id&quot;);
+        System.out.println(&quot;1. Created post ID: &quot; + postId);
+
+        // 2. READ
+        String title = given().baseUri(BASE)
+            .when().get(&quot;/posts/&quot; + postId)
+            .then().statusCode(200)
+            .extract().jsonPath().getString(&quot;title&quot;);
+        System.out.println(&quot;2. Read: &quot; + title);
+
+        // 3. UPDATE
+        given().baseUri(BASE)
+            .contentType(&quot;application/json&quot;)
+            .body(&quot;{\&quot;id\&quot;: &quot; + postId + &quot;, \&quot;title\&quot;: \&quot;Updated\&quot;, \&quot;body\&quot;: \&quot;Modified\&quot;, \&quot;userId\&quot;: 1}&quot;)
+        .when().put(&quot;/posts/&quot; + postId)
+        .then().statusCode(200)
+            .body(&quot;title&quot;, org.hamcrest.Matchers.equalTo(&quot;Updated&quot;));
+        System.out.println(&quot;3. Updated&quot;);
+
+        // 4. DELETE
+        given().baseUri(BASE)
+        .when().delete(&quot;/posts/&quot; + postId)
+        .then().statusCode(200);
+        System.out.println(&quot;4. Deleted&quot;);
+    }
+
+    @Test
+    public void testMultiResourceWorkflow() {
+        // Get user
+        Response userResp = given().baseUri(BASE)
+            .when().get(&quot;/users/1&quot;)
+            .then().statusCode(200).extract().response();
+        String userName = userResp.jsonPath().getString(&quot;name&quot;);
+
+        // Get user&#x27;s posts
+        List&lt;Integer&gt; postIds = given().baseUri(BASE)
+            .queryParam(&quot;userId&quot;, 1)
+        .when().get(&quot;/posts&quot;)
+        .then().statusCode(200)
+            .extract().jsonPath().getList(&quot;id&quot;);
+        System.out.println(userName + &quot; has &quot; + postIds.size() + &quot; posts&quot;);
+
+        // Get comments on first post
+        int commentCount = given().baseUri(BASE)
+        .when().get(&quot;/posts/&quot; + postIds.get(0) + &quot;/comments&quot;)
+        .then().statusCode(200)
+            .extract().jsonPath().getList(&quot;$&quot;).size();
+        System.out.println(&quot;First post has &quot; + commentCount + &quot; comments&quot;);
+    }
+}</code></pre>
+  </div>
+</div>
+<div class="lang-panel" data-lang="python">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">test_api_chaining.py</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code>import requests
+
+BASE_URL = &#x27;https://jsonplaceholder.typicode.com&#x27;
+
+def test_crud_workflow():
+    &quot;&quot;&quot;Full CRUD chain: Create -&gt; Read -&gt; Update -&gt; Delete&quot;&quot;&quot;
+
+    # 1. CREATE
+    create_resp = requests.post(
+        f&#x27;{BASE_URL}/posts&#x27;,
+        json={&#x27;title&#x27;: &#x27;Chained Post&#x27;, &#x27;body&#x27;: &#x27;Created&#x27;, &#x27;userId&#x27;: 1}
+    )
+    assert create_resp.status_code == 201
+    post_id = create_resp.json()[&#x27;id&#x27;]
+    print(f&quot;1. Created post ID: {post_id}&quot;)
+
+    # 2. READ
+    read_resp = requests.get(f&#x27;{BASE_URL}/posts/{post_id}&#x27;)
+    assert read_resp.status_code == 200
+    print(f&quot;2. Read: {read_resp.json().get(&#x27;title&#x27;, &#x27;N/A&#x27;)}&quot;)
+
+    # 3. UPDATE
+    update_resp = requests.put(
+        f&#x27;{BASE_URL}/posts/{post_id}&#x27;,
+        json={&#x27;id&#x27;: post_id, &#x27;title&#x27;: &#x27;Updated&#x27;, &#x27;body&#x27;: &#x27;Modified&#x27;, &#x27;userId&#x27;: 1}
+    )
+    assert update_resp.status_code == 200
+    assert update_resp.json()[&#x27;title&#x27;] == &#x27;Updated&#x27;
+    print(&quot;3. Updated&quot;)
+
+    # 4. DELETE
+    delete_resp = requests.delete(f&#x27;{BASE_URL}/posts/{post_id}&#x27;)
+    assert delete_resp.status_code == 200
+    print(f&quot;4. Deleted post {post_id}&quot;)
+
+def test_multi_resource_workflow():
+    &quot;&quot;&quot;Chain across multiple resource types&quot;&quot;&quot;
+    # Get user
+    user = requests.get(f&#x27;{BASE_URL}/users/1&#x27;).json()
+    print(f&quot;User: {user[&#x27;name&#x27;]}&quot;)
+
+    # Get user&#x27;s posts
+    posts = requests.get(f&#x27;{BASE_URL}/posts&#x27;, params={&#x27;userId&#x27;: user[&#x27;id&#x27;]}).json()
+    print(f&quot;Posts by {user[&#x27;name&#x27;]}: {len(posts)}&quot;)
+
+    # Get comments on first post
+    comments = requests.get(f&#x27;{BASE_URL}/posts/{posts[0][&quot;id&quot;]}/comments&#x27;).json()
+    print(f&quot;Comments on first post: {len(comments)}&quot;)
+
+    assert len(posts) &gt; 0
+    assert len(comments) &gt; 0</code></pre>
+  </div>
+</div>
+
+              <hr class="my-5">
+              <div class="mt-4">
+                <span class="badge bg-secondary me-2 mb-2">API Testing</span>
+                <span class="badge bg-secondary me-2 mb-2">Intermediate</span>
+                <span class="badge bg-secondary me-2 mb-2">API Chaining & Workflows</span>
+              </div>
+              <div class="tutorial-nav">
+  <a href="data-driven-testing.html" class="prev"><span class="nav-label"><i class="bi bi-chevron-left"></i> Previous</span><span class="nav-title">Data-Driven Testing</span></a>
+  <a href="file-upload-and-multipart.html" class="next"><span class="nav-label">Next <i class="bi bi-chevron-right"></i></span><span class="nav-title">File Upload & Multipart Requests</span></a>
+</div>
+              <div class="text-muted small mt-5 pt-3 border-top">
+                <p class="mb-1">Written by PV</p>
+                <p class="mb-0">&copy; 2026 All Rights Reserved</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="global-lang-select">
+    <button class="active" onclick="switchAllLang('js', this)">JS</button>
+    <button onclick="switchAllLang('java', this)">Java</button>
+    <button onclick="switchAllLang('python', this)">Python</button>
+  </div>
+  <footer id="footer" class="footer light-background">
+    <div class="container">
+      <div class="copyright text-center"><p>&copy; <span>Copyright</span> <strong class="px-1 sitename">PV</strong> <span>All Rights Reserved<br></span></p></div>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://www.instagram.com/Chinna.Prasanna"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/"><i class="bi bi-github"></i></a>
+      </div>
+      <div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Tweaked by <a href="#">PV</a></div>
+    </div>
+  </footer>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script>
+    function switchLang(lang, btn) {
+      const article = btn.closest('article') || document;
+      article.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      article.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === lang); });
+      document.querySelectorAll('.global-lang-select button').forEach(b => {
+        const t = b.textContent.trim().toLowerCase();
+        b.classList.toggle('active', t === lang || (t === 'js' && lang === 'js'));
+      });
+      localStorage.setItem('pw-lang', lang);
+    }
+    function switchAllLang(lang, btn) {
+      document.querySelectorAll('.global-lang-select button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === lang); });
+      document.querySelectorAll('.lang-switcher .lang-tab').forEach(t => {
+        const icon = t.querySelector('.lang-icon');
+        t.classList.toggle('active', icon && icon.classList.contains(lang));
+      });
+      localStorage.setItem('pw-lang', lang);
+    }
+    function copyCode(btn) {
+      const code = btn.closest('.code-block-wrapper').querySelector('code');
+      navigator.clipboard.writeText(code.textContent);
+      btn.innerHTML = '<i class="bi bi-check2"></i> Copied!';
+      setTimeout(() => btn.innerHTML = '<i class="bi bi-clipboard"></i> Copy', 2000);
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('pw-lang') || 'js';
+      document.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === saved); });
+      document.querySelectorAll('.lang-switcher .lang-tab').forEach(t => {
+        const icon = t.querySelector('.lang-icon');
+        t.classList.toggle('active', icon && icon.classList.contains(saved));
+      });
+      document.querySelectorAll('.global-lang-select button').forEach(b => {
+        const t = b.textContent.trim().toLowerCase();
+        b.classList.toggle('active', t === saved);
+      });
+    });
+  </script>
+</body>
+</html>

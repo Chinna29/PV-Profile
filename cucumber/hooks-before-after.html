@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Hooks — Before, After & Around — Cucumber BDD Tutorial | PV</title>
+  <meta name="description" content="Set up and tear down test state with hooks — Before/After scenario, Before/After step, Before/After all, and conditional hooks with tags.">
+  <meta name="keywords" content="Cucumber Hooks, Before After, Setup Teardown, Scenario Hooks, Tagged Hooks, BeforeAll AfterAll">
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/css/main.css" rel="stylesheet">
+</head>
+<body class="blog-page">
+  <header id="header" class="header d-flex align-items-center light-background sticky-top">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+      <a href="../index.html" class="logo d-flex align-items-center me-auto me-xl-0"><h1 class="sitename">PV</h1></a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../resume.html">Resume</a></li>
+          <li><a href="../services.html">Services</a></li>
+          <li><a href="../portfolio.html">Portfolio</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../learning-hub.html" class="active">Learning Hub</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <div class="header-social-links">
+        <a href="https://www.instagram.com/Chinna.Prasanna" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/" class="github"><i class="bi bi-github"></i></a>
+      </div>
+    </div>
+  </header>
+  <main class="main">
+    <section id="tutorial" class="blog-post section">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center mb-4">
+          <div class="col-lg-10"><a href="../learning-hub.html#cucumber-course" class="btn btn-link p-0"><i class="bi bi-chevron-left"></i> Back to Course</a></div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 d-none d-lg-block"><div class="course-sidebar">
+  <div class="course-nav-title">Course Contents</div>
+  <ul class="course-nav">
+    <li class="nav-section-label">Beginner</li>
+    <li><a href="introduction-to-bdd-and-cucumber.html" class=""><span class="nav-number">1</span> Introduction to BDD & Cucumber</a></li>
+    <li><a href="setup-and-project-structure.html" class=""><span class="nav-number">2</span> Setup & Project Structure</a></li>
+    <li><a href="gherkin-syntax-deep-dive.html" class=""><span class="nav-number">3</span> Gherkin Syntax Deep Dive</a></li>
+    <li><a href="step-definitions.html" class=""><span class="nav-number">4</span> Writing Step Definitions</a></li>
+    <li><a href="scenario-outline-and-examples.html" class=""><span class="nav-number">5</span> Scenario Outline & Examples</a></li>
+    <li><a href="data-tables.html" class=""><span class="nav-number">6</span> Data Tables</a></li>
+    <li><a href="cucumber-test-runner.html" class=""><span class="nav-number">7</span> Test Runner & Execution</a></li>
+    <li class="nav-section-label">Intermediate</li>
+    <li><a href="hooks-before-after.html" class=" active"><span class="nav-number">8</span> Hooks — Before, After & Around</a></li>
+    <li><a href="tags-and-filtering.html" class=""><span class="nav-number">9</span> Tags & Filtering</a></li>
+    <li><a href="page-object-model-with-cucumber.html" class=""><span class="nav-number">10</span> Page Object Model with Cucumber</a></li>
+    <li><a href="sharing-state-dependency-injection.html" class=""><span class="nav-number">11</span> Sharing State & Dependency Injection</a></li>
+    <li><a href="cucumber-with-selenium-integration.html" class=""><span class="nav-number">12</span> Cucumber + Selenium Integration</a></li>
+    <li><a href="custom-parameter-types.html" class=""><span class="nav-number">13</span> Custom Parameter Types & Transformers</a></li>
+    <li><a href="multi-language-and-doc-strings.html" class=""><span class="nav-number">14</span> Doc Strings & Multi-line Data</a></li>
+    <li class="nav-section-label">Advanced</li>
+    <li><a href="parallel-execution.html" class=""><span class="nav-number">15</span> Parallel Execution</a></li>
+    <li><a href="reporting-allure-extent.html" class=""><span class="nav-number">16</span> Reporting — Allure, HTML & Extent</a></li>
+    <li><a href="api-testing-with-cucumber.html" class=""><span class="nav-number">17</span> API Testing with Cucumber</a></li>
+    <li><a href="reusable-step-libraries.html" class=""><span class="nav-number">18</span> Reusable Step Libraries</a></li>
+    <li><a href="ci-cd-integration.html" class=""><span class="nav-number">19</span> CI/CD Integration</a></li>
+    <li><a href="best-practices-and-anti-patterns.html" class=""><span class="nav-number">20</span> Best Practices & Anti-Patterns</a></li>
+  </ul>
+</div></div>
+          <div class="col-lg-7">
+            <article class="tutorial-post">
+              <div class="mb-2">
+                <span class="badge bg-warning me-2">Intermediate</span>
+                <span class="text-muted small">Chapter 8 &middot; 11 min read</span>
+              </div>
+              <h1 class="mb-3">Hooks — Before, After & Around</h1>
+              <p class="lead fst-italic mb-4">Set up and tear down test state with hooks — Before/After scenario, Before/After step, Before/After all, and conditional hooks with tags.</p>
+              
+<h2>Hooks — Setup & Teardown</h2>
+<p>Hooks run code at specific points in the Cucumber lifecycle: before/after each scenario, before/after each step, and before/after the entire test run. They're essential for browser setup, screenshot capture, and cleanup.</p>
+
+              <div class="lang-switcher">
+                <button class="lang-tab active" onclick="switchLang('java', this)"><span class="lang-icon java">JV</span> Java (Cucumber-JVM)</button>
+                <button class="lang-tab" onclick="switchLang('python', this)"><span class="lang-icon python">PY</span> Python (Behave)</button>
+              </div>
+              <div class="lang-panel" data-lang="java">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">Hooks.java</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code>package com.bdd.course.hooks;
+
+import io.cucumber.java.*;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Hooks {
+
+    private static WebDriver driver;
+
+    // Runs once before ALL scenarios
+    @BeforeAll
+    public static void beforeAll() {
+        System.out.println(&quot;=== Test Suite Starting ===&quot;);
+    }
+
+    // Runs before EACH scenario
+    @Before
+    public void beforeScenario(Scenario scenario) {
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        System.out.println(&quot;Starting: &quot; + scenario.getName());
+    }
+
+    // Tagged hook — only runs for @ui scenarios
+    @Before(&quot;@ui&quot;)
+    public void beforeUiScenario() {
+        System.out.println(&quot;UI scenario — browser ready&quot;);
+    }
+
+    // Runs after EACH scenario
+    @After
+    public void afterScenario(Scenario scenario) {
+        // Screenshot on failure
+        if (scenario.isFailed() &amp;&amp; driver != null) {
+            byte[] screenshot = ((TakesScreenshot) driver)
+                .getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshot, &quot;image/png&quot;,
+                scenario.getName());
+            System.out.println(&quot;Screenshot captured for: &quot;
+                + scenario.getName());
+        }
+
+        if (driver != null) {
+            driver.quit();
+        }
+        System.out.println(&quot;Finished: &quot; + scenario.getName()
+            + &quot; [&quot; + scenario.getStatus() + &quot;]&quot;);
+    }
+
+    // Runs once after ALL scenarios
+    @AfterAll
+    public static void afterAll() {
+        System.out.println(&quot;=== Test Suite Complete ===&quot;);
+    }
+
+    // Before each step (less common)
+    @BeforeStep
+    public void beforeStep(Scenario scenario) {
+        // Useful for logging or timing
+    }
+
+    // After each step
+    @AfterStep
+    public void afterStep(Scenario scenario) {
+        // Capture screenshot after each step for reporting
+    }
+
+    public static WebDriver getDriver() {
+        return driver;
+    }
+}</code></pre>
+  </div>
+</div>
+<div class="lang-panel" data-lang="python">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">environment.py</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code># features/environment.py — Behave hooks
+from selenium import webdriver
+import os, datetime
+
+def before_all(context):
+    &quot;&quot;&quot;Runs once before all features&quot;&quot;&quot;
+    print(&quot;=== Test Suite Starting ===&quot;)
+    context.config.setup_logging()
+
+def before_feature(context, feature):
+    &quot;&quot;&quot;Runs before each feature file&quot;&quot;&quot;
+    print(f&quot;Feature: {feature.name}&quot;)
+
+def before_scenario(context, scenario):
+    &quot;&quot;&quot;Runs before each scenario&quot;&quot;&quot;
+    context.driver = webdriver.Chrome()
+    context.driver.maximize_window()
+    context.driver.implicitly_wait(10)
+    print(f&quot;Starting: {scenario.name}&quot;)
+
+def before_tag(context, tag):
+    &quot;&quot;&quot;Conditional hook based on tags&quot;&quot;&quot;
+    if tag == &quot;ui&quot;:
+        print(&quot;UI scenario - browser ready&quot;)
+    if tag == &quot;api&quot;:
+        print(&quot;API scenario - no browser needed&quot;)
+
+def after_scenario(context, scenario):
+    &quot;&quot;&quot;Runs after each scenario&quot;&quot;&quot;
+    # Screenshot on failure
+    if scenario.status == &quot;failed&quot; and hasattr(context, &#x27;driver&#x27;):
+        os.makedirs(&quot;reports/screenshots&quot;, exist_ok=True)
+        timestamp = datetime.datetime.now().strftime(&#x27;%Y%m%d_%H%M%S&#x27;)
+        path = f&quot;reports/screenshots/{scenario.name}_{timestamp}.png&quot;
+        context.driver.save_screenshot(path)
+        print(f&quot;Screenshot: {path}&quot;)
+
+    if hasattr(context, &#x27;driver&#x27;):
+        context.driver.quit()
+    print(f&quot;Finished: {scenario.name} [{scenario.status}]&quot;)
+
+def after_feature(context, feature):
+    &quot;&quot;&quot;Runs after each feature file&quot;&quot;&quot;
+    print(f&quot;Feature complete: {feature.name}&quot;)
+
+def after_all(context):
+    &quot;&quot;&quot;Runs once after all features&quot;&quot;&quot;
+    print(&quot;=== Test Suite Complete ===&quot;)
+
+def before_step(context, step):
+    &quot;&quot;&quot;Runs before each step (for logging)&quot;&quot;&quot;
+    pass
+
+def after_step(context, step):
+    &quot;&quot;&quot;Runs after each step&quot;&quot;&quot;
+    if step.status == &quot;failed&quot;:
+        print(f&quot;FAILED STEP: {step.name}&quot;)</code></pre>
+  </div>
+</div>
+
+              <hr class="my-5">
+              <div class="mt-4">
+                <span class="badge bg-secondary me-2 mb-2">Cucumber BDD</span>
+                <span class="badge bg-secondary me-2 mb-2">Intermediate</span>
+                <span class="badge bg-secondary me-2 mb-2">Hooks — Before, After & Around</span>
+              </div>
+              <div class="tutorial-nav">
+  <a href="cucumber-test-runner.html" class="prev"><span class="nav-label"><i class="bi bi-chevron-left"></i> Previous</span><span class="nav-title">Test Runner & Execution</span></a>
+  <a href="tags-and-filtering.html" class="next"><span class="nav-label">Next <i class="bi bi-chevron-right"></i></span><span class="nav-title">Tags & Filtering</span></a>
+</div>
+              <div class="text-muted small mt-5 pt-3 border-top">
+                <p class="mb-1">Written by PV</p>
+                <p class="mb-0">&copy; 2026 All Rights Reserved</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="global-lang-select">
+    <button class="active" onclick="switchAllLang('java', this)">Java</button>
+    <button onclick="switchAllLang('python', this)">Python</button>
+  </div>
+  <footer id="footer" class="footer light-background">
+    <div class="container">
+      <div class="copyright text-center"><p>&copy; <span>Copyright</span> <strong class="px-1 sitename">PV</strong> <span>All Rights Reserved<br></span></p></div>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://www.instagram.com/Chinna.Prasanna"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/"><i class="bi bi-github"></i></a>
+      </div>
+      <div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Tweaked by <a href="#">PV</a></div>
+    </div>
+  </footer>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script>
+    function switchLang(lang, btn) {
+      const article = btn.closest('article') || document;
+      article.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      article.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === lang); });
+      document.querySelectorAll('.global-lang-select button').forEach(b => {
+        const t = b.textContent.trim().toLowerCase();
+        b.classList.toggle('active', t === lang);
+      });
+      localStorage.setItem('cuc-lang', lang);
+    }
+    function switchAllLang(lang, btn) {
+      document.querySelectorAll('.global-lang-select button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === lang); });
+      document.querySelectorAll('.lang-switcher .lang-tab').forEach(t => {
+        const icon = t.querySelector('.lang-icon');
+        t.classList.toggle('active', icon && icon.classList.contains(lang));
+      });
+      localStorage.setItem('cuc-lang', lang);
+    }
+    function copyCode(btn) {
+      const code = btn.closest('.code-block-wrapper').querySelector('code');
+      navigator.clipboard.writeText(code.textContent);
+      btn.innerHTML = '<i class="bi bi-check2"></i> Copied!';
+      setTimeout(() => btn.innerHTML = '<i class="bi bi-clipboard"></i> Copy', 2000);
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('cuc-lang') || 'java';
+      document.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === saved); });
+      document.querySelectorAll('.lang-switcher .lang-tab').forEach(t => {
+        const icon = t.querySelector('.lang-icon');
+        t.classList.toggle('active', icon && icon.classList.contains(saved));
+      });
+      document.querySelectorAll('.global-lang-select button').forEach(b => {
+        const t = b.textContent.trim().toLowerCase();
+        b.classList.toggle('active', t === saved);
+      });
+    });
+  </script>
+</body>
+</html>
