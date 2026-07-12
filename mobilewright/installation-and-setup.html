@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Installation & Setup — Mobilewright Tutorial | PV</title>
+  <meta name="description" content="Install Mobilewright with npm, scaffold a project, understand the config file, and verify your environment with the doctor command.">
+  <meta name="keywords" content="mobilewright, installation, setup, npm, config, doctor">
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/css/main.css" rel="stylesheet">
+  <style>.lang-switcher .lang-tab .lang-icon.ts { background: #3178c6; color: #fff; }</style>
+</head>
+<body class="blog-page">
+  <header id="header" class="header d-flex align-items-center light-background sticky-top">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+      <a href="../index.html" class="logo d-flex align-items-center me-auto me-xl-0"><h1 class="sitename">PV</h1></a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../resume.html">Resume</a></li>
+          <li><a href="../services.html">Services</a></li>
+          <li><a href="../portfolio.html">Portfolio</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../learning-hub.html" class="active">Learning Hub</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <div class="header-social-links">
+        <a href="https://www.instagram.com/Chinna.Prasanna" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/" class="github"><i class="bi bi-github"></i></a>
+      </div>
+    </div>
+  </header>
+  <main class="main">
+    <section id="tutorial" class="blog-post section">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center mb-4">
+          <div class="col-lg-10"><a href="../learning-hub.html#mobilewright-course" class="btn btn-link p-0"><i class="bi bi-chevron-left"></i> Back to Course</a></div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 d-none d-lg-block"><div class="course-sidebar">
+  <div class="course-nav-title">Course Contents</div>
+  <ul class="course-nav">
+    <li class="nav-section-label">Beginner</li>
+    <li><a href="introduction-to-mobilewright.html" class=""><span class="nav-number">1</span> Introduction to Mobilewright</a></li>
+    <li><a href="installation-and-setup.html" class=" active"><span class="nav-number">2</span> Installation &amp; Setup</a></li>
+    <li><a href="writing-your-first-test.html" class=""><span class="nav-number">3</span> Writing Your First Test</a></li>
+    <li><a href="locators-and-finding-elements.html" class=""><span class="nav-number">4</span> Locators &amp; Finding Elements</a></li>
+    <li><a href="actions-and-interactions.html" class=""><span class="nav-number">5</span> Actions &amp; Interactions</a></li>
+    <li class="nav-section-label">Intermediate</li>
+    <li><a href="assertions.html" class=""><span class="nav-number">6</span> Assertions</a></li>
+    <li><a href="auto-waiting-and-timeouts.html" class=""><span class="nav-number">7</span> Auto-waiting &amp; Timeouts</a></li>
+    <li><a href="fixtures-and-configuration.html" class=""><span class="nav-number">8</span> Fixtures &amp; Configuration</a></li>
+    <li><a href="screenshots-and-reports.html" class=""><span class="nav-number">9</span> Screenshots &amp; Reports</a></li>
+    <li class="nav-section-label">Advanced</li>
+    <li><a href="deep-links-and-webviews.html" class=""><span class="nav-number">10</span> Deep Links &amp; Web Views</a></li>
+    <li><a href="parallelism-projects-and-retries.html" class=""><span class="nav-number">11</span> Parallelism, Projects &amp; Retries</a></li>
+    <li><a href="debugging-inspector-and-ci.html" class=""><span class="nav-number">12</span> Debugging, Inspector &amp; CI</a></li>
+  </ul>
+</div></div>
+          <div class="col-lg-7">
+            <article class="tutorial-post">
+              <div class="mb-2">
+                <span class="badge bg-success me-2">Beginner</span>
+                <span class="text-muted small">Chapter 2 &middot; 7 min read</span>
+              </div>
+              <h1 class="mb-3">Installation &amp; Setup</h1>
+              <p class="lead fst-italic mb-4">Install Mobilewright with npm, scaffold a project, understand the config file, and verify your environment with the doctor command.</p>
+              <h2>Installing Mobilewright</h2>
+<p>Mobilewright is installed from npm like any other Node.js package. You need two packages: <code>mobilewright</code> (the engine and CLI) and <code>@mobilewright/test</code> (the test runner API).</p>
+<div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">Terminal</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code>npm install mobilewright @mobilewright/test</code></pre>
+  </div>
+<p>Next, scaffold a new project. This one command creates the configuration file and an example test for you. If either file already exists, it is skipped — so it is always safe to run:</p>
+<div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">Terminal</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code>npm init mobilewright@latest</code></pre>
+  </div>
+<h2>Directory Layout</h2>
+<p>After initialization your project looks like this — one config file and a <code>tests</code> folder:</p>
+<div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">Project structure</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code>mobilewright.config.ts
+package.json
+package-lock.json
+tests/
+  example.test.ts</code></pre>
+  </div>
+<h2>The Config File</h2>
+<p>The config file is the heart of your project. It tells Mobilewright which platform to target, which app to install and launch, and which device to use. You can write it in TypeScript (<code>mobilewright.config.ts</code>) or JavaScript (<code>mobilewright.config.js</code>) — both work out of the box.</p>
+<div class="lang-switcher">
+  <button class="lang-tab" onclick="switchLang('ts', this)"><span class="lang-icon ts">TS</span> TypeScript</button>
+  <button class="lang-tab" onclick="switchLang('js', this)"><span class="lang-icon js">JS</span> JavaScript</button>
+</div>
+<div class="lang-panel" data-lang="ts">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">mobilewright.config.ts</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code><span class="keyword">import</span> { defineConfig } <span class="keyword">from</span> <span class="string">'mobilewright'</span>;
+
+<span class="keyword">export</span> <span class="keyword">default</span> <span class="function">defineConfig</span>({
+  platform: <span class="string">'ios'</span>,
+  bundleId: <span class="string">'com.example.myapp'</span>,
+  deviceName: /iPhone 16/,
+  installApps: <span class="string">'./builds/myapp.ipa'</span>,
+  timeout: 10_000,
+});</code></pre>
+  </div>
+</div>
+<div class="lang-panel" data-lang="js">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">mobilewright.config.js</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code><span class="keyword">const</span> { defineConfig } = <span class="function">require</span>(<span class="string">'mobilewright'</span>);
+
+module.exports = <span class="function">defineConfig</span>({
+  platform: <span class="string">'ios'</span>,
+  bundleId: <span class="string">'com.example.myapp'</span>,
+  deviceName: /iPhone 16/,
+  installApps: <span class="string">'./builds/myapp.ipa'</span>,
+  timeout: 10_000,
+});</code></pre>
+  </div>
+</div>
+<p>Each option is simple: <code>platform</code> is <code>'ios'</code> or <code>'android'</code>, <code>bundleId</code> is your app's identifier, <code>deviceName</code> is a pattern to match a simulator or device, <code>installApps</code> points to your IPA/APK build, and <code>timeout</code> is the default wait time in milliseconds.</p>
+<h2>Verify Your Environment</h2>
+<p>Before running anything, let Mobilewright check that your machine is ready. The <code>doctor</code> command inspects Node.js, Xcode, the Android SDK, connected devices, and more — and tells you exactly what is missing:</p>
+<div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">Terminal</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code>npx mobilewright doctor
+
+<span class="comment"># System</span>
+<span class="comment">#   ✓  Node.js   v22.19.0</span>
+<span class="comment">#   ✓  mobilecli devices  2 online devices</span>
+<span class="comment"># iOS</span>
+<span class="comment">#   ✓  Xcode 26.0.1, 62 simulators available</span>
+<span class="comment"># Android</span>
+<span class="comment">#   ✓  ADB, Emulator, ANDROID_HOME</span>
+<span class="comment"># Summary: Ready for mobile development!</span></code></pre>
+  </div>
+<div class="tip-box"><strong>Tip:</strong> Run <code>npx mobilewright doctor --category ios</code> (or <code>android</code>) to check just one platform, or <code>--json</code> for machine-readable output in CI.</div>
+<h2>Run the Example Test</h2>
+<div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">Terminal</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code>npx mobilewright test</code></pre>
+  </div>
+<p>If you see a green checkmark, your setup is complete. In the next chapter we will look at what is actually inside that test file.</p>
+              <hr class="my-5">
+              <div class="mt-4">
+                <span class="badge bg-secondary me-2 mb-2">Mobilewright</span>
+                <span class="badge bg-secondary me-2 mb-2">Beginner</span>
+                <span class="badge bg-secondary me-2 mb-2">Setup</span>
+                <span class="badge bg-secondary me-2 mb-2">Config</span>
+              </div>
+              <div class="tutorial-nav">
+  <a href="introduction-to-mobilewright.html" class="prev"><span class="nav-label"><i class="bi bi-chevron-left"></i> Previous</span><span class="nav-title">Introduction to Mobilewright</span></a>
+  <a href="writing-your-first-test.html" class="next"><span class="nav-label">Next <i class="bi bi-chevron-right"></i></span><span class="nav-title">Writing Your First Test</span></a>
+</div>
+              <div class="text-muted small mt-5 pt-3 border-top">
+                <p class="mb-1">Written by PV</p>
+                <p class="mb-0">&copy; 2026 All Rights Reserved</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="global-lang-select">
+    <button class="active" onclick="switchAllLang('ts', this)">TS</button>
+    <button onclick="switchAllLang('js', this)">JS</button>
+  </div>
+  <footer id="footer" class="footer light-background">
+    <div class="container">
+      <div class="copyright text-center"><p>&copy; <span>Copyright</span> <strong class="px-1 sitename">PV</strong> <span>All Rights Reserved<br></span></p></div>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://www.instagram.com/Chinna.Prasanna"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/"><i class="bi bi-github"></i></a>
+      </div>
+      <div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Tweaked by <a href="#">PV</a></div>
+    </div>
+  </footer>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script>
+    function switchLang(lang, btn) {
+      const article = btn.closest('article') || document;
+      article.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
+      article.querySelectorAll('.lang-switcher').forEach(sw => {
+        const tab = sw.querySelector('.lang-tab .lang-icon.' + lang);
+        if (tab) tab.closest('.lang-tab').classList.add('active');
+      });
+      article.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === lang); });
+      document.querySelectorAll('.global-lang-select button').forEach(b => {
+        b.classList.toggle('active', b.textContent.trim().toLowerCase() === lang);
+      });
+      localStorage.setItem('mw-lang', lang);
+    }
+    function switchAllLang(lang, btn) {
+      document.querySelectorAll('.global-lang-select button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === lang); });
+      document.querySelectorAll('.lang-switcher .lang-tab').forEach(t => {
+        const icon = t.querySelector('.lang-icon');
+        t.classList.toggle('active', icon && icon.classList.contains(lang));
+      });
+      localStorage.setItem('mw-lang', lang);
+    }
+    function copyCode(btn) {
+      const code = btn.closest('.code-block-wrapper').querySelector('code');
+      navigator.clipboard.writeText(code.textContent);
+      btn.innerHTML = '<i class="bi bi-check2"></i> Copied!';
+      setTimeout(() => btn.innerHTML = '<i class="bi bi-clipboard"></i> Copy', 2000);
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('mw-lang') || 'ts';
+      document.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === saved); });
+      document.querySelectorAll('.lang-switcher .lang-tab').forEach(t => {
+        const icon = t.querySelector('.lang-icon');
+        t.classList.toggle('active', icon && icon.classList.contains(saved));
+      });
+      document.querySelectorAll('.global-lang-select button').forEach(b => {
+        b.classList.toggle('active', b.textContent.trim().toLowerCase() === saved);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Introduction to Mobilewright — Mobilewright Tutorial | PV</title>
+  <meta name="description" content="Learn what Mobilewright is, why it makes mobile app testing simple, and how it compares to Appium and Maestro.">
+  <meta name="keywords" content="mobilewright, introduction, mobile testing, ios, android, appium comparison">
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/css/main.css" rel="stylesheet">
+  <style>.lang-switcher .lang-tab .lang-icon.ts { background: #3178c6; color: #fff; }</style>
+</head>
+<body class="blog-page">
+  <header id="header" class="header d-flex align-items-center light-background sticky-top">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+      <a href="../index.html" class="logo d-flex align-items-center me-auto me-xl-0"><h1 class="sitename">PV</h1></a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../resume.html">Resume</a></li>
+          <li><a href="../services.html">Services</a></li>
+          <li><a href="../portfolio.html">Portfolio</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../learning-hub.html" class="active">Learning Hub</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <div class="header-social-links">
+        <a href="https://www.instagram.com/Chinna.Prasanna" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/" class="github"><i class="bi bi-github"></i></a>
+      </div>
+    </div>
+  </header>
+  <main class="main">
+    <section id="tutorial" class="blog-post section">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center mb-4">
+          <div class="col-lg-10"><a href="../learning-hub.html#mobilewright-course" class="btn btn-link p-0"><i class="bi bi-chevron-left"></i> Back to Course</a></div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 d-none d-lg-block"><div class="course-sidebar">
+  <div class="course-nav-title">Course Contents</div>
+  <ul class="course-nav">
+    <li class="nav-section-label">Beginner</li>
+    <li><a href="introduction-to-mobilewright.html" class=" active"><span class="nav-number">1</span> Introduction to Mobilewright</a></li>
+    <li><a href="installation-and-setup.html" class=""><span class="nav-number">2</span> Installation &amp; Setup</a></li>
+    <li><a href="writing-your-first-test.html" class=""><span class="nav-number">3</span> Writing Your First Test</a></li>
+    <li><a href="locators-and-finding-elements.html" class=""><span class="nav-number">4</span> Locators &amp; Finding Elements</a></li>
+    <li><a href="actions-and-interactions.html" class=""><span class="nav-number">5</span> Actions &amp; Interactions</a></li>
+    <li class="nav-section-label">Intermediate</li>
+    <li><a href="assertions.html" class=""><span class="nav-number">6</span> Assertions</a></li>
+    <li><a href="auto-waiting-and-timeouts.html" class=""><span class="nav-number">7</span> Auto-waiting &amp; Timeouts</a></li>
+    <li><a href="fixtures-and-configuration.html" class=""><span class="nav-number">8</span> Fixtures &amp; Configuration</a></li>
+    <li><a href="screenshots-and-reports.html" class=""><span class="nav-number">9</span> Screenshots &amp; Reports</a></li>
+    <li class="nav-section-label">Advanced</li>
+    <li><a href="deep-links-and-webviews.html" class=""><span class="nav-number">10</span> Deep Links &amp; Web Views</a></li>
+    <li><a href="parallelism-projects-and-retries.html" class=""><span class="nav-number">11</span> Parallelism, Projects &amp; Retries</a></li>
+    <li><a href="debugging-inspector-and-ci.html" class=""><span class="nav-number">12</span> Debugging, Inspector &amp; CI</a></li>
+  </ul>
+</div></div>
+          <div class="col-lg-7">
+            <article class="tutorial-post">
+              <div class="mb-2">
+                <span class="badge bg-success me-2">Beginner</span>
+                <span class="text-muted small">Chapter 1 &middot; 6 min read</span>
+              </div>
+              <h1 class="mb-3">Introduction to Mobilewright</h1>
+              <p class="lead fst-italic mb-4">Learn what Mobilewright is, why it makes mobile app testing simple, and how it compares to Appium and Maestro.</p>
+              <h2>What Is Mobilewright?</h2>
+<p>Mobilewright is an open-source end-to-end testing framework for <strong>mobile applications</strong>. It gives you one simple API to automate both <strong>iOS and Android</strong> apps — on simulators, emulators, and real devices. If you have ever used Playwright for web testing, Mobilewright will feel instantly familiar: the same <code>test</code> and <code>expect</code> functions, the same locator style, and the same auto-waiting philosophy — just pointed at a mobile app instead of a browser.</p>
+<p>Here is what makes it stand out:</p>
+<p><strong>Cross-platform</strong> — one test can run on both iOS and Android. <strong>Auto-waiting</strong> — no manual waits or sleeps, ever. <strong>TypeScript-first</strong> — full type safety and autocompletion, and plain JavaScript works too. <strong>Agent-ready</strong> — built with AI agent integration in mind.</p>
+<h2>How Does It Compare?</h2>
+<p>Appium has been the standard for mobile automation for years, but it needs drivers, capabilities objects, and lots of setup. Maestro is simple but uses YAML flows instead of a real programming language. Mobilewright gives you the best of both worlds: a modern, code-first API that is easy to read and quick to set up.</p>
+<table><thead><tr><th>Feature</th><th>Mobilewright</th><th>Appium</th><th>Maestro</th></tr></thead><tbody>
+<tr><td>Platforms</td><td>iOS &amp; Android</td><td>iOS &amp; Android</td><td>iOS &amp; Android</td></tr>
+<tr><td>Language</td><td>TypeScript / JavaScript</td><td>Many (via drivers)</td><td>YAML</td></tr>
+<tr><td>Auto-wait</td><td>Yes, built-in</td><td>Manual waits</td><td>Yes</td></tr>
+<tr><td>Setup effort</td><td>One npm install</td><td>Server + drivers</td><td>CLI install</td></tr>
+<tr><td>Test runner</td><td>Built-in</td><td>Bring your own</td><td>Built-in</td></tr>
+<tr><td>Web view support</td><td>Full Playwright API</td><td>Context switching</td><td>Limited</td></tr>
+</tbody></table>
+<div class="tip-box"><strong>Tip:</strong> Already know Playwright? You can reuse most of your knowledge — Mobilewright intentionally mirrors Playwright's API, and its web view support even runs Playwright's real engine.</div>
+<h2>A Taste of Mobilewright</h2>
+<p>This is a complete, working Mobilewright test. It launches your app, waits for the welcome text, and passes when it appears. Notice there is no driver setup, no capabilities object, and no sleep statement anywhere.</p>
+<div class="lang-switcher">
+  <button class="lang-tab" onclick="switchLang('ts', this)"><span class="lang-icon ts">TS</span> TypeScript</button>
+  <button class="lang-tab" onclick="switchLang('js', this)"><span class="lang-icon js">JS</span> JavaScript</button>
+</div>
+<div class="lang-panel" data-lang="ts">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">example.test.ts</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code><span class="keyword">import</span> { test, expect } <span class="keyword">from</span> <span class="string">'@mobilewright/test'</span>;
+
+<span class="function">test</span>(<span class="string">'app launches and shows home screen'</span>, <span class="keyword">async</span> ({ screen }) =&gt; {
+  <span class="comment">// The screen fixture is your window into the device</span>
+  <span class="keyword">await</span> <span class="function">expect</span>(screen.<span class="function">getByText</span>(<span class="string">'Welcome'</span>)).<span class="function">toBeVisible</span>();
+});</code></pre>
+  </div>
+</div>
+<div class="lang-panel" data-lang="js">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">example.test.js</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code><span class="keyword">const</span> { test, expect } = <span class="function">require</span>(<span class="string">'@mobilewright/test'</span>);
+
+<span class="function">test</span>(<span class="string">'app launches and shows home screen'</span>, <span class="keyword">async</span> ({ screen }) =&gt; {
+  <span class="comment">// The screen fixture is your window into the device</span>
+  <span class="keyword">await</span> <span class="function">expect</span>(screen.<span class="function">getByText</span>(<span class="string">'Welcome'</span>)).<span class="function">toBeVisible</span>();
+});</code></pre>
+  </div>
+</div>
+<p>That is the whole test. The <code>screen</code> fixture connects to the device, launches the app defined in your config, and the assertion keeps retrying until the text shows up (or times out). In the next chapter we will install Mobilewright and get this running on your machine.</p>
+              <hr class="my-5">
+              <div class="mt-4">
+                <span class="badge bg-secondary me-2 mb-2">Mobilewright</span>
+                <span class="badge bg-secondary me-2 mb-2">Beginner</span>
+                <span class="badge bg-secondary me-2 mb-2">Overview</span>
+                <span class="badge bg-secondary me-2 mb-2">Mobile Testing</span>
+              </div>
+              <div class="tutorial-nav">
+  <a href="installation-and-setup.html" class="next"><span class="nav-label">Next <i class="bi bi-chevron-right"></i></span><span class="nav-title">Installation &amp; Setup</span></a>
+</div>
+              <div class="text-muted small mt-5 pt-3 border-top">
+                <p class="mb-1">Written by PV</p>
+                <p class="mb-0">&copy; 2026 All Rights Reserved</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="global-lang-select">
+    <button class="active" onclick="switchAllLang('ts', this)">TS</button>
+    <button onclick="switchAllLang('js', this)">JS</button>
+  </div>
+  <footer id="footer" class="footer light-background">
+    <div class="container">
+      <div class="copyright text-center"><p>&copy; <span>Copyright</span> <strong class="px-1 sitename">PV</strong> <span>All Rights Reserved<br></span></p></div>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://www.instagram.com/Chinna.Prasanna"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/"><i class="bi bi-github"></i></a>
+      </div>
+      <div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Tweaked by <a href="#">PV</a></div>
+    </div>
+  </footer>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script>
+    function switchLang(lang, btn) {
+      const article = btn.closest('article') || document;
+      article.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
+      article.querySelectorAll('.lang-switcher').forEach(sw => {
+        const tab = sw.querySelector('.lang-tab .lang-icon.' + lang);
+        if (tab) tab.closest('.lang-tab').classList.add('active');
+      });
+      article.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === lang); });
+      document.querySelectorAll('.global-lang-select button').forEach(b => {
+        b.classList.toggle('active', b.textContent.trim().toLowerCase() === lang);
+      });
+      localStorage.setItem('mw-lang', lang);
+    }
+    function switchAllLang(lang, btn) {
+      document.querySelectorAll('.global-lang-select button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === lang); });
+      document.querySelectorAll('.lang-switcher .lang-tab').forEach(t => {
+        const icon = t.querySelector('.lang-icon');
+        t.classList.toggle('active', icon && icon.classList.contains(lang));
+      });
+      localStorage.setItem('mw-lang', lang);
+    }
+    function copyCode(btn) {
+      const code = btn.closest('.code-block-wrapper').querySelector('code');
+      navigator.clipboard.writeText(code.textContent);
+      btn.innerHTML = '<i class="bi bi-check2"></i> Copied!';
+      setTimeout(() => btn.innerHTML = '<i class="bi bi-clipboard"></i> Copy', 2000);
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('mw-lang') || 'ts';
+      document.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === saved); });
+      document.querySelectorAll('.lang-switcher .lang-tab').forEach(t => {
+        const icon = t.querySelector('.lang-icon');
+        t.classList.toggle('active', icon && icon.classList.contains(saved));
+      });
+      document.querySelectorAll('.global-lang-select button').forEach(b => {
+        b.classList.toggle('active', b.textContent.trim().toLowerCase() === saved);
+      });
+    });
+  </script>
+</body>
+</html>

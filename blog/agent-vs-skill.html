@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Agent vs Skill — When to Use an Agent, and When a Skill Is Enough — Prasanna Venkatesh | QA Automation Engineer</title>
+  <meta name="description" content="Agents and skills are the two building blocks of agentic AI — but they solve different problems. Learn what each one is, how they differ, and a simple rule for choosing between them.">
+  <meta name="keywords" content="AI Agent, AI Skill, Agent vs Skill, Agentic AI, Claude Skills, Subagents, Agent Architecture">
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/css/main.css" rel="stylesheet">
+</head>
+<body class="blog-page">
+  <header id="header" class="header d-flex align-items-center light-background sticky-top">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+      <a href="../index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <h1 class="sitename">PV</h1>
+      </a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../resume.html">Resume</a></li>
+          <li><a href="../services.html">Services</a></li>
+          <li><a href="../portfolio.html">Portfolio</a></li>
+          <li><a href="../blog.html" class="active">Blog</a></li>
+          <li><a href="../learning-hub.html">Learning Hub</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <div class="header-social-links">
+        <a href="https://www.instagram.com/Chinna.Prasanna" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/" class="github"><i class="bi bi-github"></i></a>
+      </div>
+    </div>
+  </header>
+  <main class="main">
+    <section id="blog-post" class="blog-post section">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center mb-4">
+          <div class="col-lg-8">
+            <a href="../blog.html" class="btn btn-link p-0"><i class="bi bi-chevron-left"></i> Back to Blog</a>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <article>
+              <div class="mb-4"><span class="text-muted small">July 12, 2026 &middot; 7 min read</span></div>
+              <h1 class="mb-3">Agent vs Skill — When to Use an Agent, and When a Skill Is Enough</h1>
+              <p class="lead fst-italic mb-4">The two building blocks of agentic AI solve very different problems. Confuse them, and you get systems that are either over-engineered or unreliable.</p>
+
+              <p>As agentic AI moves into everyday engineering work, two words keep appearing in every framework, product, and documentation page: <strong>agents</strong> and <strong>skills</strong>. Claude has agents and skills. Coding assistants have subagents and slash commands. Enterprise platforms ship "skill marketplaces" next to "agent builders." The terms sound interchangeable, and that's exactly the problem — because they are not. Choosing the wrong one is one of the most common design mistakes in agentic systems today.</p>
+
+              <p>Here's the simplest way to hold the distinction in your head: <strong>an agent is a worker; a skill is a recipe.</strong> A worker can think, decide, use tools, and adapt when things go wrong. A recipe is written knowledge — the proven steps, standards, and tricks for doing one thing well. A recipe does nothing by itself. A worker without recipes reinvents everything from scratch. The best systems combine both: capable workers who pick up the right recipe at the right moment.</p>
+
+              <h2 class="mt-5 mb-3">What Exactly Is an Agent?</h2>
+
+              <p>An agent is an autonomous unit of execution. It is a language model wrapped in a loop, with its own context window, its own set of tools, and a goal. Give an agent an objective — "find why the checkout test is flaky" — and it plans, calls tools, reads results, changes course, and keeps going until it reaches an answer or a stopping condition. The defining property of an agent is that it <em>makes decisions at runtime</em>. Nobody scripted the exact steps; the agent chooses them based on what it observes.</p>
+
+              <p>Agents also bring an underrated architectural benefit: <strong>isolation</strong>. A subagent runs in its own context window, does its messy exploration there — reading twenty files, running searches, hitting dead ends — and returns only its conclusion to the caller. The main conversation stays clean. This is why orchestrators fan work out to multiple agents in parallel: three independent investigations, three isolated contexts, three summaries back.</p>
+
+              <h2 class="mt-5 mb-3">What Exactly Is a Skill?</h2>
+
+              <p>A skill is packaged procedural knowledge. In practice — Claude's Agent Skills are the clearest example — it is a folder with a <code>SKILL.md</code> file containing instructions, plus optional scripts and reference files. A skill might encode "how to produce a properly formatted Word document," "how our team writes incident postmortems," or "the exact steps of our release checklist." The skill itself has no loop, no tools, no autonomy. It does nothing until an agent loads it.</p>
+
+              <p>What makes skills powerful is that they are <strong>discovered and loaded on demand</strong>. The agent sees only a one-line description of each available skill; when a task matches, it pulls the full instructions into context and follows them. That keeps the knowledge cheap to carry and consistent to apply. Write the procedure once, and every agent — and every teammate's agent — executes the task the same way. Skills are files, so they can be version-controlled, reviewed, shared, and improved like any other code.</p>
+
+              <div class="alert alert-light border-start border-5 border-success my-4 fst-italic">
+                <p class="mb-0">An agent answers the question "who does the work?" A skill answers the question "how should the work be done?" They are different axes — which is exactly why they compose so well.</p>
+              </div>
+
+              <h2 class="mt-5 mb-3">Agent vs Skill at a Glance</h2>
+
+              <table class="table table-bordered my-4">
+                <thead>
+                  <tr><th>Aspect</th><th>Agent</th><th>Skill</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>What it is</td><td>An autonomous executor — model + tools + loop</td><td>Packaged instructions and knowledge</td></tr>
+                  <tr><td>Behavior</td><td>Decides its next step at runtime</td><td>Prescribes proven steps in advance</td></tr>
+                  <tr><td>Acts on its own?</td><td>Yes — plans, calls tools, iterates</td><td>No — inert until an agent loads it</td></tr>
+                  <tr><td>Context</td><td>Own context window (isolation)</td><td>Loaded into the agent's context</td></tr>
+                  <tr><td>Cost</td><td>Heavier — every step is model inference</td><td>Light — mostly just tokens of guidance</td></tr>
+                  <tr><td>Consistency</td><td>Varies run to run</td><td>Same procedure every time</td></tr>
+                  <tr><td>Best for</td><td>Open-ended, multi-step, exploratory work</td><td>Repeatable, well-understood procedures</td></tr>
+                  <tr><td>Analogy</td><td>The chef</td><td>The recipe</td></tr>
+                </tbody>
+              </table>
+
+              <h2 class="mt-5 mb-3">When to Use an Agent</h2>
+
+              <div class="d-flex gap-3 mb-4">
+                <div class="flex-shrink-0">
+                  <div class="badge bg-dark rounded-circle" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 18px;">1</div>
+                </div>
+                <div class="flex-grow-1">
+                  <h3 class="h5 mb-2">The Path Cannot Be Known in Advance</h3>
+                  <p class="mb-0">Debugging a flaky test, investigating a production incident, researching a competitor — you cannot script these, because each next step depends on what the previous one revealed. Runtime decision-making is the whole point. That's agent territory.</p>
+                </div>
+              </div>
+
+              <div class="d-flex gap-3 mb-4">
+                <div class="flex-shrink-0">
+                  <div class="badge bg-dark rounded-circle" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 18px;">2</div>
+                </div>
+                <div class="flex-grow-1">
+                  <h3 class="h5 mb-2">The Work Is Big Enough to Delegate</h3>
+                  <p class="mb-0">Sweeping an entire codebase, reviewing a large pull request, or summarizing fifty documents would flood a single conversation. Hand it to a subagent: it burns through the noise in its own context and returns only the conclusion.</p>
+                </div>
+              </div>
+
+              <div class="d-flex gap-3 mb-4">
+                <div class="flex-shrink-0">
+                  <div class="badge bg-dark rounded-circle" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 18px;">3</div>
+                </div>
+                <div class="flex-grow-1">
+                  <h3 class="h5 mb-2">Independent Tasks Can Run in Parallel</h3>
+                  <p class="mb-0">Three services to audit, four test suites to analyze, five sources to research — when tasks don't depend on each other, spawning parallel agents turns hours of sequential work into one round of concurrent work.</p>
+                </div>
+              </div>
+
+              <div class="d-flex gap-3 mb-4">
+                <div class="flex-shrink-0">
+                  <div class="badge bg-dark rounded-circle" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 18px;">4</div>
+                </div>
+                <div class="flex-grow-1">
+                  <h3 class="h5 mb-2">You Need a Different Specialist</h3>
+                  <p class="mb-0">A security reviewer with read-only tools, a verifier that double-checks the main agent's work with fresh eyes, a planner that only designs and never edits. Different tool permissions, different focus, different persona — that's an agent definition, not a skill.</p>
+                </div>
+              </div>
+
+              <h2 class="mt-5 mb-3">When to Use a Skill</h2>
+
+              <div class="d-flex gap-3 mb-4">
+                <div class="flex-shrink-0">
+                  <div class="badge bg-dark rounded-circle" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 18px;">1</div>
+                </div>
+                <div class="flex-grow-1">
+                  <h3 class="h5 mb-2">The Procedure Is Known and Repeatable</h3>
+                  <p class="mb-0">Generating a test plan in your team's format, preparing a release checklist, writing a standup summary — you already know the right steps. Encode them once in a skill and stop re-explaining them in every prompt.</p>
+                </div>
+              </div>
+
+              <div class="d-flex gap-3 mb-4">
+                <div class="flex-shrink-0">
+                  <div class="badge bg-dark rounded-circle" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 18px;">2</div>
+                </div>
+                <div class="flex-grow-1">
+                  <h3 class="h5 mb-2">Consistency Matters More Than Creativity</h3>
+                  <p class="mb-0">Documents that must follow a template, reports with mandatory sections, code that must follow team conventions. A skill makes every run — and every team member's run — produce the same structure.</p>
+                </div>
+              </div>
+
+              <div class="d-flex gap-3 mb-4">
+                <div class="flex-shrink-0">
+                  <div class="badge bg-dark rounded-circle" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 18px;">3</div>
+                </div>
+                <div class="flex-grow-1">
+                  <h3 class="h5 mb-2">You're Packaging Domain Expertise</h3>
+                  <p class="mb-0">How to build a valid .docx file, how to talk to your internal API, what your compliance rules require. This is knowledge, not autonomy — exactly what skills are for, and exactly what you want shared across the whole team as a versioned file.</p>
+                </div>
+              </div>
+
+              <div class="d-flex gap-3 mb-4">
+                <div class="flex-shrink-0">
+                  <div class="badge bg-dark rounded-circle" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 18px;">4</div>
+                </div>
+                <div class="flex-grow-1">
+                  <h3 class="h5 mb-2">You'd Otherwise Repeat the Same Prompt</h3>
+                  <p class="mb-0">If you find yourself pasting the same instructions into a chat for the third time, that prompt wants to become a skill. It's the cheapest upgrade in agentic AI: no new infrastructure, just captured know-how that loads on demand.</p>
+                </div>
+              </div>
+
+              <h2 class="mt-5 mb-3">The Real Answer: Use Both Together</h2>
+
+              <p>The agent-versus-skill question usually has a third answer: both. The strongest pattern in modern agentic systems is an agent that carries a library of skills and loads the right one when the task calls for it. The agent supplies judgment — what to do next, how to react to surprises. The skill supplies craft — how this specific thing is done properly around here.</p>
+
+              <p>A QA example makes it concrete. You ask your assistant to "test the new login flow and send me a report." An <strong>agent</strong> takes the goal, explores the app, decides which scenarios matter, runs them, and adapts when a locator fails. When it's time to write up the findings, it loads your <strong>test-report skill</strong> — the one that knows your team's severity definitions, report template, and sign-off format. Autonomy found the bugs; the skill made the report look like your team wrote it.</p>
+
+              <div class="alert alert-light border-start border-5 border-success my-4 fst-italic">
+                <p class="mb-0">Rule of thumb: if the task needs <strong>decisions</strong>, reach for an agent. If the task needs <strong>discipline</strong>, write a skill. If it needs both — an agent that uses skills — you've just described how modern agentic systems are meant to work.</p>
+              </div>
+
+              <p>Start small. Turn your three most-repeated prompts into skills this week — that alone will make every future agent you use noticeably better. Reach for agents when tasks genuinely need autonomy, parallelism, or isolation, not because "agent" sounds more impressive. The teams getting real value from agentic AI in 2026 aren't the ones with the most agents; they're the ones who know which half of the problem is judgment, and which half is a recipe.</p>
+
+              <div class="mt-5">
+                <span class="badge bg-secondary me-2 mb-2">Agentic AI</span>
+                <span class="badge bg-secondary me-2 mb-2">AI Agents</span>
+                <span class="badge bg-secondary me-2 mb-2">Skills</span>
+                <span class="badge bg-secondary me-2 mb-2">Architecture</span>
+                <span class="badge bg-secondary me-2 mb-2">Best Practices</span>
+              </div>
+              <div class="text-muted small mt-5 pt-3 border-top">
+                <p class="mb-1">Written by PV</p>
+                <p class="mb-0">&copy; 2026 All Rights Reserved</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer id="footer" class="footer light-background">
+    <div class="container">
+      <div class="copyright text-center"><p>&copy; <span>Copyright</span> <strong class="px-1 sitename">PV</strong> <span>All Rights Reserved<br></span></p></div>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://www.instagram.com/Chinna.Prasanna"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/"><i class="bi bi-github"></i></a>
+      </div>
+      <div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Tweaked by <a href="#">PV</a></div>
+    </div>
+  </footer>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

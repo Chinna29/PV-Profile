@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>How Agents and Skills Are Transforming QA and QA Automation — Prasanna Venkatesh | QA Automation Engineer</title>
+  <meta name="description" content="From triaging failing pipelines to writing tests and standardizing bug reports — a practical look at how AI agents and skills are changing the daily work of QA engineers.">
+  <meta name="keywords" content="AI Agents, Skills, QA Automation, Software Testing, Agentic AI, Test Automation, Quality Assurance">
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/css/main.css" rel="stylesheet">
+</head>
+<body class="blog-page">
+  <header id="header" class="header d-flex align-items-center light-background sticky-top">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+      <a href="../index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <h1 class="sitename">PV</h1>
+      </a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../resume.html">Resume</a></li>
+          <li><a href="../services.html">Services</a></li>
+          <li><a href="../portfolio.html">Portfolio</a></li>
+          <li><a href="../blog.html" class="active">Blog</a></li>
+          <li><a href="../learning-hub.html">Learning Hub</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <div class="header-social-links">
+        <a href="https://www.instagram.com/Chinna.Prasanna" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/" class="github"><i class="bi bi-github"></i></a>
+      </div>
+    </div>
+  </header>
+  <main class="main">
+    <section id="blog-post" class="blog-post section">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center mb-4">
+          <div class="col-lg-8">
+            <a href="../blog.html" class="btn btn-link p-0"><i class="bi bi-chevron-left"></i> Back to Blog</a>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <article>
+              <div class="mb-4"><span class="text-muted small">July 12, 2026 &middot; 8 min read</span></div>
+              <h1 class="mb-3">How Agents and Skills Are Transforming QA and QA Automation</h1>
+              <p class="lead fst-italic mb-4">Agents bring judgment to testing; skills bring your team's standards. Together they're quietly rewriting the daily work of quality engineering.</p>
+
+              <p>In the <a href="agent-vs-skill.html">previous post</a> we drew the line between the two building blocks of agentic AI: an agent is a worker that decides its next step at runtime, and a skill is a recipe — packaged knowledge about how a task should be done. Nowhere does that combination pay off faster than in QA. Testing work is a constant mix of two things: investigation that cannot be scripted (why did this fail? what should we test?) and procedure that absolutely should be (how we write bug reports, how our framework is structured, what our release checklist demands). Agents handle the first half. Skills handle the second. Here is what that looks like in practice.</p>
+
+              <h2 class="mt-5 mb-3">Where Agents Are Changing QA</h2>
+
+              <div class="d-flex gap-3 mb-4">
+                <div class="flex-shrink-0">
+                  <div class="badge bg-dark rounded-circle" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 18px;">1</div>
+                </div>
+                <div class="flex-grow-1">
+                  <h3 class="h5 mb-2">Failure Triage That Used to Eat Your Mornings</h3>
+                  <p class="mb-0">A nightly regression run fails with 43 red tests. An agent reads every stack trace, groups the failures by root cause, checks recent commits and merged PRs, and reports back: "40 failures share one cause — the login API contract changed in yesterday's deploy; two are known flaky; one is a genuine new defect in checkout." What took a QA engineer two hours of scrolling through CI logs now takes minutes, and the engineer starts the day with a diagnosis instead of a haystack.</p>
+                </div>
+              </div>
+
+              <div class="d-flex gap-3 mb-4">
+                <div class="flex-shrink-0">
+                  <div class="badge bg-dark rounded-circle" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 18px;">2</div>
+                </div>
+                <div class="flex-grow-1">
+                  <h3 class="h5 mb-2">Test Generation from Requirements</h3>
+                  <p class="mb-0">Point an agent at a user story, an API spec, or a Figma flow, and it derives the scenarios: happy paths, boundary values, negative cases, and the edge cases humans forget when it's 5 PM. Because the agent can also read your existing test suite, it fills gaps instead of duplicating coverage — and writes the new tests in Playwright, Mobilewright, or whatever framework your repository already uses.</p>
+                </div>
+              </div>
+
+              <div class="d-flex gap-3 mb-4">
+                <div class="flex-shrink-0">
+                  <div class="badge bg-dark rounded-circle" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 18px;">3</div>
+                </div>
+                <div class="flex-grow-1">
+                  <h3 class="h5 mb-2">Self-Healing Automation</h3>
+                  <p class="mb-0">A locator breaks because a developer renamed a button. A traditional suite fails; an agent-assisted suite investigates. The agent inspects the current UI, reasons about what the test was trying to verify, proposes the corrected locator, and opens a small PR with the fix. Maintenance — historically 30 to 50 percent of automation effort — shrinks into a review task.</p>
+                </div>
+              </div>
+
+              <div class="d-flex gap-3 mb-4">
+                <div class="flex-shrink-0">
+                  <div class="badge bg-dark rounded-circle" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 18px;">4</div>
+                </div>
+                <div class="flex-grow-1">
+                  <h3 class="h5 mb-2">Exploratory Testing at Machine Scale</h3>
+                  <p class="mb-0">Agents can drive a real app the way a curious tester would — tapping through screens, trying odd inputs, following deep links — and flag anything that looks broken: crashes, dead ends, layout glitches, inconsistent states. Tools like Playwright and Mobilewright are explicitly agent-ready for this reason. Human exploratory testing doesn't go away; it gets a tireless first pass that runs every night.</p>
+                </div>
+              </div>
+
+              <div class="d-flex gap-3 mb-4">
+                <div class="flex-shrink-0">
+                  <div class="badge bg-dark rounded-circle" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 18px;">5</div>
+                </div>
+                <div class="flex-grow-1">
+                  <h3 class="h5 mb-2">Parallel Verification with Subagents</h3>
+                  <p class="mb-0">Big release coming? Fan the work out: one subagent audits the regression results, another reviews the diff for risky changes, a third re-checks the bug fixes claimed in the release notes. Each runs in its own context and returns a verdict. A verifier agent double-checking work with fresh eyes catches what the first pass missed — the same discipline good QA teams have always applied, now built into the tooling.</p>
+                </div>
+              </div>
+
+              <h2 class="mt-5 mb-3">Where Skills Are Changing QA</h2>
+
+              <p>Agents supply the judgment — but judgment without standards produces output your team can't use. That's the gap skills close. A skill is where your QA craft lives, written once and applied every time:</p>
+
+              <div class="d-flex gap-3 mb-4">
+                <div class="flex-shrink-0">
+                  <div class="badge bg-dark rounded-circle" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 18px;">1</div>
+                </div>
+                <div class="flex-grow-1">
+                  <h3 class="h5 mb-2">A Test-Plan Skill</h3>
+                  <p class="mb-0">Encodes your team's template: scope, risk analysis, environments, entry/exit criteria, severity definitions. Any agent (or teammate) that drafts a test plan loads this skill — and every plan comes out in the same reviewable shape, whether it was written by a senior engineer or generated on a Friday evening.</p>
+                </div>
+              </div>
+
+              <div class="d-flex gap-3 mb-4">
+                <div class="flex-shrink-0">
+                  <div class="badge bg-dark rounded-circle" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 18px;">2</div>
+                </div>
+                <div class="flex-grow-1">
+                  <h3 class="h5 mb-2">A Bug-Report Skill</h3>
+                  <p class="mb-0">Steps to reproduce, expected vs actual, environment details, severity per your definitions, logs and screenshots attached. Developers stop bouncing tickets back for missing information, because every report — human-filed or agent-filed — arrives complete.</p>
+                </div>
+              </div>
+
+              <div class="d-flex gap-3 mb-4">
+                <div class="flex-shrink-0">
+                  <div class="badge bg-dark rounded-circle" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 18px;">3</div>
+                </div>
+                <div class="flex-grow-1">
+                  <h3 class="h5 mb-2">A Framework-Conventions Skill</h3>
+                  <p class="mb-0">How your automation repo is organized: Page Object structure, naming rules, fixture patterns, which waits are banned, how test data is managed. When an agent generates or heals tests, this skill guarantees the code looks like <em>your</em> code — not generic tutorial output that fails review.</p>
+                </div>
+              </div>
+
+              <div class="d-flex gap-3 mb-4">
+                <div class="flex-shrink-0">
+                  <div class="badge bg-dark rounded-circle" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 18px;">4</div>
+                </div>
+                <div class="flex-grow-1">
+                  <h3 class="h5 mb-2">A Release-Checklist Skill</h3>
+                  <p class="mb-0">Regression status, open blockers, sign-offs, rollback plan, environment checks. The agent walks the checklist item by item and produces the evidence — nothing gets skipped because someone was in a hurry on release day.</p>
+                </div>
+              </div>
+
+              <div class="alert alert-light border-start border-5 border-success my-4 fst-italic">
+                <p class="mb-0">Notice the pattern: agents replace <strong>effort</strong> — the hours of investigating, generating, and re-checking. Skills replace <strong>repetition</strong> — the standards you used to enforce through documentation, review comments, and hoping.</p>
+              </div>
+
+              <h2 class="mt-5 mb-3">A Day in the Pipeline: Both Working Together</h2>
+
+              <p>Here's how the pieces snap together in a real workflow. The nightly mobile regression fails. A triage <strong>agent</strong> wakes up with the CI webhook, pulls the report, and starts investigating — it groups the failures, replays the flaky ones, and finds that two failures are a genuine defect in the payment flow. To file the issue, it loads the <strong>bug-report skill</strong> and produces a complete, correctly formatted ticket with the failure video attached. It then loads the <strong>framework-conventions skill</strong> and drafts a fix for a broken locator it found along the way, opening a PR that matches your code style. By standup, the team isn't asking "what failed?" — they're reviewing a diagnosis, a ticket, and a proposed fix.</p>
+
+              <p>Every decision in that flow came from an agent. Every artifact came out shaped by a skill. That division — judgment from agents, discipline from skills — is exactly why the combination works so well for QA, a field that has always been half detective work and half documentation.</p>
+
+              <h2 class="mt-5 mb-3">How to Start, Practically</h2>
+
+              <p><strong>Start with one skill, not one agent.</strong> Take the document your team rewrites most — usually the bug report or the test plan — and turn its rules into a skill. It costs an afternoon and immediately improves every AI interaction your team has.</p>
+
+              <p><strong>Give agents your lowest-risk, highest-toil job first.</strong> Failure triage is the classic entry point: it's read-only, it saves hours, and a wrong answer costs little because a human still reviews the diagnosis. Earn trust before letting agents open PRs or file tickets automatically.</p>
+
+              <p><strong>Keep a human on the quality gate.</strong> Agents make mistakes with complete confidence. Let them investigate, generate, and propose — but keep sign-off on releases and merged fixes with a person. The goal is not to remove QA engineers; it's to remove the parts of QA that were never good uses of an engineer.</p>
+
+              <p>The QA role is shifting from <em>executing</em> checks to <em>directing and verifying</em> them — deciding what quality means, encoding it into skills, and supervising the agents that do the legwork. The testers who thrive in this shift won't be the ones who resist the tooling; they'll be the ones who write the best recipes and ask the sharpest questions about what the workers bring back.</p>
+
+              <div class="mt-5">
+                <span class="badge bg-secondary me-2 mb-2">QA Automation</span>
+                <span class="badge bg-secondary me-2 mb-2">AI Agents</span>
+                <span class="badge bg-secondary me-2 mb-2">Skills</span>
+                <span class="badge bg-secondary me-2 mb-2">Agentic AI</span>
+                <span class="badge bg-secondary me-2 mb-2">Testing</span>
+              </div>
+              <div class="text-muted small mt-5 pt-3 border-top">
+                <p class="mb-1">Written by PV</p>
+                <p class="mb-0">&copy; 2026 All Rights Reserved</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer id="footer" class="footer light-background">
+    <div class="container">
+      <div class="copyright text-center"><p>&copy; <span>Copyright</span> <strong class="px-1 sitename">PV</strong> <span>All Rights Reserved<br></span></p></div>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://www.instagram.com/Chinna.Prasanna"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/"><i class="bi bi-github"></i></a>
+      </div>
+      <div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Tweaked by <a href="#">PV</a></div>
+    </div>
+  </footer>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

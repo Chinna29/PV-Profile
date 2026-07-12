@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Parallelism, Projects & Retries — Mobilewright Tutorial | PV</title>
+  <meta name="description" content="Run tests on multiple devices at once, target iOS and Android from one config with projects, and retry flaky tests automatically.">
+  <meta name="keywords" content="mobilewright, parallelism, workers, projects, retries, sharding">
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/css/main.css" rel="stylesheet">
+  <style>.lang-switcher .lang-tab .lang-icon.ts { background: #3178c6; color: #fff; }</style>
+</head>
+<body class="blog-page">
+  <header id="header" class="header d-flex align-items-center light-background sticky-top">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+      <a href="../index.html" class="logo d-flex align-items-center me-auto me-xl-0"><h1 class="sitename">PV</h1></a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../resume.html">Resume</a></li>
+          <li><a href="../services.html">Services</a></li>
+          <li><a href="../portfolio.html">Portfolio</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../learning-hub.html" class="active">Learning Hub</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <div class="header-social-links">
+        <a href="https://www.instagram.com/Chinna.Prasanna" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/" class="github"><i class="bi bi-github"></i></a>
+      </div>
+    </div>
+  </header>
+  <main class="main">
+    <section id="tutorial" class="blog-post section">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center mb-4">
+          <div class="col-lg-10"><a href="../learning-hub.html#mobilewright-course" class="btn btn-link p-0"><i class="bi bi-chevron-left"></i> Back to Course</a></div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 d-none d-lg-block"><div class="course-sidebar">
+  <div class="course-nav-title">Course Contents</div>
+  <ul class="course-nav">
+    <li class="nav-section-label">Beginner</li>
+    <li><a href="introduction-to-mobilewright.html" class=""><span class="nav-number">1</span> Introduction to Mobilewright</a></li>
+    <li><a href="installation-and-setup.html" class=""><span class="nav-number">2</span> Installation &amp; Setup</a></li>
+    <li><a href="writing-your-first-test.html" class=""><span class="nav-number">3</span> Writing Your First Test</a></li>
+    <li><a href="locators-and-finding-elements.html" class=""><span class="nav-number">4</span> Locators &amp; Finding Elements</a></li>
+    <li><a href="actions-and-interactions.html" class=""><span class="nav-number">5</span> Actions &amp; Interactions</a></li>
+    <li class="nav-section-label">Intermediate</li>
+    <li><a href="assertions.html" class=""><span class="nav-number">6</span> Assertions</a></li>
+    <li><a href="auto-waiting-and-timeouts.html" class=""><span class="nav-number">7</span> Auto-waiting &amp; Timeouts</a></li>
+    <li><a href="fixtures-and-configuration.html" class=""><span class="nav-number">8</span> Fixtures &amp; Configuration</a></li>
+    <li><a href="screenshots-and-reports.html" class=""><span class="nav-number">9</span> Screenshots &amp; Reports</a></li>
+    <li class="nav-section-label">Advanced</li>
+    <li><a href="deep-links-and-webviews.html" class=""><span class="nav-number">10</span> Deep Links &amp; Web Views</a></li>
+    <li><a href="parallelism-projects-and-retries.html" class=" active"><span class="nav-number">11</span> Parallelism, Projects &amp; Retries</a></li>
+    <li><a href="debugging-inspector-and-ci.html" class=""><span class="nav-number">12</span> Debugging, Inspector &amp; CI</a></li>
+  </ul>
+</div></div>
+          <div class="col-lg-7">
+            <article class="tutorial-post">
+              <div class="mb-2">
+                <span class="badge bg-danger me-2">Advanced</span>
+                <span class="text-muted small">Chapter 11 &middot; 9 min read</span>
+              </div>
+              <h1 class="mb-3">Parallelism, Projects &amp; Retries</h1>
+              <p class="lead fst-italic mb-4">Run tests on multiple devices at once, target iOS and Android from one config with projects, and retry flaky tests automatically.</p>
+              <h2>Workers = Devices</h2>
+<p>Mobilewright runs tests in parallel using <strong>workers</strong> — independent processes that each hold a connection to one device or simulator. Two workers means two devices running two tests at the same time. To actually use multiple devices you need both a higher worker count <em>and</em> <code>fullyParallel: true</code> (without it, all tests in one file stay on the same worker):</p>
+<div class="lang-switcher">
+  <button class="lang-tab" onclick="switchLang('ts', this)"><span class="lang-icon ts">TS</span> TypeScript</button>
+  <button class="lang-tab" onclick="switchLang('js', this)"><span class="lang-icon js">JS</span> JavaScript</button>
+</div>
+<div class="lang-panel" data-lang="ts">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">mobilewright.config.ts</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code><span class="keyword">import</span> { defineConfig } <span class="keyword">from</span> <span class="string">'mobilewright'</span>;
+
+<span class="keyword">export</span> <span class="keyword">default</span> <span class="function">defineConfig</span>({
+  <span class="comment">// Two devices running tests at the same time</span>
+  workers: 2,
+
+  <span class="comment">// Required: lets tests from the same file spread across workers</span>
+  fullyParallel: true,
+});</code></pre>
+  </div>
+</div>
+<div class="lang-panel" data-lang="js">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">mobilewright.config.js</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code><span class="keyword">const</span> { defineConfig } = <span class="function">require</span>(<span class="string">'mobilewright'</span>);
+
+module.exports = <span class="function">defineConfig</span>({
+  <span class="comment">// Two devices running tests at the same time</span>
+  workers: 2,
+
+  <span class="comment">// Required: lets tests from the same file spread across workers</span>
+  fullyParallel: true,
+});</code></pre>
+  </div>
+</div>
+<div class="tip-box"><strong>Tip:</strong> Requesting more workers than you have devices does not fail — extra workers simply wait until a device is free. Devices are allocated lazily and reused between tests.</div>
+<h2>Serial Mode for Dependent Tests</h2>
+<p>Some flows must run in order — sign in, add to cart, check out. Mark the group serial so the tests share one device and run sequentially. If one fails, the rest are skipped, and the whole group retries together:</p>
+<div class="lang-switcher">
+  <button class="lang-tab" onclick="switchLang('ts', this)"><span class="lang-icon ts">TS</span> TypeScript</button>
+  <button class="lang-tab" onclick="switchLang('js', this)"><span class="lang-icon js">JS</span> JavaScript</button>
+</div>
+<div class="lang-panel" data-lang="ts">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">checkout.test.ts</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code><span class="keyword">import</span> { test, expect } <span class="keyword">from</span> <span class="string">'@mobilewright/test'</span>;
+
+<span class="comment">// These tests run in order on the same device</span>
+test.describe.<span class="function">configure</span>({ mode: <span class="string">'serial'</span> });
+
+<span class="function">test</span>(<span class="string">'sign in'</span>, <span class="keyword">async</span> ({ screen }) =&gt; { /* ... */ });
+<span class="function">test</span>(<span class="string">'add to cart'</span>, <span class="keyword">async</span> ({ screen }) =&gt; { /* ... */ });
+<span class="function">test</span>(<span class="string">'complete purchase'</span>, <span class="keyword">async</span> ({ screen }) =&gt; { /* ... */ });</code></pre>
+  </div>
+</div>
+<div class="lang-panel" data-lang="js">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">checkout.test.js</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code><span class="keyword">const</span> { test, expect } = <span class="function">require</span>(<span class="string">'@mobilewright/test'</span>);
+
+<span class="comment">// These tests run in order on the same device</span>
+test.describe.<span class="function">configure</span>({ mode: <span class="string">'serial'</span> });
+
+<span class="function">test</span>(<span class="string">'sign in'</span>, <span class="keyword">async</span> ({ screen }) =&gt; { /* ... */ });
+<span class="function">test</span>(<span class="string">'add to cart'</span>, <span class="keyword">async</span> ({ screen }) =&gt; { /* ... */ });
+<span class="function">test</span>(<span class="string">'complete purchase'</span>, <span class="keyword">async</span> ({ screen }) =&gt; { /* ... */ });</code></pre>
+  </div>
+</div>
+<h2>Projects: iOS and Android in One Config</h2>
+<p>A <strong>project</strong> is a named group of tests with its own configuration. The classic use-case: run your whole suite on both platforms from a single config file. Running <code>npx mobilewright test</code> then executes every test twice — once per project:</p>
+<div class="lang-switcher">
+  <button class="lang-tab" onclick="switchLang('ts', this)"><span class="lang-icon ts">TS</span> TypeScript</button>
+  <button class="lang-tab" onclick="switchLang('js', this)"><span class="lang-icon js">JS</span> JavaScript</button>
+</div>
+<div class="lang-panel" data-lang="ts">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">mobilewright.config.ts</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code><span class="keyword">import</span> { defineConfig } <span class="keyword">from</span> <span class="string">'mobilewright'</span>;
+
+<span class="keyword">export</span> <span class="keyword">default</span> <span class="function">defineConfig</span>({
+  bundleId: <span class="string">'com.example.myapp'</span>,
+  timeout: 120_000,
+  workers: 2,
+  projects: [
+    {
+      name: <span class="string">'ios'</span>,
+      use: { platform: <span class="string">'ios'</span>, installApps: <span class="string">'ios/MyApp.zip'</span> },
+    },
+    {
+      name: <span class="string">'android'</span>,
+      use: { platform: <span class="string">'android'</span>, installApps: <span class="string">'android/MyApp.apk'</span> },
+    },
+  ],
+});</code></pre>
+  </div>
+</div>
+<div class="lang-panel" data-lang="js">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">mobilewright.config.js</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code><span class="keyword">const</span> { defineConfig } = <span class="function">require</span>(<span class="string">'mobilewright'</span>);
+
+module.exports = <span class="function">defineConfig</span>({
+  bundleId: <span class="string">'com.example.myapp'</span>,
+  timeout: 120_000,
+  workers: 2,
+  projects: [
+    {
+      name: <span class="string">'ios'</span>,
+      use: { platform: <span class="string">'ios'</span>, installApps: <span class="string">'ios/MyApp.zip'</span> },
+    },
+    {
+      name: <span class="string">'android'</span>,
+      use: { platform: <span class="string">'android'</span>, installApps: <span class="string">'android/MyApp.apk'</span> },
+    },
+  ],
+});</code></pre>
+  </div>
+</div>
+<p>Target one platform with <code>npx mobilewright test --project=android</code>.</p>
+<h2>Retries: Taming Flaky Tests</h2>
+<p>Mobile tests can be flaky — network, timing, device state. With retries configured, a failing test is automatically re-run: the app is terminated and relaunched on the <em>same</em> device (fast — no re-allocation), and the test gets another chance. A test that passes on a retry is reported as <strong>flaky</strong>, not failed:</p>
+<div class="lang-switcher">
+  <button class="lang-tab" onclick="switchLang('ts', this)"><span class="lang-icon ts">TS</span> TypeScript</button>
+  <button class="lang-tab" onclick="switchLang('js', this)"><span class="lang-icon js">JS</span> JavaScript</button>
+</div>
+<div class="lang-panel" data-lang="ts">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">mobilewright.config.ts</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code><span class="keyword">import</span> { defineConfig } <span class="keyword">from</span> <span class="string">'mobilewright'</span>;
+
+<span class="keyword">export</span> <span class="keyword">default</span> <span class="function">defineConfig</span>({
+  <span class="comment">// Retry twice in CI, never locally</span>
+  retries: process.env.CI ? 2 : 0,
+});</code></pre>
+  </div>
+</div>
+<div class="lang-panel" data-lang="js">
+  <div class="code-block-wrapper">
+    <div class="code-header">
+      <span class="file-name">mobilewright.config.js</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+    </div>
+    <pre><code><span class="keyword">const</span> { defineConfig } = <span class="function">require</span>(<span class="string">'mobilewright'</span>);
+
+module.exports = <span class="function">defineConfig</span>({
+  <span class="comment">// Retry twice in CI, never locally</span>
+  retries: process.env.CI ? 2 : 0,
+});</code></pre>
+  </div>
+</div>
+<p>A common pattern is retries in CI only, keeping local feedback fast — and you can check <code>testInfo.retry</code> inside a test to clear leftover state before a re-run.</p>
+              <hr class="my-5">
+              <div class="mt-4">
+                <span class="badge bg-secondary me-2 mb-2">Mobilewright</span>
+                <span class="badge bg-secondary me-2 mb-2">Advanced</span>
+                <span class="badge bg-secondary me-2 mb-2">Parallel</span>
+                <span class="badge bg-secondary me-2 mb-2">Projects</span>
+                <span class="badge bg-secondary me-2 mb-2">Retries</span>
+              </div>
+              <div class="tutorial-nav">
+  <a href="deep-links-and-webviews.html" class="prev"><span class="nav-label"><i class="bi bi-chevron-left"></i> Previous</span><span class="nav-title">Deep Links &amp; Web Views</span></a>
+  <a href="debugging-inspector-and-ci.html" class="next"><span class="nav-label">Next <i class="bi bi-chevron-right"></i></span><span class="nav-title">Debugging, Inspector &amp; CI</span></a>
+</div>
+              <div class="text-muted small mt-5 pt-3 border-top">
+                <p class="mb-1">Written by PV</p>
+                <p class="mb-0">&copy; 2026 All Rights Reserved</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="global-lang-select">
+    <button class="active" onclick="switchAllLang('ts', this)">TS</button>
+    <button onclick="switchAllLang('js', this)">JS</button>
+  </div>
+  <footer id="footer" class="footer light-background">
+    <div class="container">
+      <div class="copyright text-center"><p>&copy; <span>Copyright</span> <strong class="px-1 sitename">PV</strong> <span>All Rights Reserved<br></span></p></div>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://www.instagram.com/Chinna.Prasanna"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/"><i class="bi bi-github"></i></a>
+      </div>
+      <div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Tweaked by <a href="#">PV</a></div>
+    </div>
+  </footer>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script>
+    function switchLang(lang, btn) {
+      const article = btn.closest('article') || document;
+      article.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
+      article.querySelectorAll('.lang-switcher').forEach(sw => {
+        const tab = sw.querySelector('.lang-tab .lang-icon.' + lang);
+        if (tab) tab.closest('.lang-tab').classList.add('active');
+      });
+      article.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === lang); });
+      document.querySelectorAll('.global-lang-select button').forEach(b => {
+        b.classList.toggle('active', b.textContent.trim().toLowerCase() === lang);
+      });
+      localStorage.setItem('mw-lang', lang);
+    }
+    function switchAllLang(lang, btn) {
+      document.querySelectorAll('.global-lang-select button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === lang); });
+      document.querySelectorAll('.lang-switcher .lang-tab').forEach(t => {
+        const icon = t.querySelector('.lang-icon');
+        t.classList.toggle('active', icon && icon.classList.contains(lang));
+      });
+      localStorage.setItem('mw-lang', lang);
+    }
+    function copyCode(btn) {
+      const code = btn.closest('.code-block-wrapper').querySelector('code');
+      navigator.clipboard.writeText(code.textContent);
+      btn.innerHTML = '<i class="bi bi-check2"></i> Copied!';
+      setTimeout(() => btn.innerHTML = '<i class="bi bi-clipboard"></i> Copy', 2000);
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('mw-lang') || 'ts';
+      document.querySelectorAll('.lang-panel').forEach(p => { p.classList.toggle('active', p.dataset.lang === saved); });
+      document.querySelectorAll('.lang-switcher .lang-tab').forEach(t => {
+        const icon = t.querySelector('.lang-icon');
+        t.classList.toggle('active', icon && icon.classList.contains(saved));
+      });
+      document.querySelectorAll('.global-lang-select button').forEach(b => {
+        b.classList.toggle('active', b.textContent.trim().toLowerCase() === saved);
+      });
+    });
+  </script>
+</body>
+</html>
