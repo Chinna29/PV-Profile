@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>What Is PawWork? A Free, Open-Source Desktop AI Agent — and How to Run It — Prasanna Venkatesh | QA Automation Engineer</title>
+  <meta name="description" content="PawWork is a free, open-source desktop AI agent for macOS and Windows that works on your real local files. Here is what it is, how it is built, how to install it, and where it fits in a QA workflow.">
+  <meta name="keywords" content="PawWork, Desktop AI Agent, Open Source AI Agent, OpenCode, Agentic AI, BYOK, Local AI, QA Automation, Claude Cowork Alternative">
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/css/main.css" rel="stylesheet">
+</head>
+<body class="blog-page">
+  <header id="header" class="header d-flex align-items-center light-background sticky-top">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+      <a href="../index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <h1 class="sitename">PV</h1>
+      </a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../resume.html">Resume</a></li>
+          <li><a href="../services.html">Services</a></li>
+          <li><a href="../portfolio.html">Portfolio</a></li>
+          <li><a href="../blog.html" class="active">Blog</a></li>
+          <li><a href="../learning-hub.html">Learning Hub</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <div class="header-social-links">
+        <a href="https://www.instagram.com/Chinna.Prasanna" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/" class="github"><i class="bi bi-github"></i></a>
+      </div>
+    </div>
+  </header>
+  <main class="main">
+    <section id="blog-post" class="blog-post section">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center mb-4">
+          <div class="col-lg-8">
+            <a href="../blog.html" class="btn btn-link p-0"><i class="bi bi-chevron-left"></i> Back to Blog</a>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <article>
+              <div class="mb-4"><span class="text-muted small">September 18, 2026 &middot; 8 min read</span></div>
+              <h1 class="mb-3">What Is PawWork? A Free, Open-Source Desktop AI Agent — and How to Run It</h1>
+              <p class="lead fst-italic mb-4">Most AI assistants live in a browser tab and can only talk about your work. PawWork puts the agent on your desktop, where your actual files are.</p>
+
+              <p>There is a quiet but important shift happening in agentic AI. The first wave of assistants lived in a chat window: you pasted content in, you copied answers out, and every real artifact — the spreadsheet, the invoice folder, the test report — stayed on your machine, untouched. The second wave moved into the IDE and served developers well, but left everyone else behind. <strong>PawWork</strong> belongs to a third category: a desktop agent that opens your real folders, reads and writes real Office files, and does the work where the work actually lives.</p>
+
+              <p>It is free, open-source (Apache-2.0), and available for macOS and Windows. It positions itself openly as an alternative to closed desktop agents like OpenAI's Codex App and Claude's desktop work mode — with the difference that you can read its source, point it at any model provider you like, and run it without a subscription.</p>
+
+              <h2 class="mt-5 mb-3">What PawWork Actually Is</h2>
+
+              <p>Under the hood, PawWork is a desktop shell built on a fork of <strong>OpenCode</strong> — a mature open-source agent engine. The project keeps that engine and rebuilds the experience around it: instead of a terminal and a developer-shaped workflow, you get an Electron desktop app with task cards, plain-language input, and a file-approval step before anything is written to disk. The stack is TypeScript with Electron and SolidJS on the front, Bun for tooling, and some Rust in the mix.</p>
+
+              <p>The important design decision is scope. PawWork is not a coding agent that happens to open files; it is a <em>work</em> agent. Its native material is the ordinary contents of a knowledge worker's Documents folder: PDFs, Word documents, Excel workbooks, PowerPoint decks, CSVs, Markdown, images, and code. It reads them locally, edits them locally, and saves them back locally.</p>
+
+              <div class="alert alert-light border-start border-5 border-success my-4 fst-italic">
+                <p class="mb-0">The one-line version: PawWork is an open-source desktop agent that brings the model to your files, instead of asking you to bring your files to the model.</p>
+              </div>
+
+              <h2 class="mt-5 mb-3">The Features That Matter</h2>
+
+              <div class="d-flex gap-3 mb-4">
+                <div class="flex-shrink-0">
+                  <div class="badge bg-dark rounded-circle" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 18px;">1</div>
+                </div>
+                <div class="flex-grow-1">
+                  <h3 class="h5 mb-2">Bring Your Own Key — 75+ Providers</h3>
+                  <p class="mb-0">OpenAI, Anthropic, Google Gemini, DeepSeek, Kimi, GLM, and any OpenAI-compatible endpoint. Local models work too through Ollama or LM Studio, which means you can run entire workflows without a single token leaving your machine. There is also ChatGPT OAuth sign-in for Plus/Pro users, and a free built-in plan with a web-search quota so you can start with no key at all.</p>
+                </div>
+              </div>
+
+              <div class="d-flex gap-3 mb-4">
+                <div class="flex-shrink-0">
+                  <div class="badge bg-dark rounded-circle" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 18px;">2</div>
+                </div>
+                <div class="flex-grow-1">
+                  <h3 class="h5 mb-2">Real Office File Support</h3>
+                  <p class="mb-0">Reading a .docx is common; <em>writing a correct one</em> is not. PawWork handles both directions for Word, Excel, and PowerPoint, plus PDF operations like extraction and merging. This is the feature that makes it usable by people who are not engineers — the deliverable comes back as a file they can open, not as text in a chat bubble.</p>
+                </div>
+              </div>
+
+              <div class="d-flex gap-3 mb-4">
+                <div class="flex-shrink-0">
+                  <div class="badge bg-dark rounded-circle" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 18px;">3</div>
+                </div>
+                <div class="flex-grow-1">
+                  <h3 class="h5 mb-2">Web Search and Browser Adapters</h3>
+                  <p class="mb-0">Research tasks are first-class: the agent can search the web, collect sources, and turn them into a memo or a spreadsheet. Browser-based adapters extend this to interacting with supported web services rather than only reading static pages.</p>
+                </div>
+              </div>
+
+              <div class="d-flex gap-3 mb-4">
+                <div class="flex-shrink-0">
+                  <div class="badge bg-dark rounded-circle" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 18px;">4</div>
+                </div>
+                <div class="flex-grow-1">
+                  <h3 class="h5 mb-2">Task Cards Instead of a Blank Prompt</h3>
+                  <p class="mb-0">A blank chat box is the worst onboarding in software. PawWork opens with concrete task cards — extract invoice data, merge these PDFs, summarise this folder, review this project — which is a small UX choice with a large effect on whether non-technical colleagues ever get past the first session.</p>
+                </div>
+              </div>
+
+              <h2 class="mt-5 mb-3">How It Compares</h2>
+
+              <table class="table table-bordered my-4">
+                <thead>
+                  <tr><th>Aspect</th><th>PawWork</th><th>Closed desktop agents</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Licence</td><td>Open source (Apache-2.0)</td><td>Proprietary</td></tr>
+                  <tr><td>Model choice</td><td>BYOK, 75+ providers, local models</td><td>Usually one vendor's models</td></tr>
+                  <tr><td>Cost</td><td>Free app; you pay only your own API usage</td><td>Typically a subscription</td></tr>
+                  <tr><td>Office files</td><td>Read and write natively</td><td>Varies, often limited</td></tr>
+                  <tr><td>File access</td><td>Full local workspace by default</td><td>Often sandboxed by default</td></tr>
+                  <tr><td>Maturity</td><td>Young, fast-moving community project</td><td>Backed by a vendor, slower but steadier</td></tr>
+                </tbody>
+              </table>
+
+              <p>Note the fifth row carefully, because it cuts both ways. Full workspace access is exactly why PawWork can be useful on day one — and exactly why you should point it at a scoped folder rather than your entire home directory until you trust it.</p>
+
+              <h2 class="mt-5 mb-3">Getting It Running</h2>
+
+              <p>There are two paths. Most people want the installer.</p>
+
+              <p><strong>Install the release build.</strong> Grab the latest release from the project's GitHub releases page: a <code>.dmg</code> for macOS (Apple Silicon and Intel; signed and notarised) or an <code>.exe</code> for Windows x64. The Windows installer is currently unsigned, so SmartScreen will warn you — verify you downloaded it from the official repository before clicking through, and if you are on a managed corporate laptop, ask IT first rather than dismissing the warning.</p>
+
+              <p><strong>Build from source.</strong> If you would rather read the code before you run it — a reasonable instinct for anything with full disk access — you need <a href="https://bun.sh/">Bun</a> v1.2 or newer:</p>
+
+              <pre class="bg-light p-3 border rounded"><code>git clone https://github.com/Astro-Han/pawwork.git
+cd pawwork
+bun install
+bun run dev:desktop</code></pre>
+
+              <p>A caution worth stating plainly: PawWork appears on GitHub under several accounts, including forks and mirrors. Before you install or clone, check the star count, commit history, and release signatures, and prefer the repository the project's own documentation points to. This applies to every open-source desktop agent, not just this one.</p>
+
+              <p><strong>First-run setup, in order:</strong> connect a model — either the built-in free plan, a provider API key, ChatGPT OAuth, or a local Ollama/LM Studio endpoint; then choose a workspace folder, and make it a narrow one for your first few sessions; then run one small, reversible task, such as summarising a folder of PDFs, and read the proposed file actions before approving them. Only after that should you give it anything you would be upset to lose.</p>
+
+              <div class="alert alert-light border-start border-5 border-success my-4 fst-italic">
+                <p class="mb-0">Treat the approval step as the product's most important feature, not a speed bump. An agent with write access to your Documents folder deserves the same review discipline you would give a pull request.</p>
+              </div>
+
+              <h2 class="mt-5 mb-3">Where It Fits in a QA Workflow</h2>
+
+              <p>A desktop agent is not a test automation framework, and it will not replace Playwright, WebdriverIO, or Appium. What it replaces is the unglamorous half of QA work that surrounds the automation — the part that quietly eats a day a week.</p>
+
+              <p>Concretely: turning a folder of requirement documents into a first-pass test scenario list in Excel; consolidating twelve HTML reports from separate runs into one summary; converting a raw defect export into the template your client expects; reading a long specification PDF and pulling out every acceptance criterion; drafting release notes from a changelog. Each of these is a file-in, file-out task with a known shape — which is exactly what a desktop agent is good at, and exactly what a browser chat window is bad at, because the files never leave your machine to begin with.</p>
+
+              <p>For anyone working under client confidentiality or handling regulated data, the BYOK-plus-local-models combination is the genuinely interesting part. Running a local model against a local workspace means the documents never touch a third-party API — a property that is hard to get any other way, and worth the lower model quality in the cases where it matters.</p>
+
+              <h2 class="mt-5 mb-3">The Honest Limitations</h2>
+
+              <p>PawWork is a young project, and young projects break. The Windows installer being unsigned is a real friction point in corporate environments. Output quality is entirely a function of the model you connect — a free tier will not match a frontier model on a complex document task, and no amount of good UX changes that. Full workspace access is powerful and risky in equal measure. And as a general-purpose work agent, it will lose to specialised tools on their home turf: a dedicated coding agent will write better code, a dedicated RPA tool will automate better.</p>
+
+              <p>None of that makes it a bad bet. It makes it a tool to adopt deliberately: scoped folder, reviewed actions, a model you chose on purpose. If the promise of agentic AI is that software finally does the boring parts of knowledge work, PawWork is one of the more credible open-source attempts to deliver it — and because it is open source, you can see exactly how it is trying.</p>
+
+              <div class="mt-5">
+                <span class="badge bg-secondary me-2 mb-2">PawWork</span>
+                <span class="badge bg-secondary me-2 mb-2">Agentic AI</span>
+                <span class="badge bg-secondary me-2 mb-2">Open Source</span>
+                <span class="badge bg-secondary me-2 mb-2">Desktop AI Agent</span>
+                <span class="badge bg-secondary me-2 mb-2">QA Automation</span>
+              </div>
+              <div class="text-muted small mt-5 pt-3 border-top">
+                <p class="mb-1">Written by PV</p>
+                <p class="mb-0">&copy; 2026 All Rights Reserved</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer id="footer" class="footer light-background">
+    <div class="container">
+      <div class="copyright text-center"><p>&copy; <span>Copyright</span> <strong class="px-1 sitename">PV</strong> <span>All Rights Reserved<br></span></p></div>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://www.instagram.com/Chinna.Prasanna"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/"><i class="bi bi-github"></i></a>
+      </div>
+      <div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Tweaked by <a href="#">PV</a></div>
+    </div>
+  </footer>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
