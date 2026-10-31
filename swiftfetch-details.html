@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>SwiftFetch Download Manager — Prasanna Venkatesh | Products & POC</title>
+  <meta name="description" content="SwiftFetch — An open-source IDM-style download manager for Windows built with Electron, Node.js and React. Multi-segment downloads, pause and resume, a download queue with speed limits, a Chrome/Edge extension, and yt-dlp powered video downloads.">
+  <meta name="keywords" content="SwiftFetch, Download Manager, IDM alternative, Electron, React, Node.js, Chrome Extension, yt-dlp, Segmented Downloads, Open Source, Windows App">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+</head>
+
+<body class="portfolio-details-page">
+
+  <header id="header" class="header d-flex align-items-center light-background sticky-top">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <h1 class="sitename">PV</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="resume.html">Resume</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="learning-hub.html">Learning Hub</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <div class="header-social-links">
+        <a href="https://www.instagram.com/Chinna.Prasanna" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/Chinna29" class="github"><i class="bi bi-github"></i></a>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Portfolio Details Section -->
+    <section id="portfolio-details" class="portfolio-details section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>SwiftFetch Download Manager</h2>
+        <p>An open-source, IDM-style download manager for Windows — no paid services, no accounts, no telemetry</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-8">
+            <div class="portfolio-details-slider swiper init-swiper">
+
+              <script type="application/json" class="swiper-config">
+                {
+                  "loop": true,
+                  "speed": 600,
+                  "autoplay": {
+                    "delay": 5000
+                  },
+                  "slidesPerView": "auto",
+                  "pagination": {
+                    "el": ".swiper-pagination",
+                    "type": "bullets",
+                    "clickable": true
+                  }
+                }
+              </script>
+
+              <div class="swiper-wrapper align-items-center">
+
+                <div class="swiper-slide">
+                  <img src="assets/img/portfolio/swiftfetch-slide-1.png" alt="SwiftFetch download queue">
+                </div>
+
+                <div class="swiper-slide">
+                  <img src="assets/img/portfolio/swiftfetch-slide-2.png" alt="SwiftFetch add download dialog and segment progress">
+                </div>
+
+                <div class="swiper-slide">
+                  <img src="assets/img/portfolio/swiftfetch-slide-3.png" alt="SwiftFetch browser extension and video quality picker">
+                </div>
+
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+
+            <!-- Feature Highlights -->
+            <div class="mt-5" data-aos="fade-up" data-aos-delay="300">
+              <h3>Key Features</h3>
+              <div class="row gy-3 mt-2">
+                <div class="col-md-6">
+                  <div class="d-flex align-items-start">
+                    <i class="bi bi-layers-half text-primary me-3 fs-4"></i>
+                    <div>
+                      <h5 class="mb-1">Segmented Downloads</h5>
+                      <p class="text-muted mb-0">Files are split into up to 32 byte ranges fetched in parallel and written at their offsets into a pre-allocated file.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="d-flex align-items-start">
+                    <i class="bi bi-pause-circle text-primary me-3 fs-4"></i>
+                    <div>
+                      <h5 class="mb-1">Pause &amp; Resume</h5>
+                      <p class="text-muted mb-0">Per-segment progress is saved next to the file, so a paused, crashed or rebooted download continues where it stopped.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="d-flex align-items-start">
+                    <i class="bi bi-list-task text-primary me-3 fs-4"></i>
+                    <div>
+                      <h5 class="mb-1">Download Queue</h5>
+                      <p class="text-muted mb-0">Configurable concurrency, retries with exponential backoff, a global token-bucket speed limit, and pause/resume all.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="d-flex align-items-start">
+                    <i class="bi bi-browser-chrome text-primary me-3 fs-4"></i>
+                    <div>
+                      <h5 class="mb-1">Chrome / Edge Extension</h5>
+                      <p class="text-muted mb-0">Manifest V3 extension that captures browser downloads with cookies and referer, adds a right-click menu entry, and lists media on the page.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="d-flex align-items-start">
+                    <i class="bi bi-camera-video text-primary me-3 fs-4"></i>
+                    <div>
+                      <h5 class="mb-1">Video Downloads via yt-dlp</h5>
+                      <p class="text-muted mb-0">Paste a video page URL, pick a quality or audio-only, and the bundled yt-dlp runs as a job with live progress, pause, resume and cancel.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="d-flex align-items-start">
+                    <i class="bi bi-folder2-open text-primary me-3 fs-4"></i>
+                    <div>
+                      <h5 class="mb-1">Organized Folders</h5>
+                      <p class="text-muted mb-0">Downloads are sorted into Videos, Audio, Images and Files by extension or content type, with editable folder rules.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="d-flex align-items-start">
+                    <i class="bi bi-windows text-primary me-3 fs-4"></i>
+                    <div>
+                      <h5 class="mb-1">Tray &amp; Startup</h5>
+                      <p class="text-muted mb-0">Keeps running in the system tray, can start with Windows minimized, and sends a desktop notification when a download finishes.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="d-flex align-items-start">
+                    <i class="bi bi-shield-lock text-primary me-3 fs-4"></i>
+                    <div>
+                      <h5 class="mb-1">Local-Only Bridge</h5>
+                      <p class="text-muted mb-0">The extension talks to the app over a loopback HTTP API that only accepts extension origins, so web pages cannot push downloads into the app.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-lg-4">
+            <div class="portfolio-info" data-aos="fade-up" data-aos-delay="200">
+              <h3>Project Information</h3>
+              <ul>
+                <li><strong>Category</strong>: Products / POC</li>
+                <li><strong>Product</strong>: SwiftFetch</li>
+                <li><strong>Tech Stack</strong>: Electron, Node.js, React, Vite</li>
+                <li><strong>Platform</strong>: Windows Desktop + Chrome/Edge Extension</li>
+                <li><strong>Type</strong>: Open-Source Desktop Application</li>
+                <li><strong>License</strong>: MIT</li>
+                <li><strong>Source Code</strong>: <a href="https://github.com/Chinna29/SwiftDownloadManger" target="_blank">GitHub Repository <i class="bi bi-box-arrow-up-right"></i></a></li>
+              </ul>
+            </div>
+            <div class="portfolio-description" data-aos="fade-up" data-aos-delay="300">
+              <h2>A Free Download Manager, Built From Scratch</h2>
+              <p>
+                SwiftFetch is an open-source download manager for Windows in the spirit of Internet Download Manager. It accelerates large downloads by splitting them into parallel byte ranges, survives pauses and crashes through per-segment resume state, and manages everything through a queue with concurrency and bandwidth controls.
+              </p>
+              <p>
+                The Electron main process hosts the download engine, settings and a loopback bridge for the browser extension, while the React renderer provides the queue, add dialog and settings UI. Everything in the stack is free and open source, with no accounts, paid services or telemetry.
+              </p>
+            </div>
+
+            <div class="portfolio-description mt-3" data-aos="fade-up" data-aos-delay="400">
+              <h2>Tech Highlights</h2>
+              <ul>
+                <li><strong>Engine</strong>: Custom segmented HTTP downloader with range probing and resume files</li>
+                <li><strong>Queue</strong>: Persistent job list, scheduler, retries and token-bucket limiter</li>
+                <li><strong>Renderer</strong>: React with Vite and hot reload in development</li>
+                <li><strong>Extension</strong>: Manifest V3 for Chrome and Edge, loopback API on port 47831</li>
+                <li><strong>Media</strong>: yt-dlp, Deno and ffmpeg fetched on demand from official releases</li>
+                <li><strong>Packaging</strong>: NSIS installer via electron-builder, desktop and Start Menu shortcuts</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Portfolio Details Section -->
+
+  </main>
+
+  <footer id="footer" class="footer light-background">
+
+    <div class="container">
+      <div class="copyright text-center ">
+        <p>&copy; <span>Copyright</span> <strong class="px-1 sitename">PV</strong> <span>All Rights Reserved<br></span></p>
+      </div>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://www.instagram.com/Chinna.Prasanna"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/prasanna-venkatesh-k-79938715b"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/Chinna29"><i class="bi bi-github"></i></a>
+      </div>
+      <div class="credits">
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        Tweaked by <a href="#">PV</a>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
